@@ -1,0 +1,15 @@
+## Interface: 16001
+
+## Title: Malz RXP Route
+## Notes: such speed
+## Author: Malz
+## Version: 1.0
+
+## Dependencies: RXPGuides
+
+duo-1-10.lua
+duo-10-20.lua
+duo-20-30.lua
+duo-30-40.lua
+duo-40-50.lua
+duo-50-60.lua

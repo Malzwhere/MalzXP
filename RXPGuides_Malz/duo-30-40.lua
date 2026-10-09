@@ -28,23 +28,21 @@ step
     .zone Stormwind City >> Enter Stormwind
 step
     #completewith next
-    .goto StormwindClassic,51.9,49.065,20 >> Travel to the Stormwind Cathedral
+    .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
 step
-    .goto Stormwind City,50.882,47.148
+    .goto 1453,50.882,47.148
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thomas|r
     >>|cRXP_FRIENDLY_Thomas|r |cRXP_WARN_walks around through the Cathedral|r
     .accept 1274 >> Accept The Missing Diplomat
     .target Thomas
 step
-    .goto StormwindClassic,69.25,39.63,40,0
-    .goto StormwindClassic,71.28,41.37,40,0
-    .goto StormwindClassic,73.33,45.65,40,0
-    .goto StormwindClassic,72.44,47.70,40,0
-    .goto StormwindClassic,69.25,39.63,40,0
-    .goto StormwindClassic,71.28,41.37,40,0
-    .goto StormwindClassic,73.33,45.65,40,0
-    .goto StormwindClassic,72.44,47.70
-    .line StormwindClassic,69.25,39.63,71.28,41.37,73.33,45.65,72.44,47.70,73.33,45.65,71.28,41.37,69.25,39.63
+    .goto 1453,71.55,55.93,40,0
+    .goto 1453,75.28,57.04,40,0
+    .goto 1453,76.32,60.42,40,0
+    .goto 1453,73.62,62.69,40,0
+    .goto 1453,71.72,60.08,40,0
+    .goto 1453,70.58,57.66
+    .line 1453,71.55,55.93,75.28,57.04,76.32,60.42,73.62,62.69,71.72,60.08,70.58,57.66
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nikova Raskol|r
     >>|cRXP_FRIENDLY_Nikova Raskol|r |cRXP_WARN_patrols in Old Town|r
     .accept 388 >> Accept The Color of Blood
@@ -100,55 +98,62 @@ step
     .turnin 387 >> Turn in Quell The Uprising
     .target Warden Thelwater
 step
-    .goto StormwindClassic,49.194,30.283
+    .goto 1453/0,719.67,-8550.30
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r
     .turnin 392 >> Turn in The Curious Visitor
     .accept 393 >> Accept Shadow of the Past
+    +test
     .target Baros Alexston
 step
-    .goto StormwindClassic,69.25,39.63,40,0
-    .goto StormwindClassic,71.28,41.37,40,0
-    .goto StormwindClassic,73.33,45.65,40,0
-    .goto StormwindClassic,72.44,47.70,40,0
-    .goto StormwindClassic,69.25,39.63,40,0
-    .goto StormwindClassic,71.28,41.37,40,0
-    .goto StormwindClassic,73.33,45.65,40,0
-    .goto StormwindClassic,72.44,47.70
-    .line StormwindClassic,69.25,39.63,71.28,41.37,73.33,45.65,72.44,47.70,73.33,45.65,71.28,41.37,69.25,39.63
+    .goto 1453,71.55,55.93,40,0
+    .goto 1453,75.28,57.04,40,0
+    .goto 1453,76.32,60.42,40,0
+    .goto 1453,73.62,62.69,40,0
+    .goto 1453,71.72,60.08,40,0
+    .goto 1453,70.58,57.66
+    .line 1453,71.55,55.93,75.28,57.04,76.32,60.42,73.62,62.69,71.72,60.08,70.58,57.66
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nikova Raskol|r
     >>|cRXP_FRIENDLY_Nikova Raskol|r |cRXP_WARN_patrols in Old Town|r
     .turnin 388 >> Turn in The Color of Blood
     .unitscan Nikova Raskol
 step
     #completewith next
-    .goto StormwindClassic,74.90,54.00,20,0
-    .goto StormwindClassic,78.43,60.15,20,0
-    .goto StormwindClassic,78.67,60.13,5 >> Enter the SI:7 Headquarters. Travel up stairs toward |cRXP_FRIENDLY_Master Mathias Shaw|r
+    .goto 1453,77.5,65.96,20,0
+    .goto 1453,80.47,70.89,20,0
+    .goto 1453,80.37,69.39,10 >> Enter the SI:7 Headquarters. Travel up stairs toward |cRXP_FRIENDLY_Master Mathias Shaw|r
 step
-    .goto StormwindClassic,75.78,59.84
+    .goto 1453,78.36,70.76
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Mathias Shaw|r
     .turnin 393 >> Turn in Shadow of the Past
     .accept 350 >> Accept Look to an Old Friend
     .target Master Mathias Shaw
 step
-    .goto StormwindClassic,61.166,64.051,8,0
-    .goto StormwindClassic,59.908,64.177
+    .goto 1453,66.01,74.18,10,0
+    .goto 1453,66.79,74.18,10,0
+    .goto 1453,66.07,74.16
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Elling Trias|r up stairs
     .turnin 350 >> Turn in Look to an Old Friend
     .accept 2745 >> Accept Infiltrating the Castle
     .target Elling Trias
 step
     #completewith next
-    .goto StormwindClassic,70.347,27.208,15,0
-    .goto StormwindClassic,72.005,21.542,20 >> Travel to the Stormwind Keep
+    .goto 1453,73.03,46.77,20,0
+    .goto 1453,79.53,39.06,20 >> Travel to the Stormwind Keep
 step
-    .goto Stormwind City,78.30,25.45
+    .goto 1453,80.18,44.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bishop DeLavey|r
     .turnin 1274 >> Turn in The Missing Diplomat
     .accept 1241 >> Accept The Missing Diplomat
     .target Bishop DeLavey
 step
-    .goto Stormwind City,74.182,7.465
+    .goto 1453,76.30,42.81,20,0
+    .goto 1453,73.19,35.68
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tyrion|r
+    .turnin 2745 >> Turn in Infiltrating the Castle
+    .accept 2746 >> Accept Items of Some Consequence
+    .target Tyrion
+step
+    .goto 1453,77.03,30.39
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Milton Sheaf|r
     >>|cRXP_WARN_If you found |T133741:0|t[|cRXP_LOOT_An Old History Book|r] you may turn it in|r
     .turnin 337 >> Turn in An Old History Book
@@ -157,13 +162,7 @@ step
     .itemcount 2794,1 
     .target Milton Sheaf
 step
-    .goto StormwindClassic,69.205,14.404
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tyrion|r
-    .turnin 2745 >> Turn in Infiltrating the Castle
-    .accept 2746 >> Accept Items of Some Consequence
-    .target Tyrion
-step
-    .goto Stormwind City,73.17,78.42
+    .goto Stormwind City,76.24,85.03
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jorgen|r
     .turnin 1241 >> Turn in The Missing Diplomat
     .accept 1242 >> Accept The Missing Diplomat
@@ -198,7 +197,9 @@ step
     #completewith next
     .zone Stormwind City >> Travel to Stormwind City
 step
-    .goto Stormwind City,59.90,64.17
+    .goto 1453,66.01,74.18,10,0
+    .goto 1453,66.79,74.18,10,0
+    .goto 1453,66.07,74.16
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Elling Trias|r
     .turnin 1242 >> Turn in The Missing Diplomat
     .accept 1243 >> Accept The Missing Diplomat
@@ -386,9 +387,10 @@ step
     .target Ariena Stormfeather
 step
     #completewith next
-    .goto 1453,73.002,46.782,50,0 >> Travel to the Stormwind Keep
+    .goto 1453,73.03,46.77,20,0
+    .goto 1453,76.30,42.81,20 >> Travel to the Stormwind Keep
 step
-    .goto StormwindClassic,69.205,14.404
+    .goto 1453,73.19,35.68
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tyrion|r
     >>|cRXP_WARN_Ensure your party has all turned in Items of Some Consequence before you accept The Attack!|r
     >>|cRXP_WARN_Automatic quest accept has been turned off for this step. Note you may not be able to accept the quest if someone else is in the process of doing it|r
@@ -397,7 +399,7 @@ step
     .timer 124,The Attack! RP
     .target Tyrion
 step 
-    .goto StormwindClassic,68.024,14.075
+    .goto 1453,72.32,35.26
     >>|cRXP_WARN_Wait in the center of the courtyard for |cRXP_ENEMY_Lord Gregor Lescovar|r and |cRXP_ENEMY_Marzon the Silent Blade|r to arrive. This takes roughly 2 minutes|r
     >>Kill |cRXP_ENEMY_Lord Gregor Lescovar|r and |cRXP_ENEMY_Marzon the Silent Blade|r
     .complete 434,1 
@@ -406,34 +408,35 @@ step
     .mob Lord Gregor Lescovar
     .mob Marzon the Silent Blade
 step
-    .goto StormwindClassic,61.166,64.051,8,0
-    .goto StormwindClassic,59.908,64.177
+    .goto 1453,66.01,74.18,10,0
+    .goto 1453,66.79,74.18,10,0
+    .goto 1453,66.07,74.16
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Elling Trias|r up stairs
     .turnin 434 >> Turn in The Attack!
     .accept 394 >> Accept The Head of the Beast
     .target Elling Trias
 step
     #completewith next
-    .goto StormwindClassic,74.90,54.00,20,0
-    .goto StormwindClassic,78.43,60.15,20,0
-    .goto StormwindClassic,78.67,60.13,5 >> Enter the SI:7 Headquarters. Travel up stairs toward |cRXP_FRIENDLY_Master Mathias Shaw|r
+    .goto 1453,77.5,65.96,20,0
+    .goto 1453,80.47,70.89,20,0
+    .goto 1453,80.37,69.39,10 >> Enter the SI:7 Headquarters. Travel up stairs toward |cRXP_FRIENDLY_Master Mathias Shaw|r
 step
-    .goto StormwindClassic,75.78,59.84
+    .goto 1453,78.36,70.76
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Mathias Shaw|r
     .turnin 394 >> Turn in The Head of the Beast
     .accept 395 >> Accept Brotherhood's End
     .target Master Mathias Shaw
 step
-    .goto StormwindClassic,49.194,30.283
+    .goto 1453/0,719.67,-8550.30
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r
     .turnin 395 >> Turn in Brotherhood's End
     .accept 396 >> Accept An Audience with the King
     .target Baros Alexston
 step
     #completewith next
-    .goto StormwindClassic,70.347,27.208,20 >> Travel to the Stormwind Keep
+    .goto 1453,73.03,46.77,20 >> Travel to the Stormwind Keep
 step
-    .goto StormwindClassic,78.105,17.750
+    .goto 1453,80.03,38.28
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lady Katrana Prestor|r
     .turnin 396 >> Turn in An Audience with the King
     .target Lady Katrana Prestor
@@ -1138,33 +1141,36 @@ step
     .accept 325 >> Accept Armed and Ready
     .target Grimand Elmore
 step
+    #completewith next
+    .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
+step
     #label Eye
-    .goto StormwindClassic,39.60,27.20
+    .goto 1453,50.35,45.52
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archbishop Benedictus|r
     .turnin 293 >> Turn in Cleansing the Eye
     .target Archbishop Benedictus
 step
-    .goto StormwindClassic,36.6,64.2
+    .goto 1453,37.98,64.40
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kimberly Grant|r, she patrols around the park
     .turnin 98156 >> Turn in Packaged Pristine Pelts
     .target Kimberly Grant
     .isQuestComplete 98156
 step
-    .goto StormwindClassic,43.088,80.391
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Collin Mauren|r
-    .turnin 1078 >> Turn in Retrieval for Mauren
-    .target Collin Mauren
-    .isQuestComplete 1078
-step
-    .goto StormwindClassic,39.843,81.446
+    .goto 1453,50.53,87.34
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Malin|r
     .accept 690 >> Accept Malin's Request
     .target Archmage Malin
 step
-    .goto StormwindClassic,40.633,91.867
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Connor Rivers|r
+    .goto 1453,51.08,95.38
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Connor Rivers|r inside
     .accept 1301 >> Accept James Hyal
     .target Connor Rivers
+step
+    .goto 1453,53.00,86.54
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Collin Mauren|r
+    .turnin 1078 >> Turn in Retrieval for Mauren
+    .target Collin Mauren
+    .isQuestComplete 1078
 step
     .goto 1453/0,490.03,-8835.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
@@ -2011,16 +2017,33 @@ step << Dwarf
     .goto Dun Morogh,63.4,50.6
     +Head to the Amberstill Ranch in Dun Morogh and buy a mount
 step
-    >>|cRXP_WARN_This is not sharable|r
-    .goto StormwindClassic,39.592,27.199
+    #completewith TramEnd
+    .goto 1455/0,-1330.28,-4840.430
+    .subzone 2257 >>Enter the Deeprun Tram
+step
+    #completewith TramEnd
+    >> |cRXP_WARN_CRAFT ON TRAM
+step
+    #label TramEnd
+    .zone Stormwind City >> Enter Stormwind
+step
+    #completewith next
+    .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
+step
+    .goto 1453,69.43,40.48
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brohann Caskbelly|r
+    .accept 1448 >>Accept In Search of The Temple
+    .target Brohann Caskbelly
+step
+    .goto 1453,50.35,45.52
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archbishop Benedictus|r
     .accept 3636 >> Accept Bring the Light
     .target Archbishop Benedictus
 step
-    .goto StormwindClassic,64.328,20.627
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brohann Caskbelly|r
-    .accept 1448 >>Accept In Search of The Temple
-    .target Brohann Caskbelly
+    .goto 1453/0,490.03,-8835.82
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
+    .fly Booty Bay >> Fly to Booty Bay
+    .target Dungar Longdrink
 ]])
 
 

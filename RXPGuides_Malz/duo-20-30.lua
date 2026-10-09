@@ -1669,20 +1669,20 @@ step << Warlock
     .target Gakin the Darkbinder
 step << Warlock
     #completewith next
-    .goto StormwindClassic,25.2,80.7,18,0
-    .goto StormwindClassic,23.2,79.5,18,0
-    .goto StormwindClassic,26.3,79.5,18,0
-    .goto StormwindClassic,25.154,77.406
+    .goto 1453,39.070,85.802,18,0
+    .goto 1453,37.968,86.671,18,0
+    .goto 1453,39.697,86.434,18,0
+    .goto 1453,39.111,84.314
     >>|cRXP_WARN_Travel to the bottom of The Slaughtered Lamb|r
     .cast 8674 >> |cRXP_WARN_Use the|r |T136065:0|t[Heartswood Core] |cRXP_WARN_to call forth a|r |cRXP_ENEMY_Summoned Succubus|r
     .use 6913
 step << Warlock
-    .goto StormwindClassic,25.154,77.406
+    .goto 1453,39.111,84.314
     .use 6913 >> Kill the |cRXP_ENEMY_Summoned Succubus|r
     .complete 1739,1 
     .mob Summoned Succubus
 step << Warlock
-    .goto StormwindClassic,25.154,77.406
+    .goto 1453,39.111,84.314
     >>|cRXP_WARN_Travel to the bottom of The Slaughtered Lamb|r
     .use 190186 >> |cRXP_WARN_Use the|r |T136065:0|t[Wooden Figurine] |cRXP_WARN_to call forth a|r |cRXP_ENEMY_Summoned Incubus|r
     .complete 65603,1 
@@ -2770,10 +2770,10 @@ RXPGuides.RegisterGuide([[
 
 step
     #completewith next
-    .goto StormwindClassic,42.51,33.51,20 >> Travel to the Stormwind Cathedral
+    .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
 step
     .isQuestTurnedIn 323
-    .goto Stormwind City,39.108,27.861
+    .goto 1453,49.976,46.022
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bishop Farthing|r
     .turnin 269 >> Turn in Seeking Wisdom
     .accept 270 >> Accept The Doomed Fleet

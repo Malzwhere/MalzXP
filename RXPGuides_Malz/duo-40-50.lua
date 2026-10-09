@@ -61,7 +61,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance
 #group MalzXP Forever Duo Guide
-#subgroup Duo 30-40
+#subgroup Duo 40-50
 --#groupid RXP-SRGCE-A1
 #name 41-42 Riverglades
 #next 42-43 Badlands
@@ -124,7 +124,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance
 #group MalzXP Forever Duo Guide
-#subgroup Duo 30-40
+#subgroup Duo 40-50
 --#groupid RXP-SRGCE-A1
 #name 43-44 Drowned City
 #next 44-45 Uldaman

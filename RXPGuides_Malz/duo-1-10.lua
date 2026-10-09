@@ -1540,13 +1540,14 @@ RXPGuides.RegisterGuide([[
 #next 12-14 Loch Modan
 #defaultfor Dwarf/Gnome
 
+
 step
     .goto 1453/0,490.03,-8835.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
     .fp Stormwind >> Get the Stormwind City flight path
     .target Dungar Longdrink
 step << Shaman
-    .goto 1453,56.2,65.0
+    .goto 1453,63.09,74.81
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kyra Boucher|r
     .collect 17034,4
     .target Kyra Boucher

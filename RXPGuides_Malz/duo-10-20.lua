@@ -97,6 +97,19 @@ step
     .accept 142 >> Accept The Defias Brotherhood
     .target Gryan Stoutmantle
 step
+    #optional
+    #completewith next
+    .goto 1436/0,1459.17,-11024.47,55 >> Travel to Moonbrook
+step
+    #completewith next
+    .goto 1436/0,1459.17,-11024.47
+    .line Westfall,44.50,69.62,44.50,69.62,45.08,69.40,45.21,69.35,45.63,68.69,45.85,67.73,45.62,66.99,45.52,65.71,45.61,64.95,44.28,63.88,44.26,62.80,43.60,59.89,43.37,58.42,43.26,57.01,43.12,54.24,42.15,52.74,41.74,51.42,41.48,49.89,40.91,48.71,38.93,46.05,38.51,45.46,37.85,45.54,36.60,44.21,36.06,43.86,35.12,43.49,33.92,43.21,32.56,43.05,31.34,44.54,32.56,43.05,33.92,43.21,35.12,43.49,36.06,43.86,36.26,43.77,36.87,42.87,36.95,40.85,37.04,39.79,37.91,36.98,39.06,35.58,40.48,34.31,41.27,32.87,41.76,31.27,42.26,30.26,43.20,28.99,44.29,28.19,44.64,26.85,44.57,24.94,44.64,26.85,44.29,28.19,43.20,28.99,42.26,30.26,41.76,31.27,41.27,32.87,40.48,34.31,39.06,35.58,37.91,36.98,37.04,39.79,36.95,40.85,36.87,42.87,36.26,43.77,36.06,43.86,35.12,43.49,33.92,43.21,32.56,43.05,31.34,44.54,32.56,43.05,33.92,43.21,35.12,43.49,36.06,43.86,36.60,44.21,37.85,45.54,38.51,45.46,38.93,46.05,40.91,48.71,41.48,49.89,41.74,51.42,42.15,52.74,43.12,54.24,43.26,57.01,43.37,58.42,43.60,59.89,44.26,62.80,44.28,63.88,45.61,64.95,45.52,65.71,45.62,66.99,45.85,67.73,45.63,68.69,45.21,69.35,45.08,69.40,44.50,69.62
+    >>Kill the |cRXP_ENEMY_Defias Messenger|r. Loot him for his |cRXP_LOOT_Mysterious Message|r
+    >>|cRXP_WARN_The |cRXP_ENEMY_Defias Messenger|r spawns in Moonbrook. He walks along the road north of Moonbrook, to the Gold Coast Quarry and Jangolode Mine. If you don't see him along the road, wait for him to spawn in Moonbrook|r
+    >>|cRXP_WARN_He has a short respawn timer|r
+    .complete 142,1 -- A Mysterious Message (1)
+    .unitscan Defias Messenger
+step
     #label TravelCompass
     .isOnQuest 399
     .goto 1436/0,1602.67,-10629.67,75 >> Travel to the Alexston's Farmstead
@@ -120,18 +133,6 @@ step
     .complete 399,1 --A Simple Compass (1)
     .isOnQuest 399
 step
-    #optional
-    #completewith next
-    .goto 1436/0,1459.17,-11024.47,55 >> Travel to Moonbrook
-step
-    .goto 1436/0,1459.17,-11024.47
-    .line Westfall,44.50,69.62,44.50,69.62,45.08,69.40,45.21,69.35,45.63,68.69,45.85,67.73,45.62,66.99,45.52,65.71,45.61,64.95,44.28,63.88,44.26,62.80,43.60,59.89,43.37,58.42,43.26,57.01,43.12,54.24,42.15,52.74,41.74,51.42,41.48,49.89,40.91,48.71,38.93,46.05,38.51,45.46,37.85,45.54,36.60,44.21,36.06,43.86,35.12,43.49,33.92,43.21,32.56,43.05,31.34,44.54,32.56,43.05,33.92,43.21,35.12,43.49,36.06,43.86,36.26,43.77,36.87,42.87,36.95,40.85,37.04,39.79,37.91,36.98,39.06,35.58,40.48,34.31,41.27,32.87,41.76,31.27,42.26,30.26,43.20,28.99,44.29,28.19,44.64,26.85,44.57,24.94,44.64,26.85,44.29,28.19,43.20,28.99,42.26,30.26,41.76,31.27,41.27,32.87,40.48,34.31,39.06,35.58,37.91,36.98,37.04,39.79,36.95,40.85,36.87,42.87,36.26,43.77,36.06,43.86,35.12,43.49,33.92,43.21,32.56,43.05,31.34,44.54,32.56,43.05,33.92,43.21,35.12,43.49,36.06,43.86,36.60,44.21,37.85,45.54,38.51,45.46,38.93,46.05,40.91,48.71,41.48,49.89,41.74,51.42,42.15,52.74,43.12,54.24,43.26,57.01,43.37,58.42,43.60,59.89,44.26,62.80,44.28,63.88,45.61,64.95,45.52,65.71,45.62,66.99,45.85,67.73,45.63,68.69,45.21,69.35,45.08,69.40,44.50,69.62
-    >>Kill the |cRXP_ENEMY_Defias Messenger|r. Loot him for his |cRXP_LOOT_Mysterious Message|r
-    >>|cRXP_WARN_The |cRXP_ENEMY_Defias Messenger|r spawns in Moonbrook. He walks along the road north of Moonbrook, to the Gold Coast Quarry and Jangolode Mine. If you don't see him along the road, wait for him to spawn in Moonbrook|r
-    >>|cRXP_WARN_He has a 4-5 minute respawn timer|r
-    .complete 142,1 -- A Mysterious Message (1)
-    .unitscan Defias Messenger
-step
     .goto 1436/0,1045.12,-10508.80
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryan Stoutmantle|r
     .turnin 142 >> Turn in The Defias Brotherhood
@@ -141,8 +142,7 @@ step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Farmer Saldean|r
 	.target Farmer Saldean
     .goto 1436/0,1055.27,-10128.70
-    .turnin 9 >> Turn in The Killing Fields
-    .isQuestComplete 9
+    .turnin -9 >> Turn in The Killing Fields
 step
     #optional
     .goto 1436/0,1324.200,-10490.400
@@ -249,19 +249,16 @@ step
     >>|cRXP_WARN_This is sharable, only one of you wait|r
     .accept 963 >> Accept For Love Eternal
     .target Cerellean Whiteclaw
-    .xp <11,1
 step
     .goto 1439,37.322,43.640
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barithras Moonshade|r
     .accept 947 >> Accept Cave Mushrooms
     .target Barithras Moonshade
-    .xp <12,1
 step
     .goto 1439,37.703,43.393
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Glynda Nal'Shea|r
     .accept 4811 >> Accept The Red Crystal
     .target Sentinel Glynda Nal'Shea
-    .xp <12,1
 step
     .goto 1439,38.843,43.416
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharnariun Treetender|r
@@ -406,7 +403,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorbold Steelhand|r
     .accept 982 >> Accept Deep Ocean, Vast Sea
     .target Gorbold Steelhand
-    .xp <13,1
 step
     #optional
     .goto 1439/1,472.32,6556.100
@@ -438,17 +434,10 @@ step
     .goto 1439,37.394,40.128
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
     .turnin 4761 >> Turn in Thundris Windweaver
+    .accept 97914 >> Accept Expanding Horizons
     .accept 4762 >> Accept The Cliffspring River
     .accept 954 >> Accept Bashal'Aran
     .target Thundris Windweaver
-    .xp >18,1
---XX if 18+, skip Bashal
-step
-    #optional
-    .goto 1439,37.394,40.128
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
-    .turnin 4761 >> Turn in Thundris Windweaver
-    .accept 4762 >> Accept The Cliffspring River
 step
     #optional
     #completewith next
@@ -545,6 +534,7 @@ step
     .mob Wild Grell
     .mob Vile Sprite
     .isOnQuest 955
+    .xp >16,1
 step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
@@ -552,6 +542,7 @@ step
     .accept 956 >> Accept Bashal'Aran
     .target Asterion
     .isQuestComplete 955
+    .xp >16,1
 step
     #optional
     .goto 1439,44.168,36.289
@@ -559,6 +550,7 @@ step
     .accept 956 >> Accept Bashal'Aran
     .target Asterion
     .isQuestTurnedIn 955
+    .xp >16,1
 step
     #completewith next
     #optional
@@ -582,6 +574,7 @@ step
     .complete 956,1 --Ancient Moonstone Seal (1)
     .mob Deth'ryll Satyr
     .isQuestTurnedIn 955
+    .xp >16,1
 step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
@@ -589,12 +582,14 @@ step
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
     .isQuestComplete 956
+    .xp >16,1
 step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
     .isQuestTurnedIn 956
+    .xp >16,1
 step
     #optional
     #completewith AmethStart

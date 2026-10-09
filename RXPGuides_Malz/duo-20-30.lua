@@ -1828,7 +1828,7 @@ step
     .fly Redridge >> Fly to Redridge
     .target Dungar Longdrink
 step
-    .goto Redridge Mountains,26.258,46.580
+    .goto Redridge Mountains,21.2,46.6
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Guard Berton|r
     .accept 386 >> Accept What Comes Around...
     .target Guard Berton
@@ -1843,7 +1843,7 @@ step
     #label RedridgeEnd
     #completewith MadEva
     .zone Duskwood >> Head to Duskwood
-    .goto Redridge Mountains,5.5,91.9
+    .goto Duskwood,73.48,24.84
 step
     #completewith MadEva
     .subzone 42 >> Head to Darkshire
@@ -1920,6 +1920,17 @@ step
     .accept 177 >> Accept Look To The Stars
     .target Blind Mary
     .isQuestTurnedIn 174
+step
+    #sticky
+    #completewith endDuskwood
+    >> If you see any Lost ghosts kill them and complete their quests, not on route but good turnins. If you find bow, save it for later
+    .accept 96137 >> Accept Ira's Dagger
+    .accept 79363 >> Accept Silvia's Sword
+    .accept 79362 >> Accept Grant's Shield
+    .mob Lost Stalker
+    .mob Lost Watcher
+    .mob Lost Defender
+    .mob Lost Knight
 step
     #completewith HistoryBook1
     >>|cRXP_WARN_Keep at eye out for |T133741:0|t[|cRXP_LOOT_An Old History Book|r]. This is a zone-wide drop in Duskwood|r
@@ -2022,17 +2033,6 @@ step
     >>Talk to |cRXP_FRIENDLY_Sirra|r inside
     .turnin 96139 >> Turn in The Valor Family
     .target Sirra Von'Indi
-step
-    #sticky
-    #completewith endDuskwood
-    >> If you see any Lost ghosts kill them and complete their quests. If you find bow, save it for later
-    .accept 96137 >> Accept Ira's Dagger
-    .accept 79363 >> Accept Silvia's Sword
-    .accept 79362 >> Accept Grant's Shield
-    .mob Lost Stalker
-    .mob Lost Watcher
-    .mob Lost Defender
-    .mob Lost Knight
 step
     .goto Duskwood,71.938,47.778
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Councilman Millstipe|r

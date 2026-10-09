@@ -1823,6 +1823,7 @@ step
     .complete 83,1 --Collect Red Linen Bandana (x6)
     .mob Defias Bandit
     .isOnQuest 83
+    .xp 12,1
 step
     .goto 1429/0,-869.87,-9768.10
     >>Kill |cRXP_ENEMY_Princess|r. Loot her for her |cRXP_LOOT_Collar|r
@@ -1850,6 +1851,7 @@ step
     .complete 83,1 --Collect Red Linen Bandana (x6)
     .mob Defias Bandit
     .isOnQuest 83
+    .xp 12,1
 step
     #optional
     #label Deed
@@ -2416,6 +2418,7 @@ step
     .waypoint 1432/0,-2972.41,-4796.92,50,0
     .waypoint 1432/0,-2684.71,-5042.87,50,0
     .waypoint 1432/0,-2712.57,-5286.61,50,0
+    >>|cRXP_WARN_One of you should skip this quest, possibly both|r
     >>Kill |cRXP_ENEMY_Tunnel Rats|r. Loot them for their |cRXP_LOOT_Ears|r
     .complete 416,1 --Collect Tunnel Rat Ear (x12)
     .mob Tunnel Rat Scout
@@ -2518,8 +2521,7 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Kadrell|r
     >>|cRXP_FRIENDLY_Mountaineer Kadrell|r |cRXP_WARN_patrols the road through Thelsamar|r
     .target Mountaineer Kadrell
-    .turnin 416 >> Turn in Rat Catching
-    .isOnQuest 416
+    .turnin -416 >> Turn in Rat Catching
 step << !Shaman
     .line Loch Modan,36.72,41.97,37.24,43.19,37.33,45.63,36.77,46.20,35.19,46.88,32.67,49.71,35.19,46.88,36.77,46.20,37.33,45.63,37.24,43.19,36.72,41.97
     .goto 1432/0,-3006.61,-5259.57,15,0
@@ -2532,8 +2534,7 @@ step << !Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Kadrell|r
     >>|cRXP_FRIENDLY_Mountaineer Kadrell|r |cRXP_WARN_patrols the road through Thelsamar|r
     .target Mountaineer Kadrell
-    .turnin 416 >> Turn in Rat Catching
-    .isOnQuest 416
+    .turnin -416 >> Turn in Rat Catching
 step
     .goto Loch Modan,37.18,47.13,10,0
     >>Talk to |cRXP_FRIENDLY_Jern|r

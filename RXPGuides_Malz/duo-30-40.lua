@@ -376,10 +376,10 @@ step
     .turnin 386 >> Turn in What Comes Around...
     .target Guard Berton
 step
-    .goto Redridge Mountains,26.258,46.580
+    .goto Redridge Mountains,25.73,46.50
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dorin Songblade|r
-    .accept 95772 >> Accept Dorin Songblade
-    .target Guard Berton
+    .accept 95772 >> Accept Songblade Search
+    .target Dorin Songblade
 step
     .goto 1433,25.597,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ariena Stormfeather|r
@@ -839,12 +839,28 @@ RXPGuides.RegisterGuide([[
 #defaultfor Dwarf/Gnome
 
 step
-    .goto Wetlands,38.8,52.3
-    >>Talk to |cRXP_FRIENDLY_Merrin Rockweaver|r
-    +do all the expedition site dungy things (TODO: fix before launch)
-    .complete 95646,1
+    .goto Wetlands,47.70,56.13,10
+    >>Enter the Excavation Site
+step
+    .turnin 95772 >> Turn in Songblade Search
+    .accept 95795 >> Accept Fallen in the Fen
+    .turnin 95647 >> Turn in Lost in the Thicket Things
+    .accept 95809 >> Accept Heartwoven
+    .complete 95646,1 -- Horrors in the Highland
+    .accept 95810 >> Accept Lost Relic Carry
 step
     +elite quests to the north east
+step
+	.goto Wetlands,38.81,52.39
+    .target Prospector Whelgar
+    >>Talk to |cRXP_FRIENDLY_Prospector Whelgar|r
+	.turnin 95810 >> Turn in Lost Relic Carry
+    .accept 98824 >> Accept Prehistoric Prism
+step
+    .goto Wetlands,11.8,58.6
+    .target Caitlin Grassman
+    >>Talk to |cRXP_FRIENDLY_Caitlin Grassman|r
+    .turnin 95809 >> Turn in Heartwoven
 step
     .goto Wetlands,49.7,18.3
     .target Motley Garmason
@@ -876,8 +892,6 @@ step
     .subzoneskip 133
     .subzoneskip 721,2
 step
-    .dungeon Gnomer
-    #season 0,1
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gnoarn|r, |cRXP_FRIENDLY_Tinkmaster Overspark|r, |cRXP_FRIENDLY_High Tinker Mekkatorque|r, |cRXP_FRIENDLY_Master Mechanic Castpipe|r and |cRXP_FRIENDLY_Klockmort Spannerspan|r
     .accept 2927 >> Accept The Day After
     .goto Ironforge,69.182,50.556
@@ -894,6 +908,11 @@ step
     .target High Tinker Mekkatorque
     .target Master Mechanic Castpipe
     .target Klockmort Spannerspan
+step
+    .goto Ironforge,69.930,18.548
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Explorer Magellas|r
+    .turnin 98824 >> Turn in Prehistoric Prism
+    .target High Explorer Magellas
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Firebrew|r
     .goto Ironforge,18.10,51.60
@@ -1195,7 +1214,17 @@ step
     .target Scooty
 step
     .goto Stranglethorn Vale,27.4,77.8
+    .fly Redridge >> Fly to Redridge
+step
+    .goto Redridge Mountains,25.73,46.50
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dorin Songblade|r
+    .turnin 95795 >> Turn in Fallen in the Fen
+    .target Dorin Songblade
+step
+    .goto 1433,25.597,59.410
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ariena Stormfeather|r
     .fly Duskwood >> Fly to Duskwood
+    .target Ariena Stormfeather
 step
     .goto Duskwood,73.59,46.89
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Althea Ebonlocke|r
@@ -1224,7 +1253,7 @@ step
 step
     #sticky
     #completewith endDuskwood2
-    >> If you see any Lost ghosts kill them and complete their quests
+    >> If you see any Lost ghosts kill them and complete their quests, not on route but good turnins
     .accept 96137 >> Accept Ira's Dagger
     .accept 96138 >> Accept Merrick's Bow
     .accept 79363 >> Accept Silvia's Sword

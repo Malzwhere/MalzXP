@@ -2423,6 +2423,21 @@ step << !Shaman
     .turnin 416 >> Turn in Rat Catching
     .isOnQuest 416
 step
+    .goto Loch Modan,37.18,47.13,10,0
+    >>Talk to |cRXP_FRIENDLY_Jern|r
+    >>|cRXP_WARN_They can be inside or outside the building|r
+    .accept 436 >> Accept Ironband's Excavation
+    .goto Loch Modan,37.23,47.37
+    .target Jern Hornhelm
+step
+    >>Talk to |cRXP_FRIENDLY_Ironband|r and |cRXP_FRIENDLY_Magmar|r
+    .accept 298 >> Accept Excavation Progress Report
+    .goto Loch Modan,65.94,65.62
+    .turnin 436 >> Turn in Ironband's Excavation
+    .goto Loch Modan,64.89,66.66
+    .target Prospector Ironband
+    .target Magmar Fellhew
+step
     #completewith next
     .goto 1432/0,-4280.96,-5579.66,80,0
     .goto 1432/0,-4290.89,-5645.89,25 >> Travel to The Farstrider Lodge
@@ -2493,10 +2508,23 @@ step
     .turnin 418 >> Turn in Thelsamar Blood Sausages
     .target Vidra Hearthstove
 step
+    .goto Loch Modan,37.18,47.13,10,0
+    >>Talk to |cRXP_FRIENDLY_Jern|r
+    >>|cRXP_WARN_They can be inside or outside the building|r
+    .turnin 298 >> Turn in Excavation Progress Report
+    .accept 301 >> Accept Report to Ironforge
+    .goto Loch Modan,37.23,47.37
+    .target Jern Hornhelm
+step
     .goto 1432/0,-2929.87,-5424.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thorgrum Borrelson|r
     .fly Ironforge>> Fly to Ironforge
     .target Thorgrum Borrelson
+step << Warlock
+    .goto 1455,43.826,27.962
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Uthrar Threx|r
+    .target +Uthrar Threx
+    .trainer >> Train Tailoring if necessary
 step << Shaman/Paladin
     .goto 1455,39.778,32.911
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Balthus Stoneflayer|r
@@ -2511,9 +2539,6 @@ step
     #optional
     #completewith next
     >> Mail items for inventory space outside the inn
-
-----Start of <1.5x IF->Westfall Section----
----
 step << Warlock
     .goto 1455/0,-1117.60,-4615.14,15,0
     .goto 1455/0,-1111.62,-4599.09
@@ -2555,6 +2580,11 @@ step << Dwarf Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tiza Battleforge|r
     .turnin 1785 >>Turn in The Tome of Divinity
     .target Tiza Battleforge
+step
+    .goto Ironforge,74.64,11.72
+    >>Talk to |cRXP_FRIENDLY_Stormpike|r
+    .turnin 301 >> Turn in Report to Ironforge
+    .target Prospector Stormpike
 step
     #completewith next
     .goto 1455,67.842,42.456

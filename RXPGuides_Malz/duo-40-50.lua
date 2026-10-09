@@ -111,12 +111,23 @@ step << Warlock
     .goto 1455/0,-1111.62,-4599.09
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Train your class spells
+    .accept 4487 >> Accept Summon Felsteed
     .target Briarthorn
 step << Shaman
     .goto 1455,47.334,13.566
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
     .target Eldun Stormbreaker
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
+step << Paladin
+    .goto 1455/0,-907.69,-4592.93
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
+    .trainer >> Train your class spells
+    .target Beldruk Doombrow
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -142,14 +153,23 @@ step << Warlock
     .goto 1455/0,-1111.62,-4599.09
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Train your class spells
+    .accept 4487 >> Accept Summon Felsteed
     .target Briarthorn
-    .xp <44,1
 step << Shaman
     .goto 1455,47.334,13.566
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
     .target Eldun Stormbreaker
-    .xp <44,1
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
+step << Paladin
+    .goto 1455/0,-907.69,-4592.93
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
+    .trainer >> Train your class spells
+    .target Beldruk Doombrow
 step
     .goto Ironforge,55.50,47.74
     >>Talk to |cRXP_FRIENDLY_Gryth|r
@@ -174,19 +194,6 @@ step
     .zone Badlands >> Travel to the Badlands
 step
     +Complete Uldaman with all quests and turnins
-step << Warlock
-    .goto 1455/0,-1117.60,-4615.14,15,0
-    .goto 1455/0,-1111.62,-4599.09
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Briarthorn|r
-    .trainer >> Train your class spells
-    .target Briarthorn
-    .xp <46,1
-step << Shaman
-    .goto 1455,47.334,13.566
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
-    .trainer >> Train your class spells
-    .target Eldun Stormbreaker
-    .xp <46,1
 ]])
 
 
@@ -211,6 +218,28 @@ step
     .turnin 1452 >> Turn in Rhapsody's Kalimdor Kocktail
     .accept 1469 >> Accept Rhapsody's Tale
     +Witherbark Cages up to Nekrum's Medallion
+step << Warlock
+    .goto 1455/0,-1117.60,-4615.14,15,0
+    .goto 1455/0,-1111.62,-4599.09
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Briarthorn|r
+    .trainer >> Train your class spells
+    .accept 4487 >> Accept Summon Felsteed
+    .target Briarthorn
+step << Shaman
+    .goto 1455,47.334,13.566
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
+    .trainer >> Train your class spells
+    .target Eldun Stormbreaker
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
+step << Paladin
+    .goto 1455/0,-907.69,-4592.93
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
+    .trainer >> Train your class spells
+    .target Beldruk Doombrow
 ]])
 
 

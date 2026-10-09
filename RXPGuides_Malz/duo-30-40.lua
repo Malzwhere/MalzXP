@@ -467,6 +467,11 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
     .target Eldun Stormbreaker
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
 step
     .goto Ironforge,55.50,47.74
     >>Talk to |cRXP_FRIENDLY_Gryth|r
@@ -615,16 +620,19 @@ step
     .accept 98156 >> Accept Packaged Pristine Pelts
     .target Kristy Grant
 step
+    #optional
     #completewith next
-    >>this section is *optional*, don't go far past 32, roughly 20k xp
+    >>this section is *optional*, don't go far past 32, roughly 20k xp is here
     .goto Thousand Needles,77.782,77.263,100 >> Travel to the Mirage Raceway
 step
+    #optional
     .goto Thousand Needles,77.782,77.263
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kravel Koalbeard|r
     >>|cRXP_WARN_Don't accept the other quests yet|r
     .accept 1110 >> Accept Rocket Car Parts
     .target Kravel Koalbeard
 step
+    #optional
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fizzle Brassbolts|r and |cRXP_FRIENDLY_Wizzle Brassbolts|r
     .accept 1104 >> Accept Salt Flat Venom
     .goto Thousand Needles,78.064,77.126 
@@ -634,17 +642,20 @@ step
     .target Fizzle Brassbolts
     .target Wizzle Brassbolts
 step
+    #optional
     .goto Thousand Needles,80.178,75.882
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pozzik|r
     .accept 1176 >> Accept Load Lightening
     .target Pozzik
 step
+    #optional
     #label ABump
     .goto Thousand Needles,81.635,77.953
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Trackmaster Zherin|r
     .accept 1175 >> Accept A Bump in the Road
     .target Trackmaster Zherin
 step
+    #optional
     #optional
     >>|cRXP_WARN_Run circles around The Shimmering Flats until all objectives are complete|r
     >>Kill |cRXP_ENEMY_Salt Flats Scavengers|r and |cRXP_ENEMY_Salt Flats Vultures|r. Loot them for their |cRXP_LOOT_Bones|r
@@ -681,6 +692,7 @@ step
     .mob Scorpid Terror
     .isOnQuest 1078
 step
+    #optional
     >>|cRXP_WARN_Run circles around The Shimmering Flats until all objectives are complete|r
     >>Kill |cRXP_ENEMY_Salt Flats Scavengers|r and |cRXP_ENEMY_Salt Flats Vultures|r. Loot them for their |cRXP_LOOT_Bones|r
     >>Kill |cRXP_ENEMY_Sparkleshell Tortoises|r, |cRXP_ENEMY_Sparkleshell Borers|r and |cRXP_ENEMY_Sparkleshell Snappers|r. Loot them for their |cRXP_LOOT_Shells|r
@@ -689,6 +701,7 @@ step
     >>Kill |cRXP_ENEMY_Saltstone Basilisks|r, |cRXP_ENEMY_Saltstone Crystalhides|r and |cRXP_ENEMY_Saltstone Gazers|r
     >>Open the |cRXP_PICK_Rocket Car Rubble|r. Loot it for the |cRXP_LOOT_Rocket Car Parts|r
 #loop
+    #optional
     .goto Thousand Needles,87.5,65.6,0
     .goto Thousand Needles,82.6,54.8,0
     .goto Thousand Needles,73.5,59.9,0
@@ -712,17 +725,20 @@ step
     .mob Scorpid Reaver
     .mob Scorpid Terror
 step
+    #optional
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Trackmaster Zherin|r
     .goto Thousand Needles,81.635,77.953
     .turnin 1175 >> Turn in A Bump in the Road
     .target Trackmaster Zherin
 step
+    #optional
     .goto Thousand Needles,80.178,75.882
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pozzik|r
     .turnin 1176 >> Turn in Load Lightening
     .accept 1178 >> Accept Goblin Sponsorship
     .target Pozzik
 step
+    #optional
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fizzle Brassbolts|r and |cRXP_FRIENDLY_Wizzle Brassbolts|r
     .turnin 1104 >> Turn in Salt Flat Venom
     .goto Thousand Needles,78.064,77.126 
@@ -731,6 +747,7 @@ step
     .target Fizzle Brassbolts
     .target Wizzle Brassbolts
 step
+    #optional
     #label TurninShimmering
     .goto Thousand Needles,77.782,77.263
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kravel Koalbeard|r
@@ -739,10 +756,12 @@ step
     .accept 5762 >> Accept Hemet Nesingwary
     .target Kravel Koalbeard
 step
+    #optional
     .isQuestComplete 1221
     #completewith next
     .goto Tanaris,51.01,29.35,150 >> Travel to Tanaris
 step
+    >> If skipping shimmering flats fly from Thalanaar instead
     .isQuestComplete 1221
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bera Stonehammer|r
     .goto Tanaris,51.006,29.345
@@ -942,7 +961,6 @@ step
     >>|cRXP_WARN_This quest is completed while OUTSIDE of the dungeon|r
     .complete 2922,1 
     .mob Techbot
-    .isOnQuest 2922
 step
     .goto 1415,43.40,53.41,50,0
     .goto 1415,43.13,53.36,50,0
@@ -951,7 +969,6 @@ step
     >>Kill |cRXP_ENEMY_Troggs|r and |cRXP_ENEMY_Gnomes|r. Loot them for a |T133215:0|t[|cRXP_LOOT_White Punch Card|r]
     .collect 9279,1 
     >>|cRXP_WARN_This quest is completed while OUTSIDE of the dungeon|r
-    .isOnQuest 2930
 step
     .goto 1415,43.364,52.892,-1
     .goto 1415,43.411,52.898,-1
@@ -962,7 +979,6 @@ step
     .collect 9280,1,2930,1 
     .itemcount 9279,1 
     .skipgossip
-    .isOnQuest 2930
 step
     .goto 1415,43.17,53.36,40,0
     .goto 1415,42.78,53.81
@@ -971,14 +987,12 @@ step
     #completewith Thermaplugg
     >>Kill all |cRXP_ENEMY_Gnomeregan Mobs|r. Loot them for their |cRXP_LOOT_Robo-mechanical Guts|r
     .complete 2928,1 
-    .isOnQuest 2928
 step
     >>|cRXP_WARN_Use the|r |T133215:0|t[|cRXP_LOOT_Yellow Punch Card|r] |cRXP_WARN_at the|r |cRXP_PICK_Matrix Punchograph 3005-B|r
     >>The console looking machine is located at the gnomish safe zone at the bottom floor, next to the big circular room where the slimes are located
     .collect 9282,1,2930,1 
     .itemcount 9280,1 
     .skipgossip
-    .isOnQuest 2930
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kernobee|r
     >>|cRXP_WARN_This will start an escort quest. |cRXP_FRIENDLY_Kernobee|r spawns randomly in The Dormitory, right outside of the gnomish safe zone|r
@@ -987,7 +1001,6 @@ step
 step
     >>Escort |cRXP_FRIENDLY_Kernobee|r back to the start of the dungeon
     .complete 2904,1 
-    .isOnQuest 2904
 step
     .use 9364 >>|cRXP_WARN_Use the|r |T132788:0|t[Heavy Leaden Collection Phial] |cRXP_WARN_on a |cRXP_ENEMY_Irradiated Slime|r, |cRXP_ENEMY_Irradiated Lurker|r or|r |cRXP_ENEMY_Irradiated Horror|r
     >>|cRXP_WARN_The |cRXP_ENEMY_Irradiated Slime|r, |cRXP_ENEMY_Irradiated Lurker|r or |cRXP_ENEMY_Irradiated Horror|r must be ALIVE when you use it|r
@@ -996,42 +1009,35 @@ step
     .mob Irradiated Slime
     .mob Irradiated Lurker
     .mob Irradiated Horror
-    .isOnQuest 2962
 step
     #completewith Thermaplugg
     >>Open the |cRXP_PICK_Artificial Extrapolators|r. Loot them for |cRXP_LOOT_Essential Artificials|r
     .complete 2924,1 
-    .isOnQuest 2924
 step
     >>|cRXP_WARN_Use the|r |T133215:0|t[|cRXP_LOOT_Blue Punch Card|r] |cRXP_WARN_at the|r |cRXP_PICK_Matrix Punchograph 3005-C|r
     >>The Punchograph is located on the suspended platform right next to the |cRXP_ENEMY_Electrocutioner 6000|r
     .collect 9281,1,2930,1 
     .itemcount 9282,1 
     .skipgossip
-    .isOnQuest 2930
     .unitscan Electrocutioner 6000
 step
     >>|cRXP_WARN_Use the|r |T133215:0|t[|cRXP_LOOT_Red Punch Card|r] |cRXP_WARN_at the|r |cRXP_PICK_Matrix Punchograph 3005-D|r
     .complete 2930,1 
     .itemcount 9281,1 
     .skipgossip
-    .isOnQuest 2930
 step
     #label Thermaplugg
     >>Kill |cRXP_ENEMY_Mekgineer Thermaplugg|r
     .complete 2929,1 
-    .isOnQuest 2929
 step
     #completewith Finished
     >>Open the |cRXP_PICK_Artificial Extrapolators|r. Loot them for |cRXP_LOOT_Essential Artificials|r
     >>If you still haven't finished this quest, go back to places where you looted them before, since they respawn after a few minutes
     .complete 2924,1 
-    .isOnQuest 2924
 step
     #completewith Finished
     >>Kill all |cRXP_ENEMY_Gnomeregan Mobs|r. Loot them for their |cRXP_LOOT_Robo-mechanical Guts|r
     .complete 2928,1 
-    .isOnQuest 2928
 step
     >>|cRXP_WARN_Use the|r |T135230:0|t[|cRXP_LOOT_Grime-Encrusted Ring|r] |cRXP_WARN_to start the quest|r
     .accept 2945 >> Accept Grime-Encrusted Ring
@@ -1055,13 +1061,13 @@ step
     .zoneskip Ironforge
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkmaster Overspark|r, |cRXP_FRIENDLY_High Tinker Mekkatorque|r, |cRXP_FRIENDLY_Master Mechanic Castpipe|r and |cRXP_FRIENDLY_Klockmort Spannerspan|r
-    .turnin -2922,1 >> Turn in Save Techbot's Brain!
+    .turnin 2922,1 >> Turn in Save Techbot's Brain!
     .goto Ironforge,69.540,50.325
-    .turnin -2929,1 >> Turn in The Grand Betrayal
+    .turnin 2929,1 >> Turn in The Grand Betrayal
     .goto Ironforge,68.743,48.969
-    .turnin -2930,1 >> Turn in Data Rescue
+    .turnin 2930,1 >> Turn in Data Rescue
     .goto Ironforge,69.823,48.101
-    .turnin -2924,1 >> Turn in Essential Artificials
+    .turnin 2924,1 >> Turn in Essential Artificials
     .goto Ironforge,67.925,46.101
     .target Tinkmaster Overspark
     .target High Tinker Mekkatorque
@@ -1104,6 +1110,11 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Train your class spells
     .target Briarthorn
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
 step << Shaman
     .goto 1455,47.334,13.566
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
@@ -1726,6 +1737,28 @@ step
     .turnin 564 >>Turn in Costly Menace
 step
     .hs >> Hearth to Ironforge
+step << Warlock
+    .goto 1455/0,-1117.60,-4615.14,15,0
+    .goto 1455/0,-1111.62,-4599.09
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Briarthorn|r
+    .trainer >> Train your class spells
+    .accept 4487 >> Accept Summon Felsteed
+    .target Briarthorn
+step << Shaman
+    .goto 1455,47.334,13.566
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
+    .trainer >> Train your class spells
+    .target Eldun Stormbreaker
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
+step << Paladin
+    .goto 1455/0,-907.69,-4592.93
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
+    .trainer >> Train your class spells
+    .target Beldruk Doombrow
 step
     #label KTributeEnd
     >> HE RP's FOR 57 SECONDS
@@ -1904,6 +1937,11 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
     .target Eldun Stormbreaker
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
 step
     .goto Ironforge,55.50,47.74
     >>Talk to |cRXP_FRIENDLY_Gryth|r
@@ -2012,7 +2050,17 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
     .target Eldun Stormbreaker
-step << Dwarf
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
+step << Paladin
+    .goto 1455/0,-907.69,-4592.93
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
+    .trainer >> Train your class spells
+    .target Beldruk Doombrow
+step << Dwarf/Gnome !Paladin !Rogue
     >> Trade gold if necessary
     .goto Dun Morogh,63.4,50.6
     +Head to the Amberstill Ranch in Dun Morogh and buy a mount

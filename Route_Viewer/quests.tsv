@@ -1,13 +1,13 @@
 Zone	ID	Name	Level	Req	Exp
 Westfall	79008	... and that note you found	22	14	1750
 Zephras Isle	94414	The Anchors of Zephras	2	2	90
-The Hall of Thanes	96393	Old Ironforge Incursion	Dungeon 16	9	1450
+The Hall of Thanes	96393	Old Ironforge Incursion	Dungeon 16	9	3200
 Special	78150	Friend of the Library	20	1	160
 Elwynn Forest	91733	Downstream	10	7	630
 Druid	272	Trial of the Sea Lion	16	16	880
 Wetlands	469	Daily Delivery	21	18	830
 Paladin	1654	The Test of Righteousness	Dungeon 22	20	870
-The Deadmines	166	The Defias Brotherhood	Dungeon 22	14	2600
+The Deadmines	166	The Defias Brotherhood	Dungeon 22	14	6200
 Dun Morogh	96391	Underground Map	15	9	1050
 Elwynn Forest	99130	An Enticing Offer	7	4	630
 Dun Morogh	98326	Frosthowl	9	5	780
@@ -15,32 +15,34 @@ Paladin	1806	The Test of Righteousness	22	20	2200
 Westfall	155	The Defias Brotherhood	18	14	1700
 Loch Modan	86614	Silver of the Waves	20	13	1550
 Dun Morogh	98319	Secure the Mountain	8	4	180
-The Hall of Thanes	96403	Important Heirlooms	Dungeon 15	10	1350
-The Deadmines	214	Red Silk Bandanas	Dungeon 17	14	1250
+The Hall of Thanes	96403	Important Heirlooms	Dungeon 15	10	2950
+The Hall of Thanes	96395	An Ancient Grudge	Dungeon 15	10	2300
+The Deadmines	214	Red Silk Bandanas	Dungeon 17	14	2950
 Rogue	78261	The Horn of Xelthos	23	1	1850
-The Hall of Thanes	96394	The Restless Dead	Dungeon 15	10	1050
-Ruins of Lordaeron	95189	Crest of Lordaeron	Dungeon 22	16	2600
+The Hall of Thanes	96394	The Restless Dead	Dungeon 15	10	2300
+Ruins of Lordaeron	95189	Crest of Lordaeron	Dungeon 22	16	6200
 Dun Morogh	99162	Treacherous Cold	8	5	700
 Elwynn Forest	91772	Shhh! We're Hunting Kobolds	4	1	270
 Westfall	92753	Destruction in Deadmines	Dungeon 18	9	1350
-Blackfathom Deeps	971	Knowledge in the Deeps	Dungeon 23	10	2750
-Dun Morogh	98423	The Treaty of Understanding	16	9	1150
+Blackfathom Deeps	971	Knowledge in the Deeps	Dungeon 23	10	6550
+Dun Morogh	98423	The Treaty of Understanding	16	9	2550
 Stormwind City	373	The Unsent Letter	Dungeon 22	16	870
-Ruins of Lordaeron	95250	Abominable Creatures	Dungeon 21	16	1650
+Ruins of Lordaeron	95250	Abominable Creatures	Dungeon 21	16	3900
 Wailing Caverns	959	Trouble at the Docks	Dungeon 18	14	1350
 Westfall	92819	Destruction in Deadmines	18	9	680
 Wailing Caverns	1491	Smart Drinks	Dungeon 18	13	1350
 Rogue	78307	The Horn of Xelthos	23	1	2300
 Elwynn Forest	91775	Book Return	Elite 6	1	680
-Ruins of Lordaeron	92415	Remember That I Love You	Dungeon 22	15	2600
-The Deadmines	2040	Underground Assault	Dungeon 20	15	1550
+Ruins of Lordaeron	92415	Remember That I Love You	Dungeon 22	15	6200
+The Deadmines	2040	Underground Assault	Dungeon 20	15	3700
 Zephras Isle	92643	The Turncoat	11	6	660
 The Deadmines	167	Oh Brother...	Dungeon 20	15	1550
 Wailing Caverns	1487	Deviate Eradication	Dungeon 21	15	2050
 Druid	6122	The Principal Source	14	14	740
-Ruins of Lordaeron	95195	Bloodied Insignia	Dungeon 22	16	2600
+Ruins of Lordaeron	95195	Bloodied Insignia	Dungeon 22	16	6200
 Druid	98404	The Great Windborne Cat Spirit	20	20	780
 Wetlands	463	The Greenwarden	21	20	830
+Wetlands	98208	Bloom of the Heavens	29	22	2350
 The Barrens	97005	Chol'aruk the Ravener	Elite 21	15	2050
 Camping	95998	The Great Outdoors	6	4	410
 The Deadmines	168	Collecting Memories	Dungeon 18	14	1350
@@ -961,15 +963,16 @@ Special	82208	Greater Friend of the Library	45	30	390
 Shaman	96016	The Tempest's Weapons	40	30	3150
 Special	79536	Greater Friend of the Library	35	20	280
 The Barrens	79192	Stepping Stones	24	14	1950
-Excavation Site: Wetlands	95646	Horrors in the Highland	Dungeon 31	24	3150
-Excavation Site: Wetlands	95810	Lost Relic Carry	Dungeon 31	24	630
-Excavation Site: Wetlands	95647	Lost in the Thicket Things	Dungeon 31	24	2500
-Excavation Site: Wetlands	98824	Prehistoric Prism	Dungeon 31	24	3150
+Excavation Site: Wetlands	95646	Horrors in the Highland	Dungeon 31	24	6150
+Excavation Site: Wetlands	95810	Lost Relic Carry	Dungeon 31	24	1250
+Excavation Site: Wetlands	95647	Lost in the Thicket Things	Dungeon 31	24	4900
+Excavation Site: Wetlands	95772	Songblade Search Things	Dungeon 31	24	6150
+Excavation Site: Wetlands	98824	Prehistoric Prism	Dungeon 31	24	6150
 Wetlands	98297	Stopping the Cycle	Elite 34	24	2700
 Wailing Caverns	6981	The Glowing Shard	Dungeon 26	15	2650
-Excavation Site: Wetlands	95809	Heartwoven	Dungeon 31	24	3150
+Excavation Site: Wetlands	95809	Heartwoven	Dungeon 31	24	6150
 Thoradin's Wall	79976	This Must Be The Place	32	14	1950
-The Stockade	378	The Fury Runs Deep	Dungeon 27	22	2750
+The Stockade	378	The Fury Runs Deep	Dungeon 27	22	5750
 Stonetalon Mountains	79974	Wet Job	32	14	2550
 Stonewrought Dam	79975	Eagle's Fist	32	14	2550
 Stonetalon Mountains	79980	Scramble	24	14	200
@@ -980,20 +983,20 @@ Thousand Needles	1100	Lonebrow's Journal	Elite 34	29	1350
 Shaman	96135	Heed My Call	Elite 40	30	3150
 Uldaman	2418	Power Stones	Dungeon 36	30	3500
 Shaman	96264	Elemental Aid	Dungeon 33	30	2650
-Blackfathom Deeps	1200	Blackfathom Villainy	Dungeon 27	18	3300
+Blackfathom Deeps	1200	Blackfathom Villainy	Dungeon 27	18	7850
 Wetlands	98310	Gleaning Our Future	Elite 32	24	3200
-Razorfen Kraul	1101	The Crone of the Kraul	Dungeon 34	29	3350
-Blackfathom Deeps	1198	In Search of Thaelrid	Dungeon 24	18	2400
+Razorfen Kraul	1101	The Crone of the Kraul	Dungeon 34	29	7950
+Blackfathom Deeps	1198	In Search of Thaelrid	Dungeon 24	18	5700
 Shaman	94789	Call of Air	30	30	2450
-Razorfen Kraul	1221	Blueleaf Tubers	Dungeon 26	20	2100
-Gnomeregan	2904	A Fine Mess	Dungeon 30	20	2450
+Razorfen Kraul	1221	Blueleaf Tubers	Dungeon 26	20	5000
+Gnomeregan	2904	A Fine Mess	Dungeon 30	20	5800
 Warrior	1792	Whirlwind Weapon	40	30	3900
 Wetlands	303	The Dark Iron War	Elite 30	25	2450
-Razorfen Kraul	1142	Mortality Wanes	Dungeon 30	25	3050
-Razorfen Kraul	1144	Willix the Importer	Dungeon 30	22	3050
+Razorfen Kraul	1142	Mortality Wanes	Dungeon 30	25	7250
+Razorfen Kraul	1144	Willix the Importer	Dungeon 30	22	7250
 Blackfathom Deeps	1275	Researching the Corruption	Dungeon 24	18	2400
 Wetlands	299	Uncovering the Past	27	22	2200
-Blackfathom Deeps	1199	Twilight Falls	Dungeon 25	20	2550
+Blackfathom Deeps	1199	Twilight Falls	Dungeon 25	20	6050
 Paladin	78093	Return to Delgren	30	22	3050
 Wetlands	275	Blisters on the Land	26	20	2650
 Badlands	739	Murdaloc	42	30	3450
@@ -1003,14 +1006,14 @@ Uldaman	709	Solution to Doom	Dungeon 40	30	3150
 Uldaman	704	Agmond's Fate	Dungeon 38	30	2850
 Stranglethorn Vale	208	Big Game Hunter	Elite 43	28	5350
 Scarlet Monastery	96800	Past Due	Dungeon 38	30	2850
-The Stockade	377	Crime and Punishment	Dungeon 26	22	2100
+The Stockade	377	Crime and Punishment	Dungeon 26	22	4400
 Stormwind City	2746	Items of Some Consequence	31	16	630
-Excavation Site: Wetlands	95795	Fallen in the Fen	Dungeon 31	24	3150
+Excavation Site: Wetlands	95795	Fallen in the Fen	Dungeon 31	24	6150
 Thousand Needles	1189	Safety First	41	29	820
-The Stockade	391	The Stockade Riots	Dungeon 29	16	2350
-The Stockade	388	The Color of Blood	Dungeon 26	22	2650
+The Stockade	391	The Stockade Riots	Dungeon 29	16	4950
+The Stockade	388	The Color of Blood	Dungeon 26	22	5550
 Paladin	1651	The Tome of Valor	25	20	1000
-The Stockade	386	What Comes Around...	Dungeon 25	22	2000
+The Stockade	386	What Comes Around...	Dungeon 25	22	4200
 Duskwood	98	The Legend of Stalvan	35	22	4100
 Gnomeregan	2945	Grime-Encrusted Ring	Dungeon 34	28	2700
 Stormwind City	396	An Audience with the King	31	16	3750
@@ -1019,27 +1022,27 @@ Stormwind City	335	A Noble Brew	30	25	2450
 Blackfathom Deeps	78916	The Heart of the Void	25	25	0
 Stormwind City	434	The Attack!	31	16	1900
 Wetlands	98291	Death to the Dragonmaw	Elite 30	22	3050
-Scarlet Monastery	1050	Mythology of the Titans	Dungeon 38	28	3550
+Scarlet Monastery	1050	Mythology of the Titans	Dungeon 38	28	8900
 Scarlet Monastery	1053	In the Name of the Light	Dungeon 40	34	4700
 Paladin	78091	Earning Your Salt	30	22	2450
-The Stockade	387	Quell the Uprising	Dungeon 26	22	2650
+The Stockade	387	Quell the Uprising	Dungeon 26	22	5550
 Duskwood	55	Morbent Fel	Elite 32	20	3850
 Wetlands	98293	Forced Disarmament	Elite 30	22	3050
 Stormwind City	2745	Infiltrating the Castle	31	16	250
 Dustwallow Marsh	1203	Jarl Needs a Blade	35	30	3450
 Stranglethorn Vale	613	Cracking Maury's Foot	Elite 44	30	4650
-Gnomeregan	2962	The Only Cure is More Green Glow	Dungeon 30	20	2450
-Gnomeregan	2930	Data Rescue	Dungeon 30	25	3650
+Gnomeregan	2962	The Only Cure is More Green Glow	Dungeon 30	20	4400
+Gnomeregan	2930	Data Rescue	Dungeon 30	25	6550
 Stormwind City	1250	The Missing Diplomat	33	28	270
 Stormwind City	346	Return to Kristoff	24	20	1950
 Stonetalon Mountains	80001	Rekindle	40	1	0
-Gnomeregan	2926	Gnogaine	Dungeon 27	20	2200
+Gnomeregan	2926	Gnogaine	Dungeon 27	20	3950
 Alterac Mountains	92432	An Alarming Request	33	30	660
 Stormwind City	347	Rethban Ore	24	20	970
 City of Dalaran	92456	A Green Sample	Dungeon 33	24	3950
 Duskwood	231	A Daughter's Love	35	28	1350
 Rogue	2359	Klaven's Tower	Elite 24	20	1950
-Gnomeregan	2929	The Grand Betrayal	Dungeon 35	25	2750
+Gnomeregan	2929	The Grand Betrayal	Dungeon 35	25	4950
 Warrior	1701	Fire Hardened Mail	Elite 28	20	2300
 Mage	1952	Mage's Wand	40	30	3150
 Desolace	5561	Kodo Roundup	34	30	2000
@@ -1061,7 +1064,7 @@ Alterac Mountains	504	Crushridge Warmongers	Elite 40	30	4700
 Desolace	79242	No Honor Among Thieves	40	30	3900
 Duskwood	96138	Merrick's Bow	28	18	2300
 Ashenvale	98027	Gleaming Crescent Necklace	29	25	2350
-Gnomeregan	2928	Gyrodrillmatic Excavationators	Dungeon 30	20	2450
+Gnomeregan	2928	Gyrodrillmatic Excavationators	Dungeon 30	20	4400
 Duskwood	253	Bride of the Embalmer	Elite 30	20	3650
 Wetlands	88758	Sentiments of the Lost	Elite 33	28	2650
 Wetlands	296	Ormer's Revenge	29	22	2950
@@ -1071,8 +1074,8 @@ Stormwind City	336	A Noble Brew	30	25	2450
 Gnomeregan	2947	Return of the Ring	Dungeon 34	28	2700
 Gnomeregan	2951	The Sparklematic 5200!	Dungeon 30	25	0
 Mage	1951	Rituals of Power	Dungeon 40	30	3150
-Gnomeregan	2924	Essential Artificials	Dungeon 30	24	3050
-Gnomeregan	2922	Save Techbot's Brain!	Dungeon 26	20	2650
+Gnomeregan	2924	Essential Artificials	Dungeon 30	24	5500
+Gnomeregan	2922	Save Techbot's Brain!	Dungeon 26	20	4750
 Badlands	738	Find Agmond	38	30	1450
 Arathi Highlands	684	Wanted! Marez Cowl	Elite 39	30	3750
 Paladin	1652	The Tome of Valor	25	20	2550

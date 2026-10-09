@@ -10,7 +10,7 @@ RXPGuides.RegisterGuide([[
 #subgroup Duo 1-20
 --#groupid RXP-SRGCE-A1
 #name 1-5 Coldridge Valley
-#next 5-10 Dun Morogh
+#next 5-11 Dun Morogh
 #defaultfor Dwarf/Gnome
 
 step << !Gnome !Dwarf
@@ -27,30 +27,32 @@ step
     +|cRXP_WARN_Equip |r |T132609:0|t[Frayed Bracers] if found
     .use 3365
     .collect 3365,1
-step << Warlock/Shaman
+step
     #completewith next
     .goto 1426,28.533,72.587,50,0
     .goto 1426,28.239,71.707,50,0
-    +|cRXP_WARN_Kill and loot |cRXP_ENEMY_Ragged Young Wolves|r until you have 20 copper or more of vendor trash|r
+    +|cRXP_WARN_Kill and loot |cRXP_ENEMY_Ragged Young Wolves|r until you have 30 copper or more of vendor trash|r << !Warlock
+    +|cRXP_WARN_Kill and loot |cRXP_ENEMY_Ragged Young Wolves|r until you have 10 copper or more of vendor trash|r << Warlock
     >>|cRXP_WARN_Unequip your|r |T132665:0|t[Acolyte's Robe]|cRXP_WARN_,|r |T135005:0|t[Acolyte's Shirt]|cRXP_WARN_,|r |T134581:0|t[Acolyte's Pants]|cRXP_WARN_, and|r |T132535:0|t[Acolyte's Shoes] |cRXP_WARN_so you can vendor them for 4 copper|r << Warlock
     .complete 179,1 --Tough Wolf Meat (8)
     .disablecheckbox
     .mob Ragged Young Wolf
     .money >0.002
-step << Warlock/Shaman
+step
     #optional
     #completewith next
     .goto 1426,28.792,68.804,12,0
     .goto 1426,28.939,68.387,12 >> Enter Anvilmar
-step << Warlock/Shaman
+step
     .goto 1426,29.193,67.732
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brighid Stormflayer|r inside
     .vendor >> Vendor Trash
     .target Brighid Stormflayer
     .train 348,1 << Warlock
-    .collect 7005,1 << Warlock --Collect Skinning Knife
-    .collect 7005,2 << Paladin --Collect Skinning Knife
-    .train 8613,1 >> Train |T134366:0|t[Skinning] << Shaman/Paladin
+    .collect 7005,1 << Shaman --Collect Skinning Knife
+    .collect 7005,1 << Paladin/Rogue --Collect Skinning Knife
+    .collect 2901,1 << Rogue --Mining Pick
+    .train 8613 >> Train |T134366:0|t[Skinning] << Shaman/Paladin/Rogue
 step << Warlock
     .goto Dun Morogh,28.650,66.145
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alamar Grimm|r inside
@@ -115,7 +117,8 @@ step
     .accept 233 >> Accept Coldridge Valley Mail Delivery
     .accept 3115 >> Accept Tainted Memorandum << Gnome Warlock
     .accept 3107 >> Accept Consecrated Rune << Dwarf Paladin
-    .accept 98581 >>Accept Archaic Rune << Dwarf Shaman
+    .accept 98581 >> Accept Archaic Rune << Dwarf Shaman
+    .accept 3113 >> Accept Encrypted Memorandum << Gnome Rogue
     .target Sten Stoutarm
 step
     #label Talin
@@ -213,18 +216,22 @@ step << Shaman
     .accept 94373 >>Accept Call of Earth
     .train 8042 >> Train |T136026:0|t[Earth Shock]
 step << Paladin
-    #season 0,1
     .goto 1426/0,382.06,-6120.65
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bromos Grummner|r inside
     .turnin 3107 >> Turn in Consecrated Rune << Dwarf
     .train 19740 >> Train |T135906:0|t[Blessing of Might]
     .train 20271 >> Train |T135959:0|t[Judgement]
     .target Bromos Grummner
-step << Paladin/Warlock/Hunter/Shaman
+step
     .goto 1426/0,390.000,-6093.800
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grund Drokda::2756|r
     .target Grund Drokda::2756
     .accept 97277 >>Accept Grund and Gozwin
+step
+    .goto 1426,28.4,67.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Solm Hargrin|r
+    .target Solm Hargrin
+    .turnin 3113 >> Turn in Encrypted Memorandum
 step << Warlock
     .goto 1426/0,320.30,-6226.74
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Adlin Pridedrift|r
@@ -267,7 +274,7 @@ step
     .turnin 182 >> Turn in The Troll Cave
     .accept 218 >> Accept The Stolen Journal
     .target Grelin Whitebeard
-step << Warlock/Shaman
+step
     .goto Dun Morogh,24.980,75.963
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nori Pridedrift|r
     .turnin 3365 >> Turn in Bring Back the Mug
@@ -318,7 +325,7 @@ step
     .turnin 218 >> Turn in The Stolen Journal
     .accept 282 >> Accept Senir's Observations
     .target Grelin Whitebeard
-step << Warlock
+step << !Shaman
     .hs >> Hearth to Coldridge Valley
 step
     .goto 1426/0,390.000,-6093.800
@@ -391,8 +398,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 1-20
 --#groupid RXP-SRGCE-A1
-#name 5-10 Dun Morogh
-#next 10-12 Elwynn
+#name 5-11 Dun Morogh
+#next 11-12 Elwynn
 #defaultfor Dwarf/Gnome
 
 
@@ -454,6 +461,16 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Belm|r inside
     .home >> Set your Hearthstone to Thunderbrew Distillery
     .target Innkeeper Belm
+step << Rogue
+    .goto 1426,47.2,52.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thamner Pol|r inside
+    .train 3273,1
+    .target Thamner Pol
+step << Rogue
+    .goto 1426,47.6,52.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hogral Bakkan|r inside
+    .trainer >> Train your class spells
+    .target Hogral Bakkan
 step
     .goto 1426/0,-464.45,-5573.78
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharek Blackstone|r
@@ -464,14 +481,12 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
     .accept 98321 >> Accept Flintfire's Shipment
     .target Tognus Flintfire
-step << Paladin
-    #label Blacksmithing1
-    .goto 1426,45.344,51.936
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
-    >>|cRXP_WARN_This will allow you to make|r |T135255:0|t[Rough Weightstones] |cRXP_WARN_which increase your melee damage by 2|r << Paladin
-    >>|cRXP_WARN_If you don't want to do this, skip this step|r
-    .train 2018 >> Train |T136241:0|t[Blacksmithing]
-    .target Tognus Flintfire
+step << Rogue
+    .goto 1426,45.2,52.0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grawn Thromwyn|r
+    .vendor >> Sell your |r |T133626:0|t[Canvas Latchbag] for a Gladius
+    .collect 2488,1
+    .target Grawn Thromwyn
 step
     #optional
     #completewith next
@@ -501,7 +516,7 @@ step
 step
     #completewith next
     >> Check for |cRXP_ENEMY_Young Black Bears|r nearby, good for Jetsteam progress
-step
+step << !Rogue
     #label IFentry
     .goto 1426,47.412,41.658,50,0
     .goto 1426,51.529,39.888,50,0
@@ -620,10 +635,20 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hegnar Rumbleshot|r
     .turnin 5541 >> Turn in Ammo for Rumbleshot
     .target Hegnar Rumbleshot
+step << Rogue
+    #label Blacksmithing1
+    .goto 1426,45.344,51.936
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
+    >>|cRXP_WARN_Drop mining for the profession slot|r
+    >>|cRXP_WARN_This will allow you to make|r |T135255:0|t[Rough Weightstones] |cRXP_WARN_which increase your melee damage by 2|r
+    >>|cRXP_WARN_If you don't want to do this, skip this step|r
+    .train 2018,1 >> Train |T136241:0|t[Blacksmithing]
+    .target Tognus Flintfire
 step 
     .goto 1426,46.652,53.915
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Golorn Frostbeard|r and |cRXP_FRIENDLY_Eric Brighthammer|r
     >> Resummon |T136218:0|tImp and |T136185:0|tRebuff << Warlock
+    >> Craft Sharpening stones and Whetstones, sell your pickaxe << Rogue
     >> |cRXP_WARN_CRAFT AT CAMPFIRES
     .target +Golorn Frostbeard
     .target +Senir Whitebeard
@@ -631,7 +656,7 @@ step
     .vendor >> Vendor Trash
     .turnin 96608 >> Turn in The Great Outdoors
     .accept 96031 >> Accept Camping 101: Leatherworking << Shaman
-    .accept 96056 >> Accept Camping 101: Skinning << Shaman/Paladin
+    .accept 96056 >> Accept Camping 101: Skinning << Shaman/Paladin/Rogue
     .accept 96057 >> Accept Camping 101: Tailoring << Warlock
     .accept 96059 >> Accept Camping 101: Enchanting << Warlock/Paladin
     .accept 96629 >> Accept Camping 101: Cooking
@@ -786,6 +811,11 @@ step << Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Azar Stronghammer|r inside upstairs
     .trainer >> Train your class spells
     .target Azar Stronghammer
+step << Rogue
+    .goto 1426,47.6,52.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hogral Bakkan|r inside
+    .trainer >> Train your class spells
+    .target Hogral Bakkan
 step
     #label jetsteamEnd
     .goto 1426/0,-632.15,-5466.540
@@ -995,6 +1025,16 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ingrid Dunwald|requires
     .trainer >> Train your class spells
     .target Ingrid Dunwald
+step << Paladin
+    .goto 1426/0,-542.100,-5586.800
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Azar Stronghammer|r inside upstairs
+    .trainer >> Train your class spells
+    .target Azar Stronghammer
+step << Rogue
+    .goto 1426,47.6,52.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hogral Bakkan|r inside
+    .trainer >> Train your class spells
+    .target Hogral Bakkan
 step
     .goto 1426/0,-504.05,-5596.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragnar Thunderbrew|r outside
@@ -1011,11 +1051,6 @@ step << Warlock
     .vendor 6328 >> |cRXP_BUY_Buy the|r |T133738:0|t[Grimoire of Firebolt (Rank 2)] |cRXP_BUY_if you can afford it. If not you can buy it later|r
     .target Gimrizz Shadowcog
     .money <0.100
-step << Paladin
-    .goto 1426/0,-542.100,-5586.800
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Azar Stronghammer|r inside upstairs
-    .trainer >> Train your class spells
-    .target Azar Stronghammer
 step
     .goto 1426/0,-499.17,-5644.37
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Senir Whitebeard|r
@@ -1376,6 +1411,17 @@ step << Warlock
     .trainer >> Train your class spells
     .target +Gerrig Bonegrip
     .target +Briarthorn
+step << Rogue 
+    >>|cRXP_WARN_Get any linen available traded to you on the way|r
+    .goto 1455,50.565,6.084
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gerrig Bonegrip|r
+    .accept 971 >> Accept Knowledge in the Deeps
+    .target +Gerrig Bonegrip
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
 step << Dwarf/Gnome
     #optional
     #completewith next
@@ -1397,7 +1443,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Uthrar Threx|r
     .target +Uthrar Threx
     .turnin 96057 >> Turn in Camping 101: Tailoring
-step << Shaman/Paladin
+step << Shaman/Paladin/Rogue
     .goto 1455,39.778,32.911
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Balthus Stoneflayer|r
     .target +Balthus Stoneflayer
@@ -1439,6 +1485,12 @@ step << Shaman/Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Buliwyf Stonehand|r
     .goto 1455/0,-1197.27,-5041.49
     .train 197 >> Train 2h Axes
+    .target +Buliwyf Stonehand
+step << Rogue
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Buliwyf Stonehand|r
+    .goto 1455/0,-1197.27,-5041.49
+    .train 198 >> Train 1h Maces
+    .train 196 >> Train 1h Axes
     .target +Buliwyf Stonehand
 step
     #completewith next
@@ -1520,12 +1572,17 @@ step << Warlock
 step << Warlock
     .goto 1453/0,613.0,-8796.03
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Woo Ping|r
-    .trainer >>Train 1h Swords and Staves
+    .trainer >> Train 1h Swords and Staves
     .target Woo Ping
 step << Paladin
     .goto 1453/0,613.0,-8796.03
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Woo Ping|r
-    .trainer >>Train 1h and 2h Swords
+    .trainer >> Train 1h and 2h Swords
+    .target Woo Ping
+step << Rogue
+    .goto 1453/0,613.0,-8796.03
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Woo Ping|r
+    .trainer >> Train Swords
     .target Woo Ping
 ]])
 
@@ -1536,7 +1593,7 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 1-20
 --#groupid RXP-SRGCE-A1
-#name 10-12 Elwynn
+#name 11-12 Elwynn
 #next 12-14 Loch Modan
 #defaultfor Dwarf/Gnome
 
@@ -1555,6 +1612,13 @@ step
     #optional
     #completewith next
     .subzone 87 >> Travel to Goldshire
+step << Rogue
+    #completewith next
+    .goto 1429,44.8,63.2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sam Sarsaparilla|r
+    >> |cRXP_WARN_craft bandages here to 20 ideally
+    .accept 97919 >> Accept Camping 101: First Aid
+    .target Sam Sarsaparilla
 step
     .goto 1429,44.8,63.2
     >> |cRXP_WARN_CRAFT AT CAMPFIRES
@@ -1564,6 +1628,16 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marshal Dughan|r
     .target Marshal Dughan
     .accept 62 >> Accept The Fargodeep Mine
+step << Rogue
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keryn Sylvius|r
+    .target Keryn Sylvius
+    .goto Elwynn Forest,43.872,65.937
+    .accept 2205 >> Accept Seek out SI:7
+step << Rogue
+    .goto 1429,43.4,65.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Michelle Belle|r
+    .turnin 97919 >> Turn in Camping 101: First Aid
+    .target Michelle Belle
 step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_William Pestle|r
     .target William Pestle
@@ -1757,6 +1831,7 @@ step
     .complete 88,1
     .mob Princess
 step
+    #optional
     >>|cRXP_WARN_skip if contested|r
     >>Kill |cRXP_ENEMY_Defias Bandits|r. Loot them for their |cRXP_LOOT_Bandanas|r
     .goto 1429/0,-911.52,-9735.70,60,0
@@ -1816,6 +1891,22 @@ step
     .target Ariena Stormfeather
 step
     .zone 1453 >> Enter Stormwind City
+step << Rogue
+    #completewith next
+    .goto 1453/0,374.11,-8762.88,20,0
+    .goto 1453/0,326.66,-8818.01,20,0
+    .goto 1453/0,323.43,-8817.83,10 >> Enter the SI:7 Headquarters. Travel up stairs toward |cRXP_FRIENDLY_Master Mathias Shaw|r
+step << Rogue
+    .goto 1453/0,362.28,-8815.23
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Mathias Shaw|r
+    .turnin 2205 >> Turn in Seek out SI:7
+    .accept 2206 >> Accept Snatch and Grab
+    .target Master Mathias Shaw
+step << Rogue
+    .goto 1453,80.27,68.72
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Tony Romano|r
+    .trainer >> Train your class spells
+    .target Lord Tony Romano
 step << Warlock
     #completewith next
     .goto 1453/0,988.44,-8942.15,20,0
@@ -1879,6 +1970,11 @@ step
 step   
     .isOnQuest 60
     .abandon 60 >> Abandon Gold Dust Exchange
+step << Rogue
+    >>Pickpocket the |cRXP_ENEMY_Defias Dockmaster|r for his shipping schedule.
+    .goto Elwynn Forest,48.2,87.6
+    .complete 2206
+    .mob Defias Dockmaster
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ma Stonefield|r
     .target Ma Stonefield
@@ -1927,7 +2023,23 @@ step
     .goto 1436/0,1037.42,-10628.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thor|r
     .fp Sentinel Hill >> Get the Sentinel Hill flight path
+    .fly Stormwind >> Fly to Stormwind << Rogue
     .target Thor
+step << Rogue
+    #completewith next
+    .goto 1453/0,374.11,-8762.88,20,0
+    .goto 1453/0,326.66,-8818.01,20,0
+    .goto 1453/0,323.43,-8817.83,10 >> Enter the SI:7 Headquarters. Travel up stairs toward |cRXP_FRIENDLY_Master Mathias Shaw|r
+step << Rogue
+    .goto 1453,80.27,68.72
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Tony Romano|r
+    .trainer >> Train your class spells
+    .target Lord Tony Romano
+step << Rogue
+    .goto 1453/0,362.28,-8815.23
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Mathias Shaw|r
+    .turnin 2206 >> Turn in Snatch and Grab
+    .target Master Mathias Shaw
 step << Dwarf Paladin
     .hs >> Hearth to Ironforge
     >>|cRXP_BUY_Buy food/water if needed|r
@@ -2525,7 +2637,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Uthrar Threx|r
     .target +Uthrar Threx
     .trainer >> Train Tailoring if necessary
-step << Shaman/Paladin
+step << Shaman/Paladin/Rogue
     .goto 1455,39.778,32.911
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Balthus Stoneflayer|r
     .target +Balthus Stoneflayer
@@ -2560,6 +2672,11 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
     .target Eldun Stormbreaker
+step << Rogue
+    .goto 1455,51.6,14.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
+    .trainer >> Train your class spells
+    .target Hulfdan Blackbeard
 step << Paladin
     .goto 1455/0,-907.69,-4592.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r

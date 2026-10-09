@@ -26,7 +26,16 @@ Options
                        (names ignore case/spaces/punctuation). Zone images are stretched over the zone's
                        bounds rectangle; a continent image needs a bounds entry named like the continent
                        ("Kalimdor" / "Eastern Kingdoms" or 1414 / 1415). Zone images draw on top of it.
-  --map-opacity X      background opacity (default 0.45);  --map-max-px N  downscale big images (default 1400)
+  --map-opacity X      opacity of zone images (default 0.45)
+  --continent-opacity X  opacity of the Kalimdor / Eastern Kingdoms images (default: same as --map-opacity)
+  --map-max-px N       downscale big images (default 1400)
+  --classes LIST       classes the guide supports (any format: warlock,shaman | "warlock shaman" | JSON list | file);
+                       XP of class-specific quests is averaged over them instead of summed
+  --quest-share PCT    % of your XP that comes from quests (default 60), used to estimate mob-kill XP
+  --section-share NAME=PCT  per-section override, repeatable, e.g. --section-share Redridge=37
+  --level-xp FILE      JSON {"20": 23200, ...} XP bars; the built-in Classic table is unverified for Forever
+  Each guide map shows Kalimdor (left) and Eastern Kingdoms (right) side by side in one SVG.
+  Section start/target levels are read from names like "23-25 Ashenvale" (else --start-level).
   --bounds FILE        optional JSON to convert "world" coordinates (e.g. 1439/1,503.1,6402.1)
                        onto the percent map so both kinds plot together. Format:
                        {"1439": {"A": [a_at_left_edge, a_at_right_edge],
@@ -658,8 +667,9 @@ def step_summary(st, names):
 class ImageRegistry:
     """Finds map images in a directory and embeds each one once (as <image> in a hidden <defs>)."""
 
-    def __init__(self, maps_dir, max_px=1400, opacity=0.45):
+    def __init__(self, maps_dir, max_px=1400, opacity=0.45, cont_opacity=None):
         self.opacity = opacity
+        self.cont_opacity = opacity if cont_opacity is None else cont_opacity
         self.max_px = max_px
         self.files = {}
         self.ids = {}
@@ -702,9 +712,10 @@ class ImageRegistry:
         self.defs.append(f'<image id="{iid}" width="1" height="1" preserveAspectRatio="none" '
                          f'href="data:{mime};base64,{base64.b64encode(buf.getvalue()).decode()}"/>')
 
-    def use(self, iid, x, y, w, h):
+    def use(self, iid, x, y, w, h, opacity=None):
+        op = self.opacity if opacity is None else opacity
         return (f'<use class="bgimg" href="#{iid}" transform="translate({x:.1f} {y:.1f}) scale({w:.1f} {h:.1f})" '
-                f'opacity="{self.opacity}"/>')
+                f'opacity="{op}"/>')
 
     def defs_html(self):
         if not self.defs:
@@ -723,8 +734,8 @@ KIND_PRIORITY = ["accept", "turnin", "complete", "travel", "service", "other"]
 
 
 def build_map_items(items, bounds, flt, args, names):
-    """items: [(guide, step)] -> {continent: [dict]} (one dict per located step)"""
-    out = defaultdict(list)
+    """items: [(guide, step)] -> [dict] in route order (one dict per located step, 'cont' = continent)"""
+    out = []
     for rank, (g, st) in enumerate(items):
         skipped = has_skip(st.tag)
         if skipped and not args.include_skipped:
@@ -752,15 +763,26 @@ def build_map_items(items, bounds, flt, args, names):
         else:
             ax, ay = pts[-1][1]
             hull = []
-        out[continent_of(last.zone, last.mapid)].append({
+        out.append({
+            "cont": continent_of(last.zone, last.mapid),
             "guide": g, "step": st, "x": ax, "y": ay, "area": area, "hull": hull, "kind": step_kind(st),
             "zone": last.zone, "mapid": zone_id(last.zone, last.mapid), "skipped": skipped,
-            "summary": step_summary(st, names), "rank": len(out[continent_of(last.zone, last.mapid)]),
+            "summary": step_summary(st, names), "rank": len(out),
         })
     return out
 
 
-def render_svg_map(uid, entries, bounds, args, color_by="order", guides_in_map=None, cont=None, registry=None):
+def is_continent(zone_name):
+    """True for 'Kalimdor' / 'Eastern Kingdoms' (or their uiMapIDs 1414 / 1415) used as a zone."""
+    z = str(zone_name or "").strip().lower()
+    return z in ("kalimdor", "eastern kingdoms", "1414", "1415") or NAME_TO_ID.get(z) in (1414, 1415)
+
+
+CONT_ORDER = ["Kalimdor", "Eastern Kingdoms", "Other"]
+
+
+def render_svg_map(uid, entries, bounds, args, color_by="order", guides_in_map=None, registry=None):
+    """One SVG for all entries; continents are laid out side by side (Kalimdor left, Eastern Kingdoms right)."""
     cmap = plt.get_cmap("turbo")
     pal = plt.get_cmap("tab10")
     n = len(entries)
@@ -769,18 +791,47 @@ def render_svg_map(uid, entries, bounds, args, color_by="order", guides_in_map=N
             e["color"] = matplotlib.colors.to_hex(pal(e["guide"].order % 10))
         else:
             e["color"] = matplotlib.colors.to_hex(cmap(0.05 + 0.9 * i / max(1, n - 1)))
-    # zone rectangles
-    zones = {}
+    present = [c for c in CONT_ORDER if any(e["cont"] == c for e in entries)]
+    layout, zones, conts = {}, {}, {}
+    for cont in present:
+        es = [e for e in entries if e["cont"] == cont]
+        zs = {}
+        for e in es:
+            b = get_bounds(e["zone"], e["mapid"], bounds)
+            if b and e["zone"] not in zs:
+                (a0, a1), (b0, b1) = b["A"], b["B"]
+                zs[e["zone"]] = (min(-a0, -a1), min(-b0, -b1), abs(a1 - a0), abs(b1 - b0))
+        crect = None
+        if registry is not None and cont != "Other":
+            cb = get_bounds(cont, None, bounds)
+            iid = registry.get(cont, {"Kalimdor": 1414, "Eastern Kingdoms": 1415}[cont])
+            if iid and cb:
+                (a0, a1), (b0, b1) = cb["A"], cb["B"]
+                crect = (iid, min(-a0, -a1), min(-b0, -b1), abs(a1 - a0), abs(b1 - b0))
+            elif iid:
+                registry.notes.append(f"{cont}: image found but the bounds file has no entry for it")
+        xs = [e["x"] for e in es] + [z[0] for z in zs.values()] + [z[0] + z[2] for z in zs.values()]
+        ys = [e["y"] for e in es] + [z[1] for z in zs.values()] + [z[1] + z[3] for z in zs.values()]
+        if crect:
+            xs += [crect[1], crect[1] + crect[3]]
+            ys += [crect[2], crect[2] + crect[4]]
+        layout[cont] = (min(xs), max(xs), min(ys), max(ys))
+        zones[cont], conts[cont] = zs, crect
+    gap = 0.05 * max((l[1] - l[0]) for l in layout.values())
+    cursor, off = 0.0, {}
+    for cont in present:
+        x0, x1, y0, _ = layout[cont]
+        off[cont] = (cursor - x0, -y0)             # tops aligned at y = 0, left to right with a gap
+        cursor += (x1 - x0) + gap
     for e in entries:
-        b = get_bounds(e["zone"], e["mapid"], bounds)
-        if b and e["zone"] not in zones:
-            (a0, a1), (b0, b1) = b["A"], b["B"]
-            zones[e["zone"]] = (min(-a0, -a1), min(-b0, -b1), abs(a1 - a0), abs(b1 - b0))
-    xs = [e["x"] for e in entries] + [z[0] for z in zones.values()] + [z[0] + z[2] for z in zones.values()]
-    ys = [e["y"] for e in entries] + [z[1] for z in zones.values()] + [z[1] + z[3] for z in zones.values()]
-    minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
-    pad = 0.04 * max(maxx - minx, maxy - miny, 1)
-    minx, miny, maxx, maxy = minx - pad, miny - pad, maxx + pad, maxy + pad
+        dx, dy = off[e["cont"]]
+        e["x"] += dx
+        e["y"] += dy
+        e["hull"] = [(px + dx, py + dy) for px, py in e["hull"]]
+    maxx = cursor - gap
+    maxy = max(l[3] - l[2] for l in layout.values())
+    pad = 0.03 * max(maxx, maxy, 1)
+    minx, miny, maxx, maxy = -pad, -pad - 0.03 * maxy, maxx + pad, maxy + pad
     W, H = maxx - minx, maxy - miny
     maxdim = max(W, H)
     # clustering of nearby anchors
@@ -802,19 +853,21 @@ def render_svg_map(uid, entries, bounds, args, color_by="order", guides_in_map=N
             clusters.append({"cx": e["x"], "cy": e["y"], "members": [e]})
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{minx:.1f} {miny:.1f} {W:.1f} {H:.1f}" '
            f'width="100%" height="100%" preserveAspectRatio="xMidYMid meet">']
-    if registry is not None and cont and cont != "Other":
-        cb = get_bounds(cont, None, bounds)
-        iid = registry.get(cont)
-        if iid and cb:
-            (a0, a1), (b0, b1) = cb["A"], cb["B"]
-            svg.append(registry.use(iid, min(-a0, -a1), min(-b0, -b1), abs(a1 - a0), abs(b1 - b0)))
-        elif iid:
-            registry.notes.append(f"{cont}: image found but the bounds file has no entry for it")
-    for zn, (x, y, w, h) in zones.items():
-        iid = registry.get(zn, NAME_TO_ID.get(zn.lower())) if registry is not None else None
-        if iid:
-            svg.append(registry.use(iid, x, y, w, h))
-        svg.append(f'<rect class="zone{" hasimg" if iid else ""}" x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}"/>')
+    for cont in present:
+        dx, dy = off[cont]
+        cr = conts[cont]
+        if cr:
+            svg.append(registry.use(cr[0], cr[1] + dx, cr[2] + dy, cr[3], cr[4], registry.cont_opacity))
+            svg.append(f'<rect class="zone cont" x="{cr[1] + dx:.1f}" y="{cr[2] + dy:.1f}" '
+                       f'width="{cr[3]:.1f}" height="{cr[4]:.1f}"/>')
+        for zn, (x, y, w, h) in zones[cont].items():
+            if is_continent(zn) and cr:
+                continue                       # a point placed directly on the continent: the continent layer already covers it
+            iid = None if is_continent(zn) else (registry.get(zn, NAME_TO_ID.get(zn.lower())) if registry is not None else None)
+            if iid:
+                svg.append(registry.use(iid, x + dx, y + dy, w, h))
+            svg.append(f'<rect class="zone{" hasimg" if iid else ""}" x="{x + dx:.1f}" y="{y + dy:.1f}" '
+                       f'width="{w:.1f}" height="{h:.1f}"/>')
     # hulls (grind / area steps)
     for e in entries:
         if e["hull"]:
@@ -859,8 +912,14 @@ def render_svg_map(uid, entries, bounds, args, color_by="order", guides_in_map=N
                    f'data-tip="{esc(chr(10).join(tips)).replace(chr(10), "&#10;")}" {style}>{ring}{SHAPES[kind]}{txt}</g>')
         for m in mem:
             rows.append((m["rank"], mid, m, kind))
-    for zn, (x, y, w, h) in zones.items():
-        svg.append(f'<g class="mk zl" data-x="{x + 4:.1f}" data-y="{y + 4:.1f}"><text x="0" y="12">{esc(zn)}</text></g>')
+    for cont in present:
+        dx, dy = off[cont]
+        for zn, (x, y, w, h) in zones[cont].items():
+            if is_continent(zn) and conts[cont]:
+                continue
+            svg.append(f'<g class="mk zl" data-x="{x + dx + 4:.1f}" data-y="{y + dy + 4:.1f}"><text x="0" y="12">{esc(zn)}</text></g>')
+        lx0, _, ly0, _ = layout[cont]
+        svg.append(f'<g class="mk zl cl" data-x="{lx0 + dx + 6:.1f}" data-y="{ly0 + dy - 4:.1f}"><text x="0" y="0">{esc(cont)}</text></g>')
     svg.append("</svg>")
     # sidebar rows
     rows.sort(key=lambda r: (r[2]["guide"].order, r[2]["step"].idx))
@@ -937,7 +996,7 @@ MAP_CSS = """
  border-radius:3px;white-space:pre;max-width:520px;z-index:5}
 .fit{position:absolute;right:8px;top:8px;z-index:6}
 .zone{fill:#ffffff;fill-opacity:.55;stroke:#aaa;stroke-width:1;vector-effect:non-scaling-stroke}\n.zone.hasimg{fill-opacity:0}
-.zl text{font-size:11px;fill:#777;font-weight:600;stroke:none}
+.zl text{font-size:11px;fill:#777;font-weight:600;stroke:none}.zl.cl text{font-size:20px;fill:#333}\n.zone.cont{fill-opacity:0;stroke:#666;stroke-width:1.5}
 .seg{stroke-width:1.6;stroke-opacity:.75;vector-effect:non-scaling-stroke}
 .seg.far{stroke-dasharray:5 4;stroke-opacity:.35}
 .hull{fill-opacity:.16;stroke-width:1;stroke-opacity:.5;vector-effect:non-scaling-stroke}
@@ -975,6 +1034,167 @@ def fmt_pos(evs, cmd):
     return ", ".join(out)
 
 
+# Classic XP needed to go from level N to N+1 (from memory - NOT verified against WoW Forever; override with --level-xp).
+CLASSIC_XP_BAR = {1: 400, 2: 900, 3: 1400, 4: 2100, 5: 2800, 6: 3600, 7: 4500, 8: 5400, 9: 6500, 10: 7600,
+                  11: 8800, 12: 10100, 13: 11400, 14: 12900, 15: 14400, 16: 16000, 17: 17700, 18: 19400,
+                  19: 21300, 20: 23200, 21: 25200, 22: 27300, 23: 29400, 24: 31700, 25: 34000, 26: 36400,
+                  27: 38900, 28: 41400, 29: 44300, 30: 47400, 31: 50800, 32: 54500, 33: 58600, 34: 62800,
+                  35: 67100, 36: 71600, 37: 76100, 38: 80800, 39: 85700, 40: 90700, 41: 95800, 42: 101000,
+                  43: 106300, 44: 111800, 45: 117500, 46: 123200, 47: 129100, 48: 135100, 49: 141200,
+                  50: 147500, 51: 153900, 52: 160400, 53: 167100, 54: 173900, 55: 180800, 56: 187900,
+                  57: 195000, 58: 202300, 59: 209800}
+
+
+def levels_gained(bars, level, xp_amount, start_xp=0):
+    """Fractional levels gained by earning xp_amount starting at `level` with start_xp already in the bar."""
+    cur, rem = level, xp_amount + start_xp
+    while cur in bars and rem >= bars[cur]:
+        rem -= bars[cur]
+        cur += 1
+    if cur not in bars:
+        return None
+    return (cur + rem / bars[cur]) - (level + start_xp / bars[level])
+
+
+def running_level(bars, level0, start_xp, cum_xp):
+    """Level (as level.fraction) after cum_xp more XP, starting at level0 with start_xp in the bar."""
+    g = levels_gained(bars, level0, cum_xp, start_xp)
+    return None if g is None else level0 + start_xp / bars[level0] + g
+
+
+def section_share(args, gname):
+    share = args.quest_share
+    for item in args.section_share or []:
+        key, _, val = item.rpartition("=")
+        if key and key.lower() in gname.lower():
+            share = float(val)
+    return share / 100.0 if share > 1 else share
+
+
+KNOWN_CLASSES = {"warrior", "paladin", "hunter", "rogue", "priest", "shaman", "mage", "warlock", "druid",
+                 "deathknight", "monk", "demonhunter"}
+
+
+def parse_class_list(values):
+    """--classes accepts commas, spaces, semicolons, slashes, a JSON list, or a path to a file holding any of those."""
+    out = []
+    for v in values or []:
+        if os.path.isfile(v):
+            with open(v, encoding="utf-8") as fh:
+                v = fh.read()
+        v = v.strip()
+        try:
+            data = json.loads(v)
+            items = data if isinstance(data, list) else [data]
+        except ValueError:
+            items = re.split(r"[,;/|\s]+", v)
+        for it in items:
+            it = re.sub(r"[^a-z]", "", str(it).lower())
+            if it and it not in out:
+                out.append(it)
+    return out
+
+
+def class_live(tag, cls, race=None):
+    """Like class_visible, but for one specific class; tokens that mention no class are ignored unless --race is set."""
+    if not tag:
+        return True
+    for tok in tag.split():
+        alts = [(x.startswith("!"), re.sub(r"[^a-z]", "", x.lower())) for x in tok.split("/")]
+        if not any(n in KNOWN_CLASSES for _, n in alts):
+            if race is not None and not class_visible(tok, {"alliance", race.lower()}):
+                return False
+            continue
+        ok = False
+        for neg, n in alts:
+            ok = ok or ((n != cls) if neg else (n == cls))
+        if not ok:
+            return False
+    return True
+
+
+def guide_xp_stats(g, xp, flt, args, counted):
+    """Per-guide turned-in XP split into required / optional, with estimated mob XP.
+
+    With --classes the numbers are averaged over those classes (a quest only one class gets counts 1/N)."""
+    classes = args.classes or [None]
+    req = opt_x = 0.0
+    req_q = opt_q = 0.0
+    unknown, optdict = set(), {}
+    n = len(classes)
+    for cls in classes:
+        qs = {}                                # qid -> optional?
+        for st in g.steps:
+            for a in st.actions:
+                if a.cmd != "turnin":
+                    continue
+                if cls is None:
+                    if not flt.live(st.tag, a.tag):
+                        continue
+                elif has_skip(st.tag) or has_skip(a.tag) or not (class_live(st.tag, cls, args.race) and class_live(a.tag, cls, args.race)):
+                    continue
+                opt = bool(st.optional or a.negative)
+                qs[a.qid] = qs.get(a.qid, True) and opt
+        done = counted[cls]
+        for q, opt in qs.items():
+            if q in done:
+                continue                       # already credited to an earlier guide
+            done.add(q)
+            info = xp.get(q)
+            if not info:
+                unknown.add(q)
+                continue
+            if opt:
+                opt_x += info["xp"] / n
+                opt_q += 1 / n
+                optdict[q] = (optdict.get(q, (0, 0, ""))[0] + info["xp"] / n, q, info.get("name", ""))
+            else:
+                req += info["xp"] / n
+                req_q += 1 / n
+    unknown = sorted(unknown)
+    optlist = [(round(v), q, nm) for v, q, nm in optdict.values()]
+    share = section_share(args, g.name)
+    mult = (1 - share) / share if share > 0 else 0
+    m = re.match(r"\s*(\d+)\s*-\s*(\d+)", g.name)
+    start, target = (int(m.group(1)), int(m.group(2))) if m else (args.start_level, None)
+    bars = args.bars
+    st_xp = {"req": req, "opt": opt_x, "req_q": req_q, "opt_q": opt_q, "unknown": unknown, "share": share,
+             "mob_req": req * mult, "mob_opt": opt_x * mult, "start": start, "target": target,
+             "optlist": sorted(optlist, reverse=True)}
+    tot_req = req * (1 + mult)
+    tot_all = (req + opt_x) * (1 + mult)
+    if start and start in bars:
+        st_xp["bar"] = bars[start]
+        st_xp["lv_req"] = levels_gained(bars, start, tot_req)
+        st_xp["lv_all"] = levels_gained(bars, start, tot_all)
+    st_xp["tot_req"], st_xp["tot_all"] = tot_req, tot_all
+    return st_xp
+
+
+def xp_row_cells(x):
+    def lv(v):
+        return "-" if v is None else f"{v:.2f}"
+    tgt = f"{x['start']}&rarr;{x['target']}" if x["start"] and x["target"] else (str(x["start"]) if x["start"] else "-")
+    if x.get("run_end") is not None:
+        d = f" <span class='small'>({x['run_end'] - x['target']:+.2f} vs {x['target']})</span>" if x["target"] else ""
+        runc = f"<td>{x['run_start']:.2f} &rarr; <b>{x['run_end']:.2f}</b>{d}</td>"
+    else:
+        runc = "<td>-</td>"
+    return (f"<td>{tgt}</td>{runc}<td>{x['req']:,.0f}<br><span class='small'>{x['req_q']:.4g} quests</span></td>"
+            f"<td>{x['opt']:,.0f}<br><span class='small'>{x['opt_q']:.4g} quests</span></td>"
+            f"<td>{x['share'] * 100:.0f}%</td>"
+            f"<td>{x['mob_req']:,.0f}</td><td>{x['mob_opt']:,.0f}</td>"
+            f"<td>{x['tot_req']:,.0f}</td><td>{x['tot_all']:,.0f}</td>"
+            f"<td>{lv(x.get('lv_req'))}</td><td>{lv(x.get('lv_all'))}</td>"
+            f"<td>{(x['bar'] if 'bar' in x else '-')}</td>")
+
+
+XP_HEAD = ("<tr><th>Levels</th><th>Running level<br>(required XP,<br>cumulative)</th><th>Quest XP<br>(required)</th><th>Quest XP<br>(optional)</th><th>Quest<br>share</th>"
+           "<th>Est. mob XP<br>(required)</th><th>Est. mob XP<br>(optional)</th><th>Est. total<br>(required)</th>"
+           "<th>Est. total<br>(+optional)</th><th>Levels gained<br>(required)</th><th>Levels gained<br>(+optional)</th>"
+           "<th>Bar at<br>start level</th></tr>")
+
+
 def build_report(guides, events, xp, flt, args):
     os.makedirs(os.path.join(args.out, "maps"), exist_ok=True)
     bounds = {}
@@ -987,8 +1207,8 @@ def build_report(guides, events, xp, flt, args):
             if e.action.name:
                 names.setdefault(q, e.action.name)
     status_cache = {q: quest_status(evs) for q, evs in events.items()}
-    counted_xp = set()
-    registry = ImageRegistry(args.maps, args.map_max_px, args.map_opacity) if args.maps else None
+    counted_xp = defaultdict(set)
+    registry = ImageRegistry(args.maps, args.map_max_px, args.map_opacity, args.continent_opacity) if args.maps else None
     parts = [f"<html><head><meta charset='utf-8'><title>Guide report</title><style>{CSS}</style></head><body>",
              "<h1>Guide report</h1>"]
     defs_idx = len(parts)
@@ -1001,8 +1221,10 @@ def build_report(guides, events, xp, flt, args):
     parts.append("<h2>Overview</h2><table><tr><th>#</th><th>Guide</th><th>Next</th><th>Steps</th><th>Quests accepted</th>"
                  "<th>Quests turned in</th><th>XP turned in</th><th>Lint</th></tr>")
     guide_xp = {}
+    guide_stats = {}
+    run = {"level0": None, "cum": 0.0}
     for g in guides:
-        acc, tin, total = set(), set(), 0
+        acc, tin = set(), set()
         for st in g.steps:
             for a in st.actions:
                 if not flt.live(st.tag, a.tag):
@@ -1011,9 +1233,15 @@ def build_report(guides, events, xp, flt, args):
                     acc.add(a.qid)
                 elif a.cmd == "turnin":
                     tin.add(a.qid)
-                    if a.qid not in counted_xp:
-                        counted_xp.add(a.qid)
-                        total += xp.get(a.qid, {}).get("xp", 0)
+        guide_stats[g.order] = guide_xp_stats(g, xp, flt, args, counted_xp)
+        total = guide_stats[g.order]["req"] + guide_stats[g.order]["opt"]
+        x = guide_stats[g.order]
+        if run["level0"] is None and x["start"] in args.bars:
+            run["level0"] = x["start"]
+        if run["level0"] is not None:
+            x["run_start"] = running_level(args.bars, run["level0"], args.start_xp, run["cum"])
+            run["cum"] += x["tot_req"]
+            x["run_end"] = running_level(args.bars, run["level0"], args.start_xp, run["cum"])
         guide_xp[g.order] = total
         errs = sum(1 for l in g.lint if l[0] == "error")
         parts.append(f"<tr><td>{g.order + 1}</td><td><a href='#g{g.order}'>{esc(g.name)}</a></td><td>{esc(g.nxt)}</td>"
@@ -1021,14 +1249,27 @@ def build_report(guides, events, xp, flt, args):
                      f"<td>{total if xp else '-'}</td><td>{len(g.lint)} ({errs} errors)</td></tr>")
     parts.append("</table>")
     names_all = names
+    if xp:
+        parts.append("<h2>XP per section</h2><p class='small'>Quest XP = turn-ins in that section (each quest is credited to the "
+                     "first section that turns it in). <b>Optional</b> = turn-ins in <code>#optional</code> steps or <code>-id</code> "
+                     "turn-ins. Mob XP is <i>estimated</i> as quest XP &times; (1 &minus; share) / share, where share is the fraction of your "
+                     "XP that comes from quests (<code>--quest-share</code>, per-section override <code>--section-share NAME=PCT</code>). "
+                     ""
+                     + (f"Quest XP is averaged over the classes {', '.join(args.classes)}." if args.classes else "Class quests of every class are added together (use <code>--classes</code> to average instead).")
+                     + " The running level adds up each section's required XP (quest + estimated mob XP) from the first section's start level, carrying over any surplus or deficit (<code>--start-xp</code> sets the starting XP). Levels gained assume you start the section at the beginning of its first level, using the XP bars "
+                     "(Classic values from memory, unverified for Forever &ndash; override with <code>--level-xp</code>).</p>")
+        parts.append("<table><tr><th>#</th><th>Guide</th>" + XP_HEAD[4:])
+        for g in guides:
+            x = guide_stats[g.order]
+            warn = f" <span class='warn' title='no XP data for quest ids {esc(x['unknown'])}'>({len(x['unknown'])} unknown)</span>" if x["unknown"] else ""
+            parts.append(f"<tr><td>{g.order + 1}</td><td><a href='#g{g.order}'>{esc(g.name)}</a>{warn}</td>{xp_row_cells(x)}</tr>")
+        parts.append("</table>")
     if args.all_guides_map and bounds:
         items = [(g, st) for g in guides for st in g.steps]
-        per_cont = build_map_items(items, bounds, flt, args, names_all)
-        for cont, entries in per_cont.items():
-            parts.append(f"<h2>All guides - {esc(cont)}</h2><p class='small'>colour = guide; "
-                         f"{len(entries)} located steps</p>")
-            parts.append(render_svg_map(f"all_{re.sub(r'[^A-Za-z]', '', cont)}", entries, bounds, args, "guide", True,
-                                         cont=cont, registry=registry))
+        entries = build_map_items(items, bounds, flt, args, names_all)
+        if entries:
+            parts.append(f"<h2>All guides - map</h2><p class='small'>colour = guide; {len(entries)} located steps</p>")
+            parts.append(render_svg_map("all", entries, bounds, args, "guide", True, registry=registry))
     # ---- per guide
     for g in guides:
         parts.append(f"<h2 id='g{g.order}'>{esc(g.name)}</h2><p class='small'>{esc(g.file)} - {len(g.steps)} steps - "
@@ -1038,12 +1279,18 @@ def build_report(guides, events, xp, flt, args):
             for lvl, ln, msg in sorted(g.lint, key=lambda x: x[1]):
                 parts.append(f"<li class='{lvl}'>[{lvl}] line {ln}: {esc(msg)}</li>")
             parts.append("</ul>")
+        if xp and g.order in guide_stats:
+            x = guide_stats[g.order]
+            parts.append("<h3>XP this section</h3><table>" + XP_HEAD + f"<tr>{xp_row_cells(x)}</tr></table>")
+            if x["optlist"]:
+                parts.append("<details><summary class='small'>optional quests ("
+                             f"{len(x['optlist'])}, {x['opt']:,.0f} XP)</summary><ul class='small'>" +
+                             "".join(f"<li>{q} {esc(n)} &ndash; {v:,}</li>" for v, q, n in x["optlist"]) + "</ul></details>")
         if bounds and not args.no_combined:
-            per_cont = build_map_items([(g, st) for st in g.steps], bounds, flt, args, names)
-            for cont, entries in per_cont.items():
-                parts.append(f"<h3>{esc(cont)} - combined map</h3>")
-                parts.append(render_svg_map(f"g{g.order}_{re.sub(r'[^A-Za-z]', '', cont)}", entries, bounds, args,
-                                             cont=cont, registry=registry))
+            entries = build_map_items([(g, st) for st in g.steps], bounds, flt, args, names)
+            if entries:
+                parts.append("<h3>Combined map</h3>")
+                parts.append(render_svg_map(f"g{g.order}", entries, bounds, args, registry=registry))
             lacking = sorted({p.zone for st in g.steps for p in st.points
                               if p.system == 'pct' and not get_bounds(p.zone, p.mapid, bounds)})
             if lacking:
@@ -1141,15 +1388,33 @@ def main(argv=None):
     ap.add_argument("--guide")
     ap.add_argument("--json")
     ap.add_argument("--zone-maps", action="store_true", help="also draw the old static per-zone PNG maps")
-    ap.add_argument("--all-guides-map", action="store_true", help="one big map per continent for all guides")
+    ap.add_argument("--all-guides-map", action="store_true", help="one big map for all guides")
     ap.add_argument("--no-combined", action="store_true", help="skip the combined per-guide maps")
     ap.add_argument("--labels", choices=["key", "all", "none"], default="key",
                     help="step labels on the map: key (accept/turn-in/travel), all, none")
     ap.add_argument("--cluster", type=float, default=0.012,
                     help="merge steps closer than this fraction of the map size into one marker (default 0.012)")
     ap.add_argument("--map-opacity", type=float, default=0.45, help="opacity of background map images (default 0.45)")
+    ap.add_argument("--continent-opacity", type=float, default=None,
+                    help="opacity of the continent background images (default: same as --map-opacity)")
+    ap.add_argument("--quest-share", type=float, default=60.0,
+                    help="percent of your XP that comes from quests, used to estimate mob XP (default 60)")
+    ap.add_argument("--classes", action="append", metavar="LIST",
+                    help="classes the guide supports; quest XP is averaged over them instead of summing every class's "
+                         "class quests. Any format: 'warlock,shaman', 'warlock shaman', '[\"warlock\",\"shaman\"]', or a file path")
+    ap.add_argument("--start-xp", type=int, default=0,
+                    help="XP already in the bar at the start of the first section (for the running level; default 0)")
+    ap.add_argument("--section-share", action="append", metavar="NAME=PCT",
+                    help="override the quest share for guides whose name contains NAME, e.g. 'Redridge=37' (repeatable)")
+    ap.add_argument("--level-xp", help="JSON file {\"20\": 23200, ...}: XP needed per level (overrides the built-in Classic bars)")
+    ap.add_argument("--start-level", type=int, help="start level for guides whose name does not begin with 'N-M'")
     ap.add_argument("--map-max-px", type=int, default=1400, help="downscale map images to this many pixels (default 1400)")
     args = ap.parse_args(argv)
+    args.bars = dict(CLASSIC_XP_BAR)
+    args.classes = parse_class_list(args.classes)
+    if args.level_xp:
+        with open(args.level_xp) as fh:
+            args.bars.update({int(k): int(v) for k, v in json.load(fh).items()})
 
     guides = parse_files(args.files)
     if not guides:

@@ -220,7 +220,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
     .fly Duskwood >> Fly to Duskwood
     .target Dungar Longdrink
-step
+step << skip
     .isQuestTurnedIn 1040
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Clerk Daltry|r
     .goto Duskwood,72.6,46.8
@@ -232,7 +232,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Councilman Millstipe|r
     .turnin 377 >> Turn in Crime and Punishment
     .target Councilman Millstipe
-step
+step << skip
     .isQuestTurnedIn 1040
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jonathan Carevin|r
     .goto Duskwood,75.2,48.8
@@ -285,11 +285,11 @@ step
     .turnin 221 >> Turn in Worgen in the Woods
     .target Calor
     .accept 222 >> Accept Worgen in the Woods
-step
+step << skip
     #completewith next
     .goto Duskwood,73.20,76.19,30 >> Travel to Roland's Doom
     .isQuestTurnedIn 1040
-step
+step << skip
     .isQuestTurnedIn 1040
     >>Click the |cRXP_PICK_Mound of Dirt|r at the back of the Cave
     .goto Duskwood,73.527,79.143
@@ -312,7 +312,7 @@ step
     .turnin 222 >>Turn in Worgen in the Woods
     .target Calor
     .accept 223 >>Accept Worgen in the Woods
-step
+step << skip
     >>Go inside
     .goto Duskwood,75.32,49.02
     .target Jonathan Carevin
@@ -482,7 +482,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Captain Stoutfist|r
     .turnin 474 >> Turn in Defeat Nek'rosh
     .target Captain Stoutfist
-    .isQuestComplete 474
 step
     >>|cRXP_WARN_This is a 3 stop boat, stay on through the Southshore stop|r
     .goto 1437,4.640,57.122
@@ -598,7 +597,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Willix the Importer|r
     .turnin 1144 >> Turn in Willix the Importer
     .target Willix the Importer
-    .isQuestComplete 1144
+    .isOnQuest 1144
 step
     >>Kill all |cRXP_ENEMY_Monsters|r inside of RFK. Loot them for |cRXP_LOOT_Treshala's Pendant|r
     .complete 1142,1 
@@ -608,7 +607,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falfindel Waywarder|r
     .turnin 1101 >> Turn in The Crone of the Kraul
     .target Falfindel Waywarder
-    .isQuestComplete 1101
+    .isOnQuest 1101
 step
     >>Kill |cRXP_ENEMY_Pesterhide Snarlers|r. Loot them for their |cRXP_LOOT_Pristine Pesterhide Pelts|r
     .goto Thousand Needles,12.6,15.8
@@ -769,7 +768,7 @@ step
     .fly Ratchet>> Fly to Ratchet
     .target Bera Stonehammer
 step
-    .isQuestComplete 1221
+    .isOnQuest 1221
     .goto The Barrens,62.370,37.615
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mebok Mizzyrix|r
     .turnin 1221 >> Turn in Blueleaf Tubers
@@ -957,14 +956,8 @@ step
     .goto Dun Morogh,45.887,49.377
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ozzie Togglevolt|r
     .turnin 2926 >> Turn in Gnogaine
-    .target Ozzie Togglevolt
-    .isQuestComplete 2926
-step
-    .goto Dun Morogh,45.887,49.377
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ozzie Togglevolt|r
     .accept 2962 >> Accept The Only Cure is More Green Glow
     .target Ozzie Togglevolt
-    .isQuestTurnedIn 2926
 step
     #completewith next
     .goto Dun Morogh,24.35,39.78,0
@@ -1102,7 +1095,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ozzie Togglevolt|r
     .turnin 2962 >> Turn in The Only Cure is More Green Glow
     .target Ozzie Togglevolt
-    .isQuestComplete 2962
 step
     #completewith next
     .goto Dun Morogh,47.58,41.58,40,0
@@ -1162,7 +1154,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shoni the Shilent|r
     .turnin 2928 >> Turn in Gyrodrillmatic Excavationators
     .target Shoni the Shilent
-    .isQuestComplete 2928
 step
     #label BlessedArm
     .goto 1453/0,685.22,-8387.23
@@ -1184,7 +1175,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kimberly Grant|r, she patrols around the park
     .turnin 98156 >> Turn in Packaged Pristine Pelts
     .target Kimberly Grant
-    .isQuestComplete 98156
 step
     .goto 1453,50.53,87.34
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Malin|r
@@ -1210,7 +1200,6 @@ step
     .goto Stranglethorn Vale,27.600,77.481
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Scooty|r
     .turnin 2904 >> Turn in A Fine Mess
-    .isQuestComplete 2904
     .target Scooty
 step
     .goto Stranglethorn Vale,27.4,77.8
@@ -1396,7 +1385,6 @@ step
     .goto Duskwood,73.59,46.89
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Althea Ebonlocke|r
     .turnin 228 >> Turn in Mor'Ladim
-    .isQuestComplete 228
     .target Commander Althea Ebonlocke
 step
     .goto Duskwood,73.59,46.89
@@ -1410,14 +1398,12 @@ step
     >>|cRXP_FRIENDLY_Watcher Ladimore|r |cRXP_WARN_patrols around in Darkshire|r
     .turnin 229 >> Turn in The Daughter Who Lived
     .accept 231 >> Accept A Daughter's Love
-    .isQuestTurnedIn 228
     .target Watcher Ladimore
 step
     #label endDuskwood2
     .goto Duskwood,71.93,46.41
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Ello Ebonlocke|r
     .turnin 253 >> Turn in Bride of the Embalmer
-    .isQuestComplete 253
     .target Lord Ello Ebonlocke
 step
     #completewith next
@@ -1603,7 +1589,6 @@ step
     .complete 658,1 
     .unitscan Forsaken Courier
 step
-    .isQuestComplete 658
     .goto Arathi Highlands,60.185,53.848
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quae|r
     >>|cRXP_WARN_Don't go out of your way to find the |cRXP_ENEMY_Forsaken Courier|r. You can skip this step and finish it later|r
@@ -1661,7 +1646,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apprentice Kryten|r
     .turnin 691 >> Turn in Worth Its Weight in Gold
     .target Apprentice Kryten
-    .isQuestComplete 691
 step
     .goto Arathi Highlands,45.832,47.545
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Captain Nials|r
@@ -1746,6 +1730,15 @@ step -- TODO: dalaran stuff when we can just do it on beta
 step
     .fp Dalaran >> get the dalaran flightpath.. (i assume one exists)
     .fly Southshore >> Fly to Southshore for quest turnins
+step -- temp turnins to see xp values
+    .accept 92458 >> Accept Heart of Disruption
+    .accept 92456 >> Accept A Green Sample
+    .accept 92489 >> Accept Power Overwhelming
+    .accept 92457 >> Accept Starving Arcane
+    .turnin 92458 >> Turn in Heart of Disruption
+    .turnin 92456 >> Turn in A Green Sample
+    .turnin 92489 >> Turn in Power Overwhelming
+    .turnin 92457 >> Turn in Starving Arcane
 step
     >>Inside the keep
     .goto Hillsbrad Foothills,48.14,59.11

@@ -250,12 +250,10 @@ step << Shaman
     .goto 1433,71.455,60.114,5 >> Travel south around to the waterfall
     .complete 94499,1
 step
-    .isOnQuest 95999
     #sticky
     #label IncineratorGarim
     .waypoint 1433/0,-3261.400,-9824.700
     >>Kill |cRXP_ENEMY_Incinerator Gar'im|r inside the cave. Loot him for the |cRXP_LOOT_Broken Staff of Incinerator Gar'im|r
-    >>|cRXP_WARN_Skip this step if you are unable to find a group for him|r
     .complete 95999,1 -- Broken Staff of Incinerator Gar'im (1)
     .mob Incinerator Gar'im
 step
@@ -310,8 +308,6 @@ step
     .goto 1433/0,-2268.32,-9279.12
     .turnin 125 >> Turn in The Lost Tools
 step
-    #optional
-    .isQuestComplete 95999
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Solomon|r
 	.target Magistrate Solomon
     .goto 1433/0,-2207.10,-9231.34,15,0
@@ -339,7 +335,6 @@ step
     .goto 1433/0,-1911.22,-9288.820
     >>Kill |cRXP_ENEMY_Bellygrub|r. Loot him for his |cRXP_LOOT_Tusk|r
     >>|cRXP_WARN_Kite |cRXP_ENEMY_Bellygrub|r back to Lakeshire so the |cRXP_FRIENDLY_Guards|r assist you in killing|r |cRXP_ENEMY_Bellygrub|r
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back later|r
     .complete 34,1 -- Bellygrub's Tusk (1)
     .mob Bellygrub
 step
@@ -445,7 +440,7 @@ step
     .goto 1436/0,1811.62,-11358.37
     .line Westfall,34.43,83.93,34.43,83.93,33.88,83.32,33.08,82.86,32.56,82.71,32.08,82.49,31.91,82.36,31.55,81.88,30.86,81.42,30.63,81.16,30.33,80.81,30.02,80.11,29.68,79.22,29.32,78.19,29.29,77.60,29.27,77.31,29.18,76.26,29.07,75.29,28.95,74.14,28.85,73.29,28.79,72.48,28.37,71.94,27.84,71.29,27.44,70.25,27.29,69.47,27.13,68.65,27.09,67.57,27.07,67.01,26.74,66.09,27.07,67.01,27.09,67.57,27.13,68.65,27.29,69.47,27.44,70.25,27.84,71.29,28.37,71.94,28.79,72.48,28.85,73.29,28.95,74.14,29.07,75.29,29.18,76.26,29.27,77.31,29.29,77.60,29.32,78.19,29.68,79.22,30.02,80.11,30.33,80.81,30.63,81.16,30.86,81.42,31.55,81.88,31.91,82.36,32.08,82.49,32.56,82.71,33.08,82.86,33.88,83.32,34.43,83.93
     >>Kill |cRXP_ENEMY_Old Murk-Eye|r. Loot him for his |cRXP_LOOT_Scale|r
-    >>|cRXP_ENEMY_Old Murk-Eye|r |cRXP_WARN_patrols up and down the Longshore. If you can't find him, skip this step|r
+    >>|cRXP_ENEMY_Old Murk-Eye|r |cRXP_WARN_patrols up and down the Longshore.|r
     .complete 104,1 -- Scale of Old Murk-Eye (1)
     .mob Old Murk-Eye
 step
@@ -454,7 +449,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Captain Grayson|r
     .turnin 104 >> Turn in The Coastal Menace
     .target Captain Grayson
-    .isQuestComplete 104
 step
     #label DMzoneIn
     .goto 1415,41.197,79.112,10 >> Enter the cave
@@ -541,7 +535,7 @@ step
     .goto 1436/0,1811.62,-11358.37
     .line Westfall,34.43,83.93,34.43,83.93,33.88,83.32,33.08,82.86,32.56,82.71,32.08,82.49,31.91,82.36,31.55,81.88,30.86,81.42,30.63,81.16,30.33,80.81,30.02,80.11,29.68,79.22,29.32,78.19,29.29,77.60,29.27,77.31,29.18,76.26,29.07,75.29,28.95,74.14,28.85,73.29,28.79,72.48,28.37,71.94,27.84,71.29,27.44,70.25,27.29,69.47,27.13,68.65,27.09,67.57,27.07,67.01,26.74,66.09,27.07,67.01,27.09,67.57,27.13,68.65,27.29,69.47,27.44,70.25,27.84,71.29,28.37,71.94,28.79,72.48,28.85,73.29,28.95,74.14,29.07,75.29,29.18,76.26,29.27,77.31,29.29,77.60,29.32,78.19,29.68,79.22,30.02,80.11,30.33,80.81,30.63,81.16,30.86,81.42,31.55,81.88,31.91,82.36,32.08,82.49,32.56,82.71,33.08,82.86,33.88,83.32,34.43,83.93
     >>Kill |cRXP_ENEMY_Old Murk-Eye|r. Loot him for his |cRXP_LOOT_Scale|r
-    >>|cRXP_ENEMY_Old Murk-Eye|r |cRXP_WARN_patrols up and down the Longshore. If you can't find him, skip this step|r
+    >>|cRXP_ENEMY_Old Murk-Eye|r |cRXP_WARN_patrols up and down the Longshore.|r
     .complete 104,1 -- Scale of Old Murk-Eye (1)
     .mob Old Murk-Eye
 step
@@ -615,7 +609,7 @@ step
     .turnin 166 >> Turn in The Defias Brotherhood
     .target +Gryan Stoutmantle
     .goto 1436/0,1045.12,-10508.80
-    .turnin -214 >> Turn in Red Silk Bandanas
+    .turnin 214 >> Turn in Red Silk Bandanas
     .target +Scout Riell
     .goto 1436/0,1033.22,-10504.83
 step
@@ -1238,13 +1232,11 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ziz Fizziks|r
     .target Ziz Fizziks
     .turnin 1093 >> Turn in Super Reaper 6000
-    .isQuestComplete 1093
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gaxim Rustfizzle|r
     .goto Stonetalon Mountains,59.516,67.146
     .turnin 1071 >> Turn in A Gnome's Respite
     .target Gaxim Rustfizzle
-    .isQuestComplete 1071
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gaxim Rustfizzle|r
     .target Gaxim Rustfizzle
@@ -1632,7 +1624,6 @@ step
     .target Sida
     >>Talk to |cRXP_FRIENDLY_Sida|r
     .turnin 470 >> Turn in Digging Through the Ooze
-    .isQuestComplete 470
 step
     .goto 1437,10.815,60.406
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo upstairs and talk to |cRXP_FRIENDLY_Archaeologist Flagongut|r
@@ -1821,7 +1812,7 @@ step << Warlock
     .target Gakin the Darkbinder
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gakin the Darkbinder|r
     .turnin 1739 >> Turn in The Binding
-    .turnin -65603 >> Turn in The Binding
+    .turnin 65603 >> Turn in The Binding
 step
     .goto 1453/0,490.03,-8835.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dungar Longdrink|r
@@ -2045,7 +2036,7 @@ step
     .target Madame Eva
     .accept 149 >> Accept Ghost Hair Thread
 step
-    .isQuestComplete 177
+    .isOnQuest 177
     .goto Duskwood,79.80,48.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Viktori Prism'Antras|r
     .turnin 177 >> Turn in Look To The Stars
@@ -2165,9 +2156,9 @@ step
     .goto Duskwood,72.53,46.85
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Clerk Daltry|r
     .turnin 265 >> Turn in The Shadowy Search Continues
-    .turnin -68 >> Turn in The Legend of Stalvan
-    .target Clerk Daltry
     .accept 266 >> Accept Inquire at the Inn
+    .target Clerk Daltry
+    .turnin 68 >> Turn in The Legend of Stalvan
     .accept 69 >> Accept The Legend of Stalvan
 step
     #label ShadowyRot
@@ -2437,7 +2428,6 @@ step
 step
     .complete 976,1
 step
-    .isQuestComplete 976
     .goto 1440/1,189.71,3185.77
     .target Delgren the Purifier
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
@@ -2714,6 +2704,7 @@ step
     .target Raene Wolfrunner
     .isOnQuest 1046
 step
+    #label BFDgroup
     .goto 1440/1,-433.09,2781.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Kimlya|r
     .home >> Set your Hearthstone to Astranaar
@@ -2725,7 +2716,6 @@ step << skip
     .turnin 1032 >> Turn in Satyr Slaying!
     .isOnQuest 1032
 step << skip
-    #label BFDgroup
     .goto Ashenvale,26.19,38.69
     .target Delgren the Purifier
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
@@ -2781,7 +2771,7 @@ step
 step
     #label Thaelrid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Argent Guard Thaelrid|r
-    .turnin -1198 >> Turn in Search of Thaelrid
+    .turnin 1198 >> Turn in Search of Thaelrid
     .accept 1200 >> Accept Blackfathom Villainy
 step
     #requires manuscript
@@ -2861,7 +2851,15 @@ step
     .goto Darnassus,29.466,41.405
     .zone Teldrassil >> Travel through the purple portal to Rut'theran Village
     .zoneskip Darkshore
+step << skip
+    .goto Teldrassil,58.39,94.01
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus|r
+    .fly Darkshore >> Fly to Auberdine
+    .target Vesprystus
 step
+    .goto 1439/1,929.100,6543.600
+    .zone Stormwind City >> Take the boat to Stormwind City
+step << skip
     .goto Teldrassil,58.39,94.01
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus|r
     .fly Ratchet >> Fly to Ratchet
@@ -2872,7 +2870,7 @@ step << skip
     .turnin -1039 >> Turn in The Barrens Port
     .accept 1040 >> Accept Passage to Booty Bay
     .target Wharfmaster Dizzywig
-step
+step << skip
     .zone Stranglethorn Vale >> Take the boat to Booty Bay
 step << skip
     .goto Stranglethorn Vale,27.2,74
@@ -2880,7 +2878,7 @@ step << skip
     .turnin -1040 >> Turn in Passage to Booty Bay
     .accept 1041 >> Accept The Caravan Road
     .target Caravaneer Ruzzgot
-step
+step << skip
     .goto Stranglethorn Vale,27.4,77.8
     .fp Booty Bay >> Get the Booty Bay Flight Path
     .fly Stormwind >> Fly to Stormwind City

@@ -222,6 +222,24 @@ step
     .buy 6529,1
     .buy 6530,3
     .target Catherine Leland
+step << Warlock/Paladin
+    .goto 1453,64.67,71.36
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Edna Mullby|r
+    .buy 2320,10 -- Coarse Thread
+    .target Edna Mullby
+step << Warlock/Paladin
+    .goto 1453,63.09,74.81
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kyra Boucher|r
+    .buy 17034,2 -- Maple Seed
+    .buy 3371,2 -- Empty Vial
+    .target Kyra Boucher
+step << Warlock/Paladin
+    .goto 1453,52.94,74.07
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jessara Cordell|r
+    .target Jessara Cordell
+    .vendor
+    .collect 20758,1 -- Formula: Minor Wizard Oil
+    .train 14293,1
 step
     .goto 1453/0,719.67,-8550.30
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r
@@ -644,9 +662,8 @@ step
     .waypoint 1439,42.794,62.166,50,0
     .waypoint 1439,42.489,60.677,50,0 --Middle spawn
     >>Kill |cRXP_ENEMY_Anaya Dawnrunner|r. Loot her for her |cRXP_LOOT_Pendant|r
-    -->>|cRXP_WARN_Be aware that she has a 7-8 minute spawn time and 4 different spawnpoints across Ameth'Aran|r
+    -->>|cRXP_WARN_Be aware that she has 4 different spawnpoints across Ameth'Aran|r
     -->>|cRXP_WARN_You may want to group with others nearby if you can't find her. Ask in General Chat (/1) to group with anyone else that is also looking for her|r
-    -->>|cRXP_WARN_If you can't find her and want to try again later at the cost of potentially grinding more mobs soon, skip this step|r
     --much faster spawn time now on forever
     .complete 963,1 --Anaya's Pendant (1)
     .unitscan Anaya Dawnrunner
@@ -1263,6 +1280,12 @@ RXPGuides.RegisterGuide([[
 #next 20-21 Redridge/Duskwood
 #defaultfor Dwarf/Gnome
 
+
+step << Rogue
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Buliwyf Stonehand|r
+    .goto 1455/0,-1197.27,-5041.49
+    .train 198 >> Train 1h Maces
+    .target +Buliwyf Stonehand
 step
     #completewith next
     .goto 1455,67.842,42.456
@@ -1283,32 +1306,6 @@ step
 step
     #completewith TramEnd
     >> |cRXP_WARN_CRAFT ON TRAM
-step
-    >>|cRXP_WARN_SKIP IF CONTESTED|r
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Monty|r on the middle platform in the Deeprun Tram
-    .accept 6661 >> Accept Deeprun Rat Roundup
-    .target Monty
-step
-    >>Use the |T133942:0|t[Rat Catcher's Flute] on |cRXP_FRIENDLY_Deeprun Rats|r in the Deeprun Tram
-    .complete 6661,1 --Rats Captured (x5)
-    .use 17117
-    .mob Deeprun Rat
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Monty|r on the middle platform in the Deeprun Tram
-    .turnin 6661 >> Turn in Deeprun Rat Roundup
-    .timer 11,Deeprun Rat Roundup RP
-    .accept 6662 >> Accept Me Brother, Nipsy
-    .target Monty
-step
-    #label TramEnd
-    >>|cRXP_WARN_Take the Deeprun Tram to the Stormwind side|r
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nipsy|r on the middle platform on the Stormwind side of the Deeprun Tram
-    .turnin 6662 >> Turn in Me Brother, Nipsy
-    .target Nipsy
-    .subzoneskip 2257,1 --Deeprun Tram
-step
-    #optional
-    .abandon 6662 >> Abandon Me Brother, Nipsy
 step
     #optional
     .zone Stormwind City >> Enter Stormwind
@@ -1513,12 +1510,10 @@ step
     .goto 1439/1,602.01,4678.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r. This will start an escort
     .accept 731,1 >> Accept The Absent Minded Prospector
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
     .target Prospector Remtravel
 step
     #requires prospector1
     >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
     .complete 731,1
     .isOnQuest 731
 step
@@ -1574,13 +1569,11 @@ step
     .goto 1439/1,602.01,4678.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r. This will start an escort
     .accept 731,1 >> Accept The Absent Minded Prospector
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
     .target Prospector Remtravel
     .isQuestAvailable 731
 step
     #requires prospector2
     >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
     .complete 731,1
     .isOnQuest 731
 step
@@ -1834,38 +1827,29 @@ step
     .accept 2078 >> Accept Gyromast's Revenge
     .target Gelkak Gyromast
 step
-    #optional
     #completewith next
     .goto 1439,55.802,18.290
     .gossipoption 95406 >> Talk to |cRXP_FRIENDLY_The Threshwackonator 4100|r to start the escort
 --  .gossipoption 87696 >> Talk to |cRXP_FRIENDLY_The Threshwackonator 4100|r to start the escort
     >>|cRXP_WARN_This quest is VERY difficult|r
     .target The Threshwackonator 4100
-    .isOnQuest 2078 << Warrior/Paladin/Rogue/Shaman
+    .isOnQuest 2078
 step
     .goto 1439,56.654,13.484
-    #optional
     >>Escort |cRXP_FRIENDLY_The Threshwackonator 4100|r to |cRXP_FRIENDLY_Gelkak Gyromast|r
     >>Kill |cRXP_ENEMY_The Threshwackonator 4100|r once it turns hostile
     >>|cRXP_WARN_This quest is VERY difficult|r
     *Only use ranged attacks while running from it, avoid being at melee range << Druid
     >>|cRXP_WARN_Try to do this quest if you can as it'll save you time later as it rewards|r |T134797:0|t[Elixirs of Water Breathing] |cRXP_WARN_for underwater quests later|r << !Druid !Warlock !Shaman
     >>|cRXP_WARN_Use|r |T136100:0|t[Entangling Roots] |cRXP_WARN_on him when he turns hostile then create distance and kite using instant cast spells|r << Druid
-    >>|cRXP_WARN_If you are unable to kill the |cRXP_ENEMY_The Threshwackonator 4100|r, skip this step|r
     .complete 2078,1 --Gyromast's Revenge (1)
     .mob The Threshwackonator 4100
-    .isOnQuest 2078 << Warrior/Paladin/Rogue/Shaman
+    .isOnQuest 2078
 step
-    #optional << Warrior/Paladin/Rogue/Shaman
     .goto 1439,56.654,13.484
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gelkak Gyromast|r
     .turnin 2078 >> Turn in Gyromast's Revenge
     .target Gelkak Gyromast
-    .isQuestComplete 2078
-step
-    #optional
-    #completewith BeachedCloak
-    .abandon 2078 >> Abandon Gyromast's Revenge
 step
     #sticky
     #label DeleteGyromast
@@ -1938,7 +1922,6 @@ step
     .turnin 98013 >> Accept Swelling Forces
     .target Onu
     .target Arbal
-    .isQuestComplete 951
 step
     .goto 1439,44.401,76.425
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kerlonian Evershade|r to start the escort
@@ -1966,13 +1949,11 @@ step
     .goto 1439/1,602.01,4678.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r. This will start an escort
     .accept 731,1 >> Accept The Absent Minded Prospector
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
     .target Prospector Remtravel
     .isQuestAvailable 731
 step
     #requires prospector4
     >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
-    >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
     .complete 731,1
     .isOnQuest 731
 step
@@ -2141,7 +2122,7 @@ step
     >>|cRXP_WARN_Shaman should be soulstoned for water totem quest ahead :)|r
     #label MenethilRRBoat
     .goto 1439/1,826.67,6409.82 << Shaman
-    .goto 1439/1,929.100,6543.600 << !Hunter !Shaman
+    .goto 1439/1,929.100,6543.600 << !Shaman
     >>|cRXP_WARN_Level your|r |T135966:0|t[First Aid] |cRXP_WARN_while waiting for the boat|r << Rogue/Warrior/Paladin
     .zone Stormwind City >> Take the boat to Stormwind City << !Shaman
     .zone Wetlands >> Take the boat to Menethil Harbor << Shaman

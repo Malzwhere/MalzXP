@@ -227,7 +227,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r
     .turnin 399 >> Turn in Humble Beginnings
     .target Baros Alexston
-    .isQuestComplete 399
 step
     #optional
     #completewith next
@@ -425,18 +424,13 @@ step
     .accept 97914 >> Accept Expanding Horizons
     .accept 4762 >> Accept The Cliffspring River
     .accept 954 >> Accept Bashal'Aran
-    .accept 958 >> Accept Tools of the Highborne
     .target Thundris Windweaver
-    .xp >16,1
 --XX if 16+, skip Tools
 step
-    #optional
     .goto 1439,37.394,40.128
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
-    .turnin 4761 >> Turn in Thundris Windweaver
-    .accept 97914 >> Accept Expanding Horizons
-    .accept 4762 >> Accept The Cliffspring River
-    .accept 954 >> Accept Bashal'Aran
+    .accept 958 >> Accept Tools of the Highborne
+    .xp >16,1
     .target Thundris Windweaver
 step
     #optional
@@ -463,16 +457,9 @@ step
     .complete 982,2 --Mist Veil Lockbox (1)
     .isOnQuest 982
 step
-    #optional
     .goto 1439,41.901,31.339
     >>Click the |cRXP_PICK_Beached Sea Creature|r
     .accept 4723 >> Accept Beached Sea Creature
-step
-    #optional
-    .goto 1439,41.901,31.339
-    >>Click the |cRXP_PICK_Beached Sea Creature|r
-    .accept 4723 >> Accept Beached Sea Creature
-    .isOnQuest 982
 step
     #optional
     #completewith AsterionTravel
@@ -488,6 +475,14 @@ step
     .goto 1439,44.629,36.316,20,0
     .goto 1439,44.168,36.289,15 >> Travel toward |cRXP_FRIENDLY_Asterion|r
 step
+    #label Bashal1
+    .goto 1439,44.168,36.289
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
+    >>|cRXP_WARN_Avoid killing |cRXP_ENEMY_Wild Grells|r and |cRXP_ENEMY_Vile Sprites|r en-route|r
+    .turnin 954 >> Turn in Bashal'Aran
+    .target Asterion
+    .xp <16,1
+step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
     >>|cRXP_WARN_Avoid killing |cRXP_ENEMY_Wild Grells|r and |cRXP_ENEMY_Vile Sprites|r en-route|r
@@ -495,18 +490,8 @@ step
     .accept 955 >> Accept Bashal'Aran
     .target Asterion
     .isOnQuest 954
-    .xp >16,1
+    .xp 16,1
 --XX skip Bashal Aran qline if 16+
-step
-    #optional
-    #label Bashal1
-    .goto 1439,44.168,36.289
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
-    >>|cRXP_WARN_Avoid killing |cRXP_ENEMY_Wild Grells|r and |cRXP_ENEMY_Vile Sprites|r en-route|r
-    .turnin 954 >> Turn in Bashal'Aran
-    .target Asterion
-    .isOnQuest 954
---XX Turn in Breadcrumb if you picked it up earlier before 18
 step
     #loop
     .goto 1439,44.528,36.587,0
@@ -534,7 +519,6 @@ step
     .mob Wild Grell
     .mob Vile Sprite
     .isOnQuest 955
-    .xp >16,1
 step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
@@ -542,7 +526,6 @@ step
     .accept 956 >> Accept Bashal'Aran
     .target Asterion
     .isQuestComplete 955
-    .xp >16,1
 step
     #optional
     .goto 1439,44.168,36.289
@@ -550,7 +533,6 @@ step
     .accept 956 >> Accept Bashal'Aran
     .target Asterion
     .isQuestTurnedIn 955
-    .xp >16,1
 step
     #completewith next
     #optional
@@ -574,7 +556,6 @@ step
     .complete 956,1 --Ancient Moonstone Seal (1)
     .mob Deth'ryll Satyr
     .isQuestTurnedIn 955
-    .xp >16,1
 step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
@@ -582,14 +563,12 @@ step
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
     .isQuestComplete 956
-    .xp >16,1
 step
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
     .isQuestTurnedIn 956
-    .xp >16,1
 step
     #optional
     #completewith AmethStart
@@ -641,23 +620,6 @@ step
     >>Travel up to the |cRXP_PICK_Mysterious Red Crystal|r
     >>|cRXP_WARN_Be careful of the two group of 2 |cRXP_ENEMY_Raging Moonkins|r west of the |cRXP_PICK_Mysterious Red Crystal|r as the duos closest to each other are leashed together|r
     .complete 4811,1 --Locate the large, red crystal on Darkshore's eastern mountain range
-step << NightElf/Hunter/Druid/Warrior !Hunter
-    #optional
-    #label Cascade
-    .goto 1439,37.703,43.393
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Glynda Nal'Shea|r
-    .accept 4812 >> Accept As Water Cascades
-    .target Sentinel Glynda Nal'Shea
-    .isQuestTurnedIn 4811 --show step if Red Crystal turned in
-step
-    #optional
-    #label EarlyAmethStart
-    .goto 1439,40.302,59.731
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Tysha Moonblade|r
-    .accept 953 >> Accept The Fall of Ameth'Aran
-    .target Sentinel Tysha Moonblade
-    .isQuestTurnedIn 4811
-    .xp >17,1
 step
     .isOnQuest 98025
     .waypoint 1439/1,-18.100,5779.800
@@ -744,11 +706,11 @@ step
     #requires Anaya
 --XXREQ Placeholder invis step until multiple requires per step
 step
-    .isQuestComplete 953
     .goto 1439,40.302,59.731
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Tysha Moonblade|r
     .turnin 953 >> Turn in The Fall of Ameth'Aran
     .target Sentinel Tysha Moonblade
+    .isOnQuest 953
 step
     #optional
     #completewith FurbolgGrind
@@ -809,7 +771,6 @@ step
     .turnin 4722 >> Turn in Beached Sea Turtle
     .turnin 4723 >> Turn in Beached Sea Creature
     .target Gwennyth Bly'Leggonde
-    .isOnQuest 4723
 step
     #optional
     #completewith next
@@ -986,9 +947,6 @@ step
     .mob Rabid Thistle Bear
 step
     #label BoatSeaCreature
-    .goto 1439,41.901,31.339
-    >>Click the |cRXP_PICK_Beached Sea Creature|r
-    .accept 4723 >> Accept Beached Sea Creature
 step
     #optional
     #completewith CrabTurtle
@@ -1159,7 +1117,6 @@ step
     >>|cRXP_WARN_You may need to wait out his RP if someone else just turned in|r
     .turnin 963 >> Turn in For Love Eternal
     .target Cerellean Whiteclaw
-    .isQuestComplete 963
 step
     #optional
     .goto 1439/1,577.38,6371.35
@@ -1168,12 +1125,10 @@ step
     .target Gubber Blump
     .isQuestComplete 1138
 step
-    #optional
     #label End
     .goto 1439,36.701,45.122,8,0
     .goto 1439,36.621,45.596
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwennyth Bly'Leggonde|r
-    .turnin 4723 >> Turn in Beached Sea Creature
     .turnin 4725 >> Turn in Beached Sea Turtle
     .turnin 4727 >> Turn in Beached Sea Turtle
     .target Gwennyth Bly'Leggonde

@@ -64,7 +64,6 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Teo Hammerstorm|r inside
     .train 8017 >> Train |T136086:0|t[Rockbiter Weapon]
     .target Teo Hammerstorm
-
 step
     #label WolfMeat
     .goto 1426,29.529,73.286,0
@@ -183,25 +182,24 @@ step
     .accept 218 >> Accept The Stolen Journal
     .target Grelin Whitebeard
     .xp 4,1
-step << Warlock/Shaman
+step
     .goto Dun Morogh,24.980,75.963
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nori Pridedrift|r
     >>|cRXP_WARN_This will start a 5 minute timer for the quest. Do NOT go AFK or log out for the next 5 minutes|r
     .accept 3364 >> Accept Scalding Mornbrew Delivery
     .target Nori Pridedrift
-step << Paladin/Warlock/Hunter/Shaman
+step
     #optional
     #completewith next
     .goto 1426,28.792,68.804,20,0
     >>|cRXP_WARN_You have 5 minutes to return to Anvilmar before|r |T132791:0|t[Durnan's Scalding Mornbrew] |cRXP_WARN_expires|r
     .goto 1426,28.939,68.387,20 >> Enter Anvilmar
-step << Warlock/Shaman
+step
     .goto 1426/0,385.21,-6056.46
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Durnan Furcutter|r inside
     .turnin 3364 >> Turn in Scalding Mornbrew Delivery
     .accept 3365 >> Accept Bring Back the Mug
     .target Durnan Furcutter
-    .isQuestAvailable 317
 step << Warlock
     .goto Dun Morogh,28.650,66.145
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alamar Grimm|r upstairs
@@ -227,7 +225,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grund Drokda::2756|r
     .target Grund Drokda::2756
     .accept 97277 >>Accept Grund and Gozwin
-step
+step << Gnome Rogue
     .goto 1426,28.4,67.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Solm Hargrin|r
     .target Solm Hargrin
@@ -285,7 +283,6 @@ step
     #completewith Grelin
     .goto 1426,27.098,80.707,20 >> Enter the Frostmane Cave
 step << Warlock
-    #optional
     #completewith Stolen
     .goto 1426,28.696,83.148,0
     .goto 1426,30.216,80.254,0
@@ -300,7 +297,6 @@ step << Warlock
     .complete 1599,1 --Collect Feather Charm (x3)
     .mob Frostmane Novice
 step << Shaman
-    #optional
     #completewith Stolen
     >>Kill |cRXP_ENEMY_Frostmane Troll Whelps|r. Loot them for their |cRXP_LOOT_Iceclaw Bear Pendants|r
     .complete 94373,1 << Shaman--Iceclaw Bear Pendant (2)
@@ -481,12 +477,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
     .accept 98321 >> Accept Flintfire's Shipment
     .target Tognus Flintfire
-step << Rogue
-    .goto 1426,45.2,52.0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grawn Thromwyn|r
-    .vendor >> Sell your |r |T133626:0|t[Canvas Latchbag] for a Gladius
-    .collect 2488,1
-    .target Grawn Thromwyn
 step
     #optional
     #completewith next
@@ -516,108 +506,6 @@ step
 step
     #completewith next
     >> Check for |cRXP_ENEMY_Young Black Bears|r nearby, good for Jetsteam progress
-step << !Rogue
-    #label IFentry
-    .goto 1426,47.412,41.658,50,0
-    .goto 1426,51.529,39.888,50,0
-    .goto 1426,53.426,34.956,25 >> Enter Ironforge
-step << Shaman
-    #requires IFentry
-    .goto 1455,39.778,32.911
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Balthus Stoneflayer|r, |cRXP_FRIENDLY_Bombus Finespindle|r and |cRXP_FRIENDLY_Greta Finespindle|r
-    .target +Balthus Stoneflayer
-    .vendor >> |cRXP_BUY_Sell the|r |T133626:0|t[Canvas Latchbag]
-    .target +Greta Finespindle
-    .train 2108 >> Train |T133611:0|t[Leatherworking]
-    .target +Bombus Finespindle
-    .collect 2320,2
-    .collect 5957,2
-step << Shaman
-    .goto 1455,60.340,45.188,20
-    >> Stop by the enchanting trainer to trade vests
-step << Shaman
-    .goto 1455,61.239,89.232
-    >> Trade Leather Vests on the way
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Buliwyf Stonehand|r
-    .target Buliwyf Stonehand
-    .train 199 >> Train |T133479:0|t[Two-Handed Maces]
-step << Warlock
-    #requires IFentry
-    .goto 1455,19.391,56.074
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barim Jurgenstaad|r
-    .target +Barim Jurgenstaad
-    .collect 17034,1
-step << Warlock
-    .goto 1455,43.826,27.962
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Uthrar Threx|r
-    .target +Uthrar Threx
-    .train 3908 >> Train |T136249:0|t[Tailoring]
-step << Warlock
-    .goto 1455,60.340,45.188
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thonys Pillarstone|r and |cRXP_FRIENDLY_Tilli Thistlefuzz|r
-    .target +Tilli Thistlefuzz
-    .vendor >> |cRXP_BUY_Sell the|r |T133626:0|t[Canvas Latchbag]
-    .collect 6217,1
-    .collect 4470,2
-    .collect 247786,7
-    .collect 20758,1
-    .collect 6218,1
-    .collect 247789,1
-    .target +Thonys Pillarstone
-    .train 7411 >> Train |T136244:0|t[Enchanting]
-    .train 14293,1
-step << Paladin
-    #requires IFentry
-    .goto 1455,19.391,56.074
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barim Jurgenstaad|r
-    .target +Barim Jurgenstaad
-    .collect 17034,1
-step << Paladin
-    .goto 1455,60.340,45.188
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thonys Pillarstone|r and |cRXP_FRIENDLY_Tilli Thistlefuzz|r
-    .target +Tilli Thistlefuzz
-    .vendor >> |cRXP_BUY_Sell the|r |T133626:0|t[Canvas Latchbag]
-    .collect 6217,1
-    .collect 247786,10
-    .collect 20758,1
-    .collect 6218,1
-    .target +Thonys Pillarstone
-    .train 7411 >> Train |T136244:0|t[Enchanting]
-    .train 14293,1
-step
-    #completewith Rudra
-    #label Dirt
-    .goto 1426,53.426,34.956,40,0
-    .goto 1426/0,-1145.04,-5504.30,40,0
-    .goto 1426/0,-1219.90,-5422.55,40 >>Exit Ironforge towards Vagash
-    .isQuestAvailable 314
-step
-    #completewith next
-    #requires Dirt
-    +|cRXP_WARN_Kite |cRXP_ENEMY_Vagash|r down to|r |cRXP_FRIENDLY_Rudra|r
-    .mob Vagash
-step
-    #label Rudra
-    .goto 1426/0,-1304.71,-5513.86
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rudra Amberstill|r
-    .accept 314 >> Accept Protecting the Herd
-    .target Rudra Amberstill
-step
-    .goto 1426,62.094,47.154,40,0
-    .goto 1426,62.434,48.989,40,0
-    .goto 1426,62.538,46.195
-    >>Kill |cRXP_ENEMY_Vagash|r. Loot him for his |cRXP_LOOT_Fang|r
-    >>|cRXP_WARN_Kite him to the guard south of the ranch. Make sure you do 51%+ damage to him|r
-    .complete 314,1 --Collect Fang of Vagash (1)
-    .mob Vagash
-step
-    .goto 1426/0,-1304.71,-5513.86
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rudra Amberstill|r
-    .turnin 314 >> Turn in Protecting the Herd
-    .target Rudra Amberstill
-step
-    .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
-    .target Spirit Healer
 step
     .goto 1426,44.084,57.031
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Gretchen|r
@@ -635,46 +523,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hegnar Rumbleshot|r
     .turnin 5541 >> Turn in Ammo for Rumbleshot
     .target Hegnar Rumbleshot
-step << Rogue
-    #label Blacksmithing1
-    .goto 1426,45.344,51.936
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
-    >>|cRXP_WARN_Drop mining for the profession slot|r
-    >>|cRXP_WARN_This will allow you to make|r |T135255:0|t[Rough Weightstones] |cRXP_WARN_which increase your melee damage by 2|r
-    >>|cRXP_WARN_If you don't want to do this, skip this step|r
-    .train 2018,1 >> Train |T136241:0|t[Blacksmithing]
-    .target Tognus Flintfire
-step 
-    .goto 1426,46.652,53.915
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Golorn Frostbeard|r and |cRXP_FRIENDLY_Eric Brighthammer|r
-    >> Resummon |T136218:0|tImp and |T136185:0|tRebuff << Warlock
-    >> Craft Sharpening stones and Whetstones, sell your pickaxe << Rogue
-    >> |cRXP_WARN_CRAFT AT CAMPFIRES
-    .target +Golorn Frostbeard
-    .target +Senir Whitebeard
-    .target +Eric Brighthammer
-    .vendor >> Vendor Trash
-    .turnin 96608 >> Turn in The Great Outdoors
-    .accept 96031 >> Accept Camping 101: Leatherworking << Shaman
-    .accept 96056 >> Accept Camping 101: Skinning << Shaman/Paladin/Rogue
-    .accept 96057 >> Accept Camping 101: Tailoring << Warlock
-    .accept 96059 >> Accept Camping 101: Enchanting << Warlock/Paladin
-    .accept 96629 >> Accept Camping 101: Cooking
-    .collect 2320,3 << Warlock
-    .collect 3371,2 << Warlock
-    .complete 96608,1
-    .complete 96608,2
-    .collect 4238,1 << Warlock
-    .collect 20744,2 << Warlock
-step
-    #optional
-    .isQuestComplete 317
-    >> Skip turnin if only one of you has, will turn in later
-    .goto 1426/0,-632.15,-5466.540
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Bellowfiz|r
-    .turnin 317 >> Turn in Stocking Jetsteam
-    .accept 318 >> Accept Evershine
-    .target Pilot Bellowfiz
 step
     #optional
     #completewith jetsteamEnd
@@ -703,8 +551,6 @@ step
     .goto Dun Morogh,30.190,45.726
     .target +Rejold Barleybrew
     .accept 310 >> Accept Bitter Rivals
-    .turnin 318 >> Turn in Evershine
-    .accept 319 >> Accept A Favor for Evershine
     .goto 1426/0,315.42,-5372.02
     .target +Marleth Barleybrew
 step
@@ -757,11 +603,6 @@ step
     .collect 2686,1,311 --Collect Thunder Ale (x1)
     .target Innkeeper Belm
 step
-    .goto 1426,47.6,52.4
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gremlock Pilsnor|r
-    .train 2550 >> Train |T133971:0|t[Cooking]
-    .target Gremlock Pilsnor
-step
     #label Distracting
     #completewith next
     .goto 1426/0,-551.03,-5598.40,6,0
@@ -785,16 +626,149 @@ step
     .turnin 384 >> Turn in Beer Basted Boar Ribs
     .target Ragnar Thunderbrew
     .isQuestComplete 384
+step
+    #label jetsteamEnd
+    .goto 1426/0,-632.15,-5466.540
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Bellowfiz|r and |cRXP_FRIENDLY_Pilot Stonegear|r
+    .turnin 317 >> Turn in Stocking Jetsteam
+    .accept 318 >> Accept Evershine
+    .turnin 313 >> Turn in The Grizzled Den
+    .target Pilot Stonegear
+    .target Pilot Bellowfiz
+step << !Rogue
+    #label IFentry
+    .goto 1426,47.412,41.658,50,0
+    .goto 1426,51.529,39.888,50,0
+    .goto 1426,53.426,34.956,25 >> Enter Ironforge
+step << Shaman
+    #requires IFentry
+    .goto 1455,39.778,32.911
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Balthus Stoneflayer|r, |cRXP_FRIENDLY_Bombus Finespindle|r and |cRXP_FRIENDLY_Greta Finespindle|r
+    .target +Balthus Stoneflayer
+    .vendor
+    .target +Greta Finespindle
+    .train 2108 >> Train |T133611:0|t[Leatherworking]
+    .target +Bombus Finespindle
+    .collect 2320,2
+    .collect 5957,2
+step << Shaman
+    .goto 1455,60.340,45.188,20
+    >> Stop by the enchanting trainer to trade vests
+step << Shaman
+    .goto 1455,61.239,89.232
+    >> Trade Leather Vests on the way
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Buliwyf Stonehand|r
+    .target Buliwyf Stonehand
+    .train 199 >> Train |T133479:0|t[Two-Handed Maces]
+step << Warlock
+    #requires IFentry
+    .goto 1455,19.391,56.074
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barim Jurgenstaad|r
+    .target +Barim Jurgenstaad
+    .collect 17034,1
+step << Warlock
+    .goto 1455,43.826,27.962
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Uthrar Threx|r
+    .target +Uthrar Threx
+    .train 3908 >> Train |T136249:0|t[Tailoring]
+step << Warlock
+    .goto 1455,60.340,45.188
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thonys Pillarstone|r and |cRXP_FRIENDLY_Tilli Thistlefuzz|r
+    .target +Tilli Thistlefuzz
+    .vendor
+    .collect 6217,1
+    .collect 4470,2
+    .collect 247786,7
+    .collect 20758,1
+    .collect 6218,1
+    .collect 247789,1
+    .target +Thonys Pillarstone
+    .train 7411 >> Train |T136244:0|t[Enchanting]
+    .train 14293,1
+step << Paladin
+    #requires IFentry
+    .goto 1455,19.391,56.074
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barim Jurgenstaad|r
+    .target +Barim Jurgenstaad
+    .collect 17034,1
+step << Paladin
+    .goto 1455,60.340,45.188
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thonys Pillarstone|r and |cRXP_FRIENDLY_Tilli Thistlefuzz|r
+    .target +Tilli Thistlefuzz
+    .vendor
+    .collect 6217,1
+    .collect 247786,10
+    .collect 20758,1
+    .collect 6218,1
+    .target +Thonys Pillarstone
+    .train 7411 >> Train |T136244:0|t[Enchanting]
+    .train 14293,1
+step
+    #completewith Rudra
+    #label Dirt
+    .goto 1426,53.426,34.956,40,0
+    .goto 1426/0,-1145.04,-5504.30,40,0
+    .goto 1426/0,-1219.90,-5422.55,40 >>Exit Ironforge towards Vagash
+    .isQuestAvailable 314
+step
+    #completewith next
+    #requires Dirt
+    +|cRXP_WARN_Kite |cRXP_ENEMY_Vagash|r down to|r |cRXP_FRIENDLY_Rudra|r
+    .mob Vagash
+step
+    #label Rudra
+    .goto 1426/0,-1304.71,-5513.86
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rudra Amberstill|r
+    .accept 314 >> Accept Protecting the Herd
+    .target Rudra Amberstill
+step
+    .goto 1426,62.094,47.154,40,0
+    .goto 1426,62.434,48.989,40,0
+    .goto 1426,62.538,46.195
+    >>Kill |cRXP_ENEMY_Vagash|r. Loot him for his |cRXP_LOOT_Fang|r
+    >>|cRXP_WARN_Kite him to the guard south of the ranch. Make sure you do 51%+ damage to him|r
+    .complete 314,1 --Collect Fang of Vagash (1)
+    .mob Vagash
+step
+    .goto 1426/0,-1304.71,-5513.86
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rudra Amberstill|r
+    .turnin 314 >> Turn in Protecting the Herd
+    .target Rudra Amberstill
+step
+    .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
+    .target Spirit Healer
+step << Rogue
+    #label Blacksmithing1
+    .goto 1426,45.344,51.936
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
+    >>|cRXP_WARN_Drop mining for the profession slot|r
+    >>|cRXP_WARN_This will allow you to make|r |T135255:0|t[Rough Weightstones] |cRXP_WARN_which increase your melee damage by 2|r
+    >>|cRXP_WARN_If you don't want to do this, skip this step|r
+    .train 2018 >> Train |T136241:0|t[Blacksmithing]
+    .vendor >> Buy a Stiletto
+    .collect 2494,1
 step 
     .goto 1426,46.652,53.915
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eric Brighthammer|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Golorn Frostbeard|r and |cRXP_FRIENDLY_Eric Brighthammer|r
+    >> Resummon |T136218:0|tImp and |T136185:0|tRebuff << Warlock
+    >> Craft Sharpening stones and Whetstones, sell your pickaxe << Rogue
+    >> |cRXP_WARN_CRAFT AT CAMPFIRES
+    .target +Golorn Frostbeard
+    .target +Senir Whitebeard
     .target +Eric Brighthammer
-    .turnin 96629 >> Turn in Camping 101: Cooking
-step << Shaman
-    .goto 1426,47.556,51.973,10,0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ingrid Dunwald|requires
-    .trainer >> Train your class spells
-    .target Ingrid Dunwald
+    .vendor >> Vendor Trash
+    .turnin 96608 >> Turn in The Great Outdoors
+    .accept 96031 >> Accept Camping 101: Leatherworking << Shaman
+    .accept 96056 >> Accept Camping 101: Skinning << Shaman/Paladin/Rogue
+    .accept 96057 >> Accept Camping 101: Tailoring << Warlock
+    .accept 96059 >> Accept Camping 101: Enchanting << Warlock/Paladin
+    .accept 96629 >> Accept Camping 101: Cooking
+    .collect 2320,3 << Warlock
+    .collect 3371,2 << Warlock
+    .complete 96608,1
+    .complete 96608,2
+    .collect 4238,1 << Warlock
+    .collect 20744,2 << Warlock
 step << Warlock
     .goto 1426/0,-528.87,-5640.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimrizz Shadowcog|r
@@ -806,6 +780,11 @@ step << Warlock
     .vendor 6328 >> |cRXP_BUY_Buy the|r |T133738:0|t[Grimoire of Blood Pact (Rank 1)] |cRXP_BUY_if you can afford it. If not you can buy it later|r
     .target Dannie Fizzwizzle
     .money <0.0100
+step << Shaman
+    .goto 1426,47.556,51.973,10,0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ingrid Dunwald|requires
+    .trainer >> Train your class spells
+    .target Ingrid Dunwald
 step << Paladin
     .goto 1426/0,-542.100,-5586.800
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Azar Stronghammer|r inside upstairs
@@ -817,14 +796,11 @@ step << Rogue
     .trainer >> Train your class spells
     .target Hogral Bakkan
 step
-    #label jetsteamEnd
-    .goto 1426/0,-632.15,-5466.540
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Bellowfiz|r and |cRXP_FRIENDLY_Pilot Stonegear|r
-    .turnin 317 >> Turn in Stocking Jetsteam
-    .accept 318 >> Accept Evershine
-    .turnin 313 >> Turn in The Grizzled Den
-    .target Pilot Stonegear
-    .target Pilot Bellowfiz
+    .goto 1426,47.6,52.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gremlock Pilsnor|r
+    .train 2550 >> Train |T133971:0|t[Cooking]
+    .turnin 96629 >> Turn in Camping 101: Cooking
+    .target Gremlock Pilsnor
 step
     #completewith ShimmerweedCollect
     #optional

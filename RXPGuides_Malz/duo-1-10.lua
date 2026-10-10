@@ -507,6 +507,7 @@ step
     .mob Large Crag Boar
     .mob Crag Boar
 step
+    >> Go left around the mountain not through Kharanos, will fix arrow with this vod
     .goto 1426,44.084,57.031
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Gretchen|r
     .turnin 98322 >> Turn in Secure the Mountain
@@ -530,13 +531,6 @@ step
     .collect 2886,6,384,1 --Collect Crag Boar Rib (x6)
     .mob Large Crag Boar
     .mob Crag Boar
-step
-    #label jetsteamEnd
-    .goto 1426/0,-632.15,-5466.540
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Bellowfiz|r
-    .turnin 317 >> Turn in Stocking Jetsteam
-    .accept 318 >> Accept Evershine
-    .target Pilot Bellowfiz
 step
     #completewith Rudra
     #label Dirt
@@ -598,9 +592,17 @@ step
 step
     #completewith next
     >> Make sure to trade money around, ~12 silver cost for shaman and ~4 silver cost for wand users
-step << !Rogue !Paladin
+    >> Loan Coldridge Hammers to the vendor if necessary to get the training
+step
     .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
     .target Spirit Healer
+step
+    #label jetsteamEnd
+    .goto 1426/0,-632.15,-5466.540
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Bellowfiz|r
+    .turnin 317 >> Turn in Stocking Jetsteam
+    .accept 318 >> Accept Evershine
+    .target Pilot Bellowfiz
 step << !Rogue !Paladin
     #label IFentry
     .goto 1426,47.412,41.658,50,0
@@ -641,7 +643,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Uthrar Threx|r
     .target +Uthrar Threx
     .train 3908 >> Train |T136249:0|t[Tailoring]
-step
+step << !Rogue !Paladin
 	.hs >> Hearth to Kharanos
 step << Rogue
     #label Blacksmithing1

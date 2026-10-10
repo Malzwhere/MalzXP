@@ -982,7 +982,8 @@ step
     .mob Frostmane Headhunter
     .complete 287,2 --Fully explore Frostmane Hold
 step
-	.hs >> Hearth to Kharanos
+    .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
+    .target Spirit Healer
 step
     #optional
     .goto 1426/0,-531.23,-5601.59

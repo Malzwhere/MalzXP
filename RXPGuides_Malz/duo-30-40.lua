@@ -835,11 +835,11 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archbishop Benedictus|r
     .turnin 293 >> Turn in Cleansing the Eye
     .target Archbishop Benedictus
-step
-    .goto 1453,37.98,64.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kimberly Grant|r, she patrols around the park
-    .turnin 98156 >> Turn in Packaged Pristine Pelts
-    .target Kimberly Grant
+-- step -- hinges on doing RFK/shimmering flats
+--     .goto 1453,37.98,64.40
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kimberly Grant|r, she patrols around the park
+--     .turnin 98156 >> Turn in Packaged Pristine Pelts
+--     .target Kimberly Grant
 step
     .goto 1453,50.53,87.34
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Malin|r
@@ -1088,7 +1088,7 @@ step
     .accept 583 >> Accept Welcome to the Jungle
     .goto Stranglethorn Vale,35.662,10.529
     .turnin 583 >> Turn in Welcome to the Jungle
-    .turnin 5762 >> Turn in Hemet Nesingwary
+    .turnin -5762 >> Turn in Hemet Nesingwary
     .goto Stranglethorn Vale,35.658,10.808
     .target Barnil Stonepot
     .target Hemet Nesingwary
@@ -1152,8 +1152,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
-#name 35-35 Arathi
-#next 35-36 City of Dalaran
+#name 35-36 Arathi
+#next 36-37 City of Dalaran
 #defaultfor Dwarf/Gnome
 
 
@@ -1249,13 +1249,12 @@ step
     .goto Arathi Highlands,50.58,59.70,60,0
     .goto Arathi Highlands,53.08,61.57,60,0
     .goto Arathi Highlands,59.09,63.04,60,0
-    >>AoE the |cRXP_ENEMY_Forsaken Courier|r. Loot it for the |cRXP_LOOT_Sealed Folder|r
+    >>Kill the |cRXP_ENEMY_Forsaken Courier|r. Loot it for the |cRXP_LOOT_Sealed Folder|r
     .complete 658,1 
     .unitscan Forsaken Courier
 step
     .goto Arathi Highlands,60.185,53.848
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quae|r
-    >>|cRXP_WARN_Don't go out of your way to find the |cRXP_ENEMY_Forsaken Courier|r. You can skip this step and finish it later|r
     .turnin 658 >> Turn in Hints of a New Plague?
     .target Quae
 step
@@ -1384,8 +1383,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
-#name 35-36 City of Dalaran
-#next 36-37 Desolace
+#name 36-37 City of Dalaran
+#next 37-38 Desolace
 #defaultfor Dwarf/Gnome
 
 
@@ -1539,8 +1538,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
-#name 36-37 Desolace
-#next 37-38 STV
+#name 37-38 Desolace
+#next 38-39 STV
 #defaultfor Dwarf/Gnome
 
 
@@ -1652,7 +1651,7 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
-#name 38-40 Dustwallow Marsh
+#name 39-40 Dustwallow Marsh
 #next 40-40 Razorfen Downs
 #defaultfor Dwarf/Gnome
 

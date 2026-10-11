@@ -160,10 +160,6 @@ step
     .target Grelin Whitebeard
 step
     #loop
-    .goto 1426,25.861,78.197,0
-    .goto 1426,23.716,80.257,0
-    .goto 1426,20.671,75.838,0
-    .goto 1426,25.861,78.197,45,0
     .goto 1426,26.382,78.409,45,0
     .goto 1426,26.031,79.854,45,0
     .goto 1426,23.716,80.257,45,0
@@ -525,13 +521,6 @@ step
     .turnin 5541 >> Turn in Ammo for Rumbleshot
     .target Hegnar Rumbleshot
 step
-    #optional
-    #completewith EvershineEnd
-    >>Kill |cRXP_ENEMY_Large Crag Boars|r and |cRXP_ENEMY_Crag Boars|r. Loot them for their |cRXP_LOOT_Crag Boar Ribs|r
-    .collect 2886,6,384,1 --Collect Crag Boar Rib (x6)
-    .mob Large Crag Boar
-    .mob Crag Boar
-step
     #completewith Rudra
     #label Dirt
     .goto 1426/0,-1219.90,-5422.55,40 >>Travel towards Vagash
@@ -679,6 +668,14 @@ step
     .collect 4238,1 << Warlock
     .collect 20744,2 << Warlock
 step
+    #optional
+    #completewith EvershineEnd
+    >>Kill |cRXP_ENEMY_Large Crag Boars|r and |cRXP_ENEMY_Crag Boars|r. Loot them for their |cRXP_LOOT_Crag Boar Ribs|r
+    .collect 2886,6,384,1 --Collect Crag Boar Rib (x6)
+    .mob Large Crag Boar
+    .mob Crag Boar
+step
+    >> Skip Bitter Rivals, Evershine, and Favor for Evershine if only one of you ran here
     .goto 1426,31.547,44.694,20,0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gretta Ganter|r, |cRXP_FRIENDLY_Rejold Barleybrew|r, and |cRXP_FRIENDLY_Marleth Barleybrew|r
     .target +Gretta Ganter
@@ -748,16 +745,13 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jarven Thunderbrew|r downstairs
     .turnin 308 >> Turn in Distracting Jarven
     .target Jarven Thunderbrew
+    .isOnQuest 310
 step
+    .isOnQuest 310
     .goto 1426/0,-547.93,-5607.27
     >>Click the |cRXP_PICK_Unguarded Thunder Ale Barrel|r
     .turnin 310 >> Turn in Bitter Rivals
     .accept 311 >> Accept Return to Marleth
-step
-    .goto 1426,45.339,51.992
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
-    .turnin 98321 >> Turn in Flintfire's Shipment
-    .target Tognus Flintfire
 step
     .goto 1426/0,-504.05,-5596.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragnar Thunderbrew|r outside
@@ -765,10 +759,10 @@ step
     .target Ragnar Thunderbrew
     .isQuestComplete 384
 step
-    .goto 1426/0,-632.15,-5466.540
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Stonegear|r
-    .turnin 313 >> Turn in The Grizzled Den
-    .target Pilot Stonegear
+    .goto 1426,45.339,51.992
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tognus Flintfire|r
+    .turnin 98321 >> Turn in Flintfire's Shipment
+    .target Tognus Flintfire
 step << Warlock
     .goto 1426/0,-528.87,-5640.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimrizz Shadowcog|r
@@ -801,6 +795,11 @@ step
     .train 2550 >> Train |T133971:0|t[Cooking]
     .turnin 96629 >> Turn in Camping 101: Cooking
     .target Gremlock Pilsnor
+step
+    .goto 1426/0,-632.15,-5466.540
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pilot Stonegear|r
+    .turnin 313 >> Turn in The Grizzled Den
+    .target Pilot Stonegear
 step
     #completewith ShimmerweedCollect
     #optional
@@ -869,15 +868,27 @@ step
     .vendor >> Vendor trash
     .target Keeg Gibn
 step
+    #completewith EvershineEnd
+    .isOnQuest 318
+    .turnin 318 >> Turn in Evershine
+    .accept 319 >> Accept A Favor for Evershine
+    .accept 310 >> Accept Bitter Rivals
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rejold Barleybrew|r and |cRXP_FRIENDLY_Marleth Barleybrew|r
+    .target +Rejold Barleybrew
+    .target +Marleth Barleybrew
+step
+    #completewith EvershineEnd
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marleth Barleybrew|r
+    .turnin -311 >> Turn in Return to Marleth
+    .goto 1426/0,315.42,-5372.02
+    .target +Marleth Barleybrew
+step
     #label EvershineEnd
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rejold Barleybrew|r, |cRXP_FRIENDLY_Marleth Barleybrew|r, and |cRXP_FRIENDLY_Gretta Ganter|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rejold Barleybrew|r and |cRXP_FRIENDLY_Gretta Ganter|r
     .turnin 315 >> Turn in The Perfect Stout
     .accept 413 >> Turn in Shimmer Stout
     .goto Dun Morogh,30.190,45.726
     .target +Rejold Barleybrew
-    .turnin 311 >> Turn in Return to Marleth
-    .goto 1426/0,315.42,-5372.02
-    .target +Marleth Barleybrew
     .target +Gretta Ganter
     .turnin 98326 >> Turn in Frosthowl
     .goto 1426,31.547,44.694
@@ -993,6 +1004,20 @@ step
     .vendor >> Sell junk
     .target Innkeeper Belm
     .isQuestAvailable 384
+step
+    #label Distracting
+    #completewith next
+    .goto 1426/0,-551.03,-5598.40,6,0
+    .goto 1426/0,-544.38,-5605.92,3,0
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jarven Thunderbrew|r downstairs
+    .turnin 308 >> Turn in Distracting Jarven
+    .target Jarven Thunderbrew
+    .isOnQuest 310
+step
+    .isOnQuest 310
+    .goto 1426/0,-547.93,-5607.27
+    >>Click the |cRXP_PICK_Unguarded Thunder Ale Barrel|r
+    .turnin 310 >> Turn in Bitter Rivals
 step << Shaman
     .goto 1426,47.556,51.973,10,0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ingrid Dunwald|r
@@ -1213,7 +1238,6 @@ step << Shaman
 step 
     .goto 1432/0,-2952.46,-5381.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yanni Stoutheart|r
-    >>|cRXP_BUY_Buy a|r |T133634:0|t[Small Brown Pouch] |cRXP_BUY_from her if no tailor and affordable|r
     .vendor
     .target Yanni Stoutheart
 step << !Paladin

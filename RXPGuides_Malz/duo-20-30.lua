@@ -2139,7 +2139,7 @@ step
     .mob Insane Ghoul
     .isQuestTurnedIn 174
 step
-    .isQuestComplete 177
+    .isOnQuest 177
     .goto Duskwood,79.80,48.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Viktori Prism'Antras|r
     .turnin 177 >> Turn in Look To The Stars
@@ -2363,11 +2363,6 @@ step
     .fly Astranaar >> Fly to Astranaar
     .target Caylais Moonfeather
 step
-    .goto Ashenvale,34.67,48.83
-    .target Shindrell Swiftfire
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shindrell Swiftfire|r
-    .accept 4581 >> Accept Kayneth Stillwind
-step
     .goto Ashenvale,36.61,49.58
     .target Raene Wolfrunner
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raene Wolfrunner|r
@@ -2405,11 +2400,11 @@ step
     .target Sentinel Melyria Frostshadow
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Melyria Frostshadow|r
     .accept 1022 >> Accept The Howling Vale
-step << skip
-    .goto Ashenvale,21.73,53.34
-    .target Illiyana
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
-    .accept 1021 >> Accept Vile Satyr! Dryads in Danger!
+-- step << skip
+--     .goto Ashenvale,21.73,53.34
+--     .target Illiyana
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
+--     .accept 1021 >> Accept Vile Satyr! Dryads in Danger!
 -- step << skip
 --     .goto Ashenvale,26.19,38.69
 --     .target Delgren the Purifier
@@ -2548,11 +2543,11 @@ step
     >>Open the |cRXP_PICK_Rusty Chests|r. Loot it for the |cRXP_LOOT_Iron Pommel|r
     .complete 1027,1 
     .mob Rotting Slime
-step << skip
-    .goto Ashenvale,75.29,72.00
-    >>Loot the |cRXP_LOOT_Bottle of Disease|r on the table
-    >>|cRXP_WARN_Be cautious as the |cRXP_ENEMY_Forsaken|r defending it can be in|r |T132320:0|t[Stealth]
-    .complete -1011,1 
+-- step << skip
+--     .goto Ashenvale,75.29,72.00
+--     >>Loot the |cRXP_LOOT_Bottle of Disease|r on the table
+--     >>|cRXP_WARN_Be cautious as the |cRXP_ENEMY_Forsaken|r defending it can be in|r |T132320:0|t[Stealth]
+--     .complete -1011,1 
 step
     #label slimes
     .goto Ashenvale,72.6,71.6,60,0
@@ -2918,6 +2913,11 @@ step
 step
     >> |cRXP_WARN_CRAFT ON TRAM
     .zone Ironforge >> Take the Deeprun Tram to Ironforge
+step
+    .goto Ironforge,50.826,5.613
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gerrig Bonegrip|r
+    .turnin 971 >> Turn in Knowledge in the Deeps
+    .target Gerrig Bonegrip
 step << Warlock
     .goto 1455/0,-1117.60,-4615.14,15,0
     .goto 1455/0,-1111.62,-4599.09
@@ -2939,11 +2939,6 @@ step << Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
     .trainer >> Train your class spells
     .target Beldruk Doombrow
-step
-    .goto Ironforge,50.826,5.613
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gerrig Bonegrip|r
-    .turnin 971 >> Turn in Knowledge in the Deeps
-    .target Gerrig Bonegrip
 step
     .goto 1455,18.564,51.558
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Firebrew|r
@@ -2999,6 +2994,8 @@ step
     .target Captain Stoutfist
     >>Talk to |cRXP_FRIENDLY_Captain Stoutfist|r
     .accept 464 >> Accept War Banners
+    .accept 98221 >> Accept From the Ashes
+    >> Wowhead thinks both should be there at the same time, hopefully the case
 step
 	#label relics
 	#sticky
@@ -3020,6 +3017,7 @@ step
     .target Prospector Whelgar
     >>Talk to |cRXP_FRIENDLY_Prospector Whelgar|r
 	.turnin 299 >>Turn in Uncovering the Past
+    .accept 98216 >> Accept Understanding our Present
 step
     .goto Wetlands,38.179,50.889
     >>Talk to |cRXP_FRIENDLY_Ormer Ironbraid|r
@@ -3033,19 +3031,32 @@ step
     *Note: He can very very rarely be found patroling the quarry below.
     .complete 296,1 --Collect Sarltooth's Talon (x1)
 step
+    >> Jump down and use the Goaz Stone to summon the elite
+    .complete 98216,1
+step
     .goto Wetlands,38.179,50.889
     .target Ormer Ironbraid
     >>Talk to |cRXP_FRIENDLY_Ormer Ironbraid|r
     .turnin 296 >> Turn in Ormer's Revenge
 step
+	.goto Wetlands,38.81,52.39
+    .target Prospector Whelgar
+    >>Talk to |cRXP_FRIENDLY_Prospector Whelgar|r
+    .turnin 98216 >> Turn in Understanding our Present
+step
 	.goto Wetlands,34.3,41.2,60,0
     .goto Wetlands,44.8,43.9
 	>>Kill Dragonmaw Orcs
     .complete 464,1 --Collect Dragonmaw War Banner (x8)
+    .complete 98221,1 -- Destroy attack plans 1-4
+    .complete 98221,2
+    .complete 98221,3
+    .complete 98221,4
 step
     .goto Wetlands,9.9,57.4
     >>Talk to |cRXP_FRIENDLY_Captain Stoutfist|r
     .turnin 464 >> Turn in War Banners
+    .turnin 98221 >> Accept From the Ashes
     .target Captain Stoutfist
     .accept 465 >> Accept Nek'rosh's Gambit
 step
@@ -3118,16 +3129,16 @@ step
     .accept 290 >> Accept Lifting the Curse
     .target First Mate Fitzsimmons
 step
-    .goto Wetlands,8,55.8
-    .target Sylessa Duskwhisper
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sylessa Duskwhisper|r
-    .turnin 98208 >> Turn in Bloom of the Heavens
-step
     .goto Wetlands,10.58,60.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Glorin Steelbrow|r
     .turnin 324 >>Turn in The Lost Ingots
     .accept 322 >>Accept Blessed Arm
     .target Glorin Steelbrow
+step
+    .goto Wetlands,8,55.8
+    .target Sylessa Duskwhisper
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sylessa Duskwhisper|r
+    .turnin 98208 >> Turn in Bloom of the Heavens
 step
     #label Halyndor
     .goto Wetlands,15.984,23.111,25,0
@@ -3159,22 +3170,6 @@ step
     >>|cRXP_ENEMY_Chieftain Nek'rosh|r |cRXP_WARN_is immune to Fire damage|r << Mage/Warlock/Shaman
     .complete 474,1 
     .mob Chieftain Nek'rosh
-step
-    .goto Wetlands,49.7,18.3
-    .target Rhag Garmason
-    >>Talk to |cRXP_FRIENDLY_Rhag Garmason|r
-    .accept 634 >> Accept Plea to the Alliance
-step
-    >>Travel to Refuge Pointe
-    >>Talk to |cRXP_FRIENDLY_Nials|r
-    .turnin 634 >>Turn in Plea To The Alliance
-    .goto Arathi Highlands,45.83,47.56
-    .target Captain Nials
-step
-    .goto Arathi Highlands,45.76,46.09
-    >>Talk to |cRXP_FRIENDLY_Cedrik|r
-    .fp Refuge Pointe >> Get the Refuge Pointe flight path
-    .target Cedrik Prose
 step
     #completewith next
     .goto Wetlands,49.9,18.3
@@ -3215,6 +3210,14 @@ step
     .target Rhag Garmason
     .accept 633 >> Accept The Thandol Span
 step
+    .goto Arathi Highlands,43.3,92.6
+    .target Foggy MacKreel
+    >>Talk to |cRXP_FRIENDLY_Foggy MacKreel|r
+    .accept 647 >> Accept MacKreel's Moonshine
+    >>You can still get this quest if you don't have any kind of speed increase or slow fall
+    .link https://www.twitch.tv/videos/646111384 >>Click here for reference
+    >> Alternatively just swiftness pot
+step
     .goto Arathi Highlands,44.3,93.0
 	>>Jump down and loot the letter from the corpse underwater
     .accept 637 >> Accept Sully Balloo's Letter
@@ -3235,7 +3238,42 @@ step
     .turnin 633 >> Turn in The Thandol Span
     .target Rhag Garmason
 step
+    .goto Wetlands,49.7,18.3
+    .target Rhag Garmason
+    >>Talk to |cRXP_FRIENDLY_Rhag Garmason|r
+    .accept 634 >> Accept Plea to the Alliance
+step
+    >>Travel to Refuge Pointe
+    >>Talk to |cRXP_FRIENDLY_Nials|r
+    .turnin 634 >>Turn in Plea To The Alliance
+    .goto Arathi Highlands,45.83,47.56
+    .target Captain Nials
+step
+    .goto Arathi Highlands,45.76,46.09
+    >>Talk to |cRXP_FRIENDLY_Cedrik|r
+    .fp Refuge Pointe >> Get the Refuge Pointe flight path
+    .fly Southshore >> Fly to Southshore
+    .target Cedrik Prose
+step
+    .isOnQuest 647
+    >>Run to Southshore and go downstairs in the inn. Turn in before the timer is up. Watch out for the courier on the road.
+	.unitscan Forsaken Bodyguard
+    .goto Hillsbrad Foothills,52.2,58.6
+    .target Brewmeister Bilger
+    >>Talk to |cRXP_FRIENDLY_Brewmeister Bilger|r
+    .turnin 647 >> Turn in MacKreel's Moonshine
+step
     .hs >> Hearth to Ironforge
+step
+    .goto 1455,18.564,51.558
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Firebrew|r
+    .vendor >> Buy water if necessary
+    .target Innkeeper Firebrew
+step << Shaman
+    .goto 1455,19.391,56.074
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barim Jurgenstaad|r
+    .target +Barim Jurgenstaad
+    .collect 17030,5
 step
     .goto Ironforge,63.50,67.30
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sara Balloo|r

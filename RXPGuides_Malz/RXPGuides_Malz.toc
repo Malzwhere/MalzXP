@@ -13,3 +13,4 @@ duo-20-30.lua
 duo-30-40.lua
 duo-40-50.lua
 duo-50-60.lua
+duo-bonus-xp.lua

@@ -959,28 +959,28 @@ step
     .turnin 1020 >> Turn in Orendil's Cure
     .timer 24,Orendil's Cure RP
     .accept 1033 >> Accept Elune's Tear
--- step
---     #label Azshara
---     .goto Azshara,11.90,77.57
---     .goto 1440/1,-2331.800,1927.400,0
---     .goto 1440/1,-2395.500,2032.800,0
---     >>|cRXP_WARN_Be careful about|r |cRXP_ENEMY_Horde Guards|r |cRXP_WARN_as you're making your way to Azshara. Theres two camps of guards (marked on your map) near the road next to Splintertree outpost that you can bodypull if not careful|r
---     >>You may encounter a |cRXP_ENEMY_Warsong Outrider|r patrolling the road north-east of Splintertree Post. |cRXP_WARN_You don't have to run around it as it's passive and will not attack you if you don't attack it first|r
---     .unitscan Splintertree Guard
---     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jarrodenus|r
---     .fp Azshara>> Get the Azshara flight path
---     .target Jarrodenus
+step
+    #label Azshara
+    .goto Azshara,11.90,77.57
+    .goto 1440/1,-2331.800,1927.400,0
+    .goto 1440/1,-2395.500,2032.800,0
+    >>|cRXP_WARN_Be careful about|r |cRXP_ENEMY_Horde Guards|r |cRXP_WARN_as you're making your way to Azshara. Theres two camps of guards (marked on your map) near the road next to Splintertree outpost that you can bodypull if not careful|r
+    >>You may encounter a |cRXP_ENEMY_Warsong Outrider|r patrolling the road north-east of Splintertree Post. |cRXP_WARN_You don't have to run around it as it's passive and will not attack you if you don't attack it first|r
+    .unitscan Splintertree Guard
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jarrodenus|r
+    .fp Azshara>> Get the Azshara flight path
+    .target Jarrodenus
 step
     #label TravelRatchet
-    -- .goto 1440,91.849,47.294,50,0
-    -- .goto 1440,92.595,58.920,50,0
-    -- .goto 1414,56.670,45.233,50,0
-    -- .goto 1411,35.444,2.784,50,0
-    -- .goto 1413,61.689,17.990,50,0
-    -- .goto 1413,64.422,33.891,50,0
+    .goto 1440,91.849,47.294,50,0
+    .goto 1440,92.595,58.920,50,0
+    .goto 1414,56.670,45.233,50,0
+    .goto 1411,35.444,2.784,50,0
+    .goto 1413,61.689,17.990,50,0
+    .goto 1413,64.422,33.891,50,0
     .goto The Barrens,63.087,37.607
-    .subzone 392 >> Travel to Ratchet, waypoints are broken since skipping Azshara but we can figure it out
-    -- .subzone 392 >> Travel to Ratchet in The Barrens. Follow the Arrow to avoid |cRXP_ENEMY_Barrens Guards|r
+    -- .subzone 392 >> Travel to Ratchet, waypoints are broken since skipping Azshara but we can figure it out
+    .subzone 392 >> Travel to Ratchet in The Barrens. Follow the Arrow to avoid |cRXP_ENEMY_Barrens Guards|r
 step
     .goto The Barrens,63.084,37.163
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bragok|r
@@ -2025,6 +2025,9 @@ step
     .turnin 96139 >> Turn in The Valor Family
     .target Sirra Von'Indi
 step
+    #completewith next
+    .destroy 281149 >> Delete the |T133743:0|t[Memories of Valor]
+step
     .goto Duskwood,71.938,47.778
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Councilman Millstipe|r
     .accept 377 >> Accept Crime and Punishment
@@ -2397,7 +2400,7 @@ step
     .complete 973,1
     .mob Ilkrud Magthrull
     .isOnQuest 973
-step << skip
+step
     .goto Ashenvale,22.23,52.98
     .target Sentinel Melyria Frostshadow
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Melyria Frostshadow|r
@@ -2407,12 +2410,12 @@ step << skip
     .target Illiyana
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
     .accept 1021 >> Accept Vile Satyr! Dryads in Danger!
-step << skip
-    .goto Ashenvale,26.19,38.69
-    .target Delgren the Purifier
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
-    .turnin 973 >> Turn in The Tower of Althalaxx
-    .accept 1140 >> Accept The Tower of Althalaxx
+-- step << skip
+--     .goto Ashenvale,26.19,38.69
+--     .target Delgren the Purifier
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
+--     .turnin 973 >> Turn in The Tower of Althalaxx
+--     .accept 1140 >> Accept The Tower of Althalaxx
 step
     .goto Ashenvale,26.19,38.69
     .target Delgren the Purifier
@@ -2422,7 +2425,7 @@ step
 step
     .goto 1440/1,189.71,3185.77
     .target Feero Ironhand
-    >>|cRXP_WARN_This quest includes multiple waves of lvl 24 enemies, you can come back later if necessary|r
+    >>|cRXP_WARN_This quest includes multiple waves of lvl 24 enemies|r
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Feero Ironhand|r
     .accept 976 >> Accept Supplies to Auberdine
 step
@@ -2468,50 +2471,50 @@ step
     .goto Ashenvale,54.416,35.397
     >>Open the |cRXP_PICK_Worn Chest|r. Loot it for the |cRXP_LOOT_Iron Shaft|r
     .complete 1026,1
-step << skip
+step
     #completewith next
     .goto Ashenvale,53.440,36.131,15,0
     .goto Ashenvale,52.698,37.759,20 >> Run up here for a shortcut
     .isOnQuest 1022
-step << skip
+step
     .goto Ashenvale,50.49,39.12
     >>Click the |cRXP_PICK_Tome of Mel'Thandris|r on the table
-    .complete -1022,1
-step << skip
-    .goto Ashenvale,78.32,44.82
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anilia|r
-    .turnin 1021 >> Turn in Vile Satyr! Dryads in Danger!
-    .target Anilia
-    .accept 1031 >> Accept The Branch of Cenarius
-step << skip
-    .goto Ashenvale,77.99,42.41
-    >>Kill |cRXP_ENEMY_Geltharis|r. Loot him for his |cRXP_LOOT_Branch|r
-    .complete -1031,1
-    .mob Geltharis
-step << skip
-    .goto Ashenvale,85.23,44.71
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kayneth Stillwind|r
-    .turnin -4581 >> Turn in Kayneth Stillwind
-    .target Kayneth Stillwind
-    .accept 1011 >> Accept Forsaken Diseases
-step << skip
-    .goto Azshara,11.90,77.57
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jarrodenus|r
-    .fp Azshara>> Get the Azshara flight path
-    .fly Ashenvale>> Fly to Ashenvale
-    .target Jarrodenus
-step << skip
+    .complete 1022,1
+-- step << skip
+--     .goto Ashenvale,78.32,44.82
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anilia|r
+--     .turnin 1021 >> Turn in Vile Satyr! Dryads in Danger!
+--     .target Anilia
+--     .accept 1031 >> Accept The Branch of Cenarius
+-- step << skip
+--     .goto Ashenvale,77.99,42.41
+--     >>Kill |cRXP_ENEMY_Geltharis|r. Loot him for his |cRXP_LOOT_Branch|r
+--     .complete -1031,1
+--     .mob Geltharis
+-- step << skip
+--     .goto Ashenvale,85.23,44.71
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kayneth Stillwind|r
+--     .turnin -4581 >> Turn in Kayneth Stillwind
+--     .target Kayneth Stillwind
+--     .accept 1011 >> Accept Forsaken Diseases
+-- step << skip
+--     .goto Azshara,11.90,77.57
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jarrodenus|r
+--     .fp Azshara>> Get the Azshara flight path
+--     .fly Ashenvale>> Fly to Ashenvale
+--     .target Jarrodenus
+step 
     .goto Ashenvale,22.23,52.98
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Melyria Frostshadow|r
-    .turnin -1022 >> Turn in The Howling Vale
+    .turnin 1022 >> Turn in The Howling Vale
     .target Sentinel Melyria Frostshadow
-    .accept 1037 >> Accept Velinde Starsong
-step << skip
-    .goto Ashenvale,21.73,53.34
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
-    .turnin -1031 >> Turn in The Branch of Cenarius
-    .target Illiyana
-    .accept 1032 >> Accept Satyr Slaying!
+    -- .accept 1037 >> Accept Velinde Starsong
+-- step
+--     .goto Ashenvale,21.73,53.34
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
+--     .turnin -1031 >> Turn in The Branch of Cenarius
+--     .target Illiyana
+--     .accept 1032 >> Accept Satyr Slaying!
 step
     .goto Ashenvale,53.53,46.21
     >>May need to wait for RP
@@ -2560,62 +2563,62 @@ step
     >>Open the |cRXP_PICK_Rusty Chests|r. Loot it for the |cRXP_LOOT_Iron Pommel|r
     .complete 1027,1 
     .mob Rotting Slime
-step << skip
-    .goto Ashenvale,85.23,44.71
-    .target Kayneth Stillwind
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kayneth Stillwind|r
-    .turnin -1011 >> Turn in Forsaken Diseases
-step << skip
-    .goto Ashenvale,86.221,45.846
-    .target Maseara Autumnmoon
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maseara Autumnmoon|r
-    .accept 98417 >> Accept Vengeful Trail
-step << skip
-    #completewith SatyrHorns
-    >>Kill |cRXP_ENEMY_Satyrs|r. Loot them for their |cRXP_LOOT_Horns|r. Make sure only one of you is on this quest
-    .complete -1032,1 
-step << skip
-    .goto Ashenvale,81.59,48.57
-    >>Click the |cRXP_PICK_Circle of Imprisonment|r in Satyrnaar
-    .complete -1140,2
-step << skip
-    .goto Ashenvale,81.59,48.57
-    >>Look around the camps for a scroll to loot
-    .complete 98417,1
-step << skip
-    .goto Ashenvale,86.221,45.846
-    .target Maseara Autumnmoon
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maseara Autumnmoon|r
-    .turnin 98417 >> Turn in Vengeful Trail
-    .accept 98418 >> Accept Shared Fury
-step << skip
-    .goto Ashenvale,79,46
-    >>Kill |cRXP_ENEMY_Xavian Satyrs|r
-    .complete 98418,1
-    .complete 98418,2
-    .complete 98418,3
-    .complete 98418,4
-step << skip
-    .goto Ashenvale,86.221,45.846
-    .target Maseara Autumnmoon
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maseara Autumnmoon|r
-    .turnin 98418 >> Turn in Shared Fury
-step << skip
-    #label SatyrHorns
-    .goto Ashenvale,78.776,46.765,110,0
-    .goto Ashenvale,73.835,47.120,100,0
-    .goto Ashenvale,66.62,56.99
-    >>Click the |cRXP_PICK_Circle of Imprisonment|r in Night Run
-    >>|cRXP_WARN_Be cautious of |cRXP_ENEMY_Felmusk Shadowstalkers|r in|r |T132320:0|t[Stealth]
-    .complete -1140,1 
-step << skip
-    .goto Ashenvale,81.42,49.87
-    >>Kill |cRXP_ENEMY_Satyrs|r. Loot them for their |cRXP_LOOT_Horns|r
-    .complete -1032,1 
-    .mob Felmusk Felsworn
-    .mob Felmusk Rogue
-    .mob Felmusk Satyr
-    .mob Felmusk Shadowstalker
+-- step << skip
+--     .goto Ashenvale,85.23,44.71
+--     .target Kayneth Stillwind
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kayneth Stillwind|r
+--     .turnin -1011 >> Turn in Forsaken Diseases
+-- step << skip
+--     .goto Ashenvale,86.221,45.846
+--     .target Maseara Autumnmoon
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maseara Autumnmoon|r
+--     .accept 98417 >> Accept Vengeful Trail
+-- step << skip
+--     #completewith SatyrHorns
+--     >>Kill |cRXP_ENEMY_Satyrs|r. Loot them for their |cRXP_LOOT_Horns|r. Make sure only one of you is on this quest
+--     .complete -1032,1 
+-- step << skip
+--     .goto Ashenvale,81.59,48.57
+--     >>Click the |cRXP_PICK_Circle of Imprisonment|r in Satyrnaar
+--     .complete -1140,2
+-- step << skip
+--     .goto Ashenvale,81.59,48.57
+--     >>Look around the camps for a scroll to loot
+--     .complete 98417,1
+-- step << skip
+--     .goto Ashenvale,86.221,45.846
+--     .target Maseara Autumnmoon
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maseara Autumnmoon|r
+--     .turnin 98417 >> Turn in Vengeful Trail
+--     .accept 98418 >> Accept Shared Fury
+-- step << skip
+--     .goto Ashenvale,79,46
+--     >>Kill |cRXP_ENEMY_Xavian Satyrs|r
+--     .complete 98418,1
+--     .complete 98418,2
+--     .complete 98418,3
+--     .complete 98418,4
+-- step << skip
+--     .goto Ashenvale,86.221,45.846
+--     .target Maseara Autumnmoon
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maseara Autumnmoon|r
+--     .turnin 98418 >> Turn in Shared Fury
+-- step << skip
+--     #label SatyrHorns
+--     .goto Ashenvale,78.776,46.765,110,0
+--     .goto Ashenvale,73.835,47.120,100,0
+--     .goto Ashenvale,66.62,56.99
+--     >>Click the |cRXP_PICK_Circle of Imprisonment|r in Night Run
+--     >>|cRXP_WARN_Be cautious of |cRXP_ENEMY_Felmusk Shadowstalkers|r in|r |T132320:0|t[Stealth]
+--     .complete -1140,1 
+-- step << skip
+--     .goto Ashenvale,81.42,49.87
+--     >>Kill |cRXP_ENEMY_Satyrs|r. Loot them for their |cRXP_LOOT_Horns|r
+--     .complete -1032,1 
+--     .mob Felmusk Felsworn
+--     .mob Felmusk Rogue
+--     .mob Felmusk Satyr
+--     .mob Felmusk Shadowstalker
 step
     .goto Ashenvale,53.53,46.21
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shael'dryn|r
@@ -2709,18 +2712,18 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Kimlya|r
     .home >> Set your Hearthstone to Astranaar
     .target Innkeeper Kimlya
-step << skip
-    .goto Ashenvale,21.73,53.34
-    .target Illiyana
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
-    .turnin 1032 >> Turn in Satyr Slaying!
-    .isOnQuest 1032
-step << skip
-    .goto Ashenvale,26.19,38.69
-    .target Delgren the Purifier
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
-    .turnin 1140 >> Turn in The Tower of Althalaxx
-    .isOnQuest 1140
+-- step << skip
+--     .goto Ashenvale,21.73,53.34
+--     .target Illiyana
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
+--     .turnin 1032 >> Turn in Satyr Slaying!
+--     .isOnQuest 1032
+-- step << skip
+--     .goto Ashenvale,26.19,38.69
+--     .target Delgren the Purifier
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
+--     .turnin 1140 >> Turn in The Tower of Althalaxx
+--     .isOnQuest 1140
 ]])
 
 
@@ -2827,20 +2830,20 @@ step
     .turnin 1200 >> Turn in Blackfathom Villainy
     .goto Darnassus,56.167,24.395 
     .target Dawnwatcher Selgorm
-step << skip
+step
     #label darnassus
     .goto Darnassus,61.777,39.180
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thyn'tel Bladeweaver|r
     .turnin -1037 >> Turn in Velinde Starsong
     .target Thyn'tel Bladeweaver
     .accept 1038 >> Accept Velinde's Effects
-step << skip
+step
     .goto Darnassus,56.05,79.21,10,0
     .goto Darnassus,62.287,83.289
     >>Run up into the Sentinel's Bunkhouse and across the over-head bridge
     >>Open |cRXP_PICK_Velinde's Locker|r. Loot it for |cRXP_LOOT_Velinde's Journal|r
     .complete -1038,1 
-step << skip
+step
     .goto Darnassus,61.777,39.180
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thyn'tel Bladeweaver|r
     .turnin -1038 >> Turn in Velinde's Effects
@@ -2851,34 +2854,36 @@ step
     .goto Darnassus,29.466,41.405
     .zone Teldrassil >> Travel through the purple portal to Rut'theran Village
     .zoneskip Darkshore
-step << skip
-    .goto Teldrassil,58.39,94.01
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus|r
-    .fly Darkshore >> Fly to Auberdine
-    .target Vesprystus
+-- step
+--     .goto Teldrassil,58.39,94.01
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus|r
+--     .fly Darkshore >> Fly to Auberdine
+--     .target Vesprystus
+-- step
+--     .goto 1439/1,929.100,6543.600
+--     .zone Stormwind City >> Take the boat to Stormwind City
 step
-    .goto 1439/1,929.100,6543.600
-    .zone Stormwind City >> Take the boat to Stormwind City
-step << skip
     .goto Teldrassil,58.39,94.01
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vesprystus|r
     .fly Ratchet >> Fly to Ratchet
     .target Vesprystus
-step << skip
+step
     .goto The Barrens,63.2,38.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Wharfmaster Dizzywig|r
     .turnin -1039 >> Turn in The Barrens Port
     .accept 1040 >> Accept Passage to Booty Bay
     .target Wharfmaster Dizzywig
-step << skip
+step
     .zone Stranglethorn Vale >> Take the boat to Booty Bay
-step << skip
+step
     .goto Stranglethorn Vale,27.2,74
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Caravaneer Ruzzgot|r
     .turnin -1040 >> Turn in Passage to Booty Bay
     .accept 1041 >> Accept The Caravan Road
     .target Caravaneer Ruzzgot
-step << skip
+step
+    +Pick up some other quests while here for early STV
+step
     .goto Stranglethorn Vale,27.4,77.8
     .fp Booty Bay >> Get the Booty Bay Flight Path
     .fly Stormwind >> Fly to Stormwind City
@@ -3095,9 +3100,8 @@ step
     .accept 324 >>Accept The Lost Ingots
     .isQuestTurnedIn 270
 step
-    >> Loot Nord'el from one of the wreckages
-    .goto Wetlands,12.1,63.8
-    .complete 98208
+    >> Loot Nord'el the wreckage
+    .complete 98208,1
 step
     .goto Wetlands,12.6,65.2,60,0
     .goto Wetlands,10.2,71.0,60,0
@@ -3246,6 +3250,7 @@ step
     .accept 686 >> Accept A King's Tribute
     .target King Magni Bronzebeard
 step
+    #label endWetlands
     .goto Ironforge,39.03,88.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grand Mason Marblesten|r
     .turnin 686 >> Turn in A King's Tribute
@@ -3261,7 +3266,21 @@ step << Shaman
     .goto 1455,47.334,13.566
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
     .trainer >> Train your class spells
+    .accept 94789 >> Accept Call of Air
     .target Eldun Stormbreaker
+step << Shaman
+    .goto 1455/0,-1152.40,-4821.13
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryth Thurden|r
+    .fly Refuge Pointe >> Fly to Arathi Highlands
+    .target Gryth Thurden
+step << Shaman
+    .goto Arathi Highlands,59.8,27.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Veyric Thunderhame|r
+    .turnin 94789 >> Turn in Call of Air
+    .accept 96264 >> Accept Elemental Aid
+    .target Veyric Thunderhame
+step << Shaman
+    .hs >> Astral Recall back to Ironforge
 step << Rogue
     .goto 1455,51.6,14.8
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hulfdan Blackbeard|r
@@ -3272,6 +3291,4 @@ step << Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beldruk Doombrow|r
     .trainer >> Train your class spells
     .target Beldruk Doombrow
-step
-    #label endWetlands
 ]])

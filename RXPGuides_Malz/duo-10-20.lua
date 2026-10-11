@@ -1307,6 +1307,7 @@ step
     #completewith TramEnd
     >> |cRXP_WARN_CRAFT ON TRAM
 step
+    #label TramEnd
     #optional
     .zone Stormwind City >> Enter Stormwind
 step

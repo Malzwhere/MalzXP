@@ -1400,7 +1400,9 @@ step
     .accept 463 >> Accept The Greenwarden
 step
 	.goto 1437,10.682,60.896
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Helbrek|r inside
     .home >> Set your Hearthstone to Menethil Harbor
+    .target Innkeeper Helbrek
 step
     .goto 1437,10.815,60.406
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo upstairs and talk to |cRXP_FRIENDLY_Archaeologist Flagongut|r
@@ -2503,7 +2505,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Melyria Frostshadow|r
     .turnin 1022 >> Turn in The Howling Vale
     .target Sentinel Melyria Frostshadow
-    -- .accept 1037 >> Accept Velinde Starsong
+    .accept 1037 >> Accept Velinde Starsong
 -- step
 --     .goto Ashenvale,21.73,53.34
 --     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Illiyana|r
@@ -2829,7 +2831,7 @@ step
     #label darnassus
     .goto Darnassus,61.777,39.180
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thyn'tel Bladeweaver|r
-    .turnin -1037 >> Turn in Velinde Starsong
+    .turnin 1037 >> Turn in Velinde Starsong
     .target Thyn'tel Bladeweaver
     .accept 1038 >> Accept Velinde's Effects
 step
@@ -2837,11 +2839,11 @@ step
     .goto Darnassus,62.287,83.289
     >>Run up into the Sentinel's Bunkhouse and across the over-head bridge
     >>Open |cRXP_PICK_Velinde's Locker|r. Loot it for |cRXP_LOOT_Velinde's Journal|r
-    .complete -1038,1 
+    .complete 1038,1 
 step
     .goto Darnassus,61.777,39.180
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thyn'tel Bladeweaver|r
-    .turnin -1038 >> Turn in Velinde's Effects
+    .turnin 1038 >> Turn in Velinde's Effects
     .accept 1039 >> Accept The Barrens Port
     .target Thyn'tel Bladeweaver
 step
@@ -2865,7 +2867,7 @@ step
 step
     .goto The Barrens,63.2,38.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Wharfmaster Dizzywig|r
-    .turnin -1039 >> Turn in The Barrens Port
+    .turnin 1039 >> Turn in The Barrens Port
     .accept 1040 >> Accept Passage to Booty Bay
     .target Wharfmaster Dizzywig
 step
@@ -2873,7 +2875,7 @@ step
 step
     .goto Stranglethorn Vale,27.2,74
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Caravaneer Ruzzgot|r
-    .turnin -1040 >> Turn in Passage to Booty Bay
+    .turnin 1040 >> Turn in Passage to Booty Bay
     .accept 1041 >> Accept The Caravan Road
     .target Caravaneer Ruzzgot
 step

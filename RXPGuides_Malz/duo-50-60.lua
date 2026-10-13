@@ -47,7 +47,7 @@ step
 step
     .goto Desolace,66.275,6.554
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Lyshaerya|r
-    .home >> Set your Hearthstone to Desolace
+    .home >> Set your Hearthstone to Nijel's Point
     .target Innkeeper Lyshaerya
 step
     .goto Desolace,68.501,8.880

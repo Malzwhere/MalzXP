@@ -445,7 +445,7 @@ step
 step
     .goto 1426/0,-531.23,-5601.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Belm|r inside
-    .home >> Set your Hearthstone to Thunderbrew Distillery
+    .home >> Set your Hearthstone to Kharanos
     .target Innkeeper Belm
 step << Rogue
     .goto 1426,47.2,52.6
@@ -738,7 +738,6 @@ step
     .collect 2686,1,311 --Collect Thunder Ale (x1)
     .target Innkeeper Belm
 step
-    #label Distracting
     #completewith next
     .goto 1426/0,-551.03,-5598.40,6,0
     .goto 1426/0,-544.38,-5605.92,3,0
@@ -1005,7 +1004,6 @@ step
     .target Innkeeper Belm
     .isQuestAvailable 384
 step
-    #label Distracting
     #completewith next
     .goto 1426/0,-551.03,-5598.40,6,0
     .goto 1426/0,-544.38,-5605.92,3,0

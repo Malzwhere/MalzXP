@@ -9,7 +9,7 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
-#name 30-32 Stockades
+#name 31-32 Stockades
 #next 32-33 Excavation Site
 #defaultfor Dwarf/Gnome
 
@@ -36,12 +36,6 @@ step
 step
     #completewith next
     .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
-step
-    #label Eye
-    .goto 1453,50.35,45.52
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archbishop Benedictus|r
-    .turnin 293 >> Turn in Cleansing the Eye
-    .target Archbishop Benedictus
 step
     .goto 1453,50.882,47.148
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thomas|r
@@ -528,7 +522,21 @@ step
     .accept 95810 >> Accept Lost Relic Carry
     .use 270865
 step
-    +elite quests to the north east
+    #completewith StartGnomer
+    .goto Dun Morogh,24.2,39.1,0
+    +Start Looking for a Gnomeregan group
+    .subzoneskip 133
+    .subzoneskip 721,2
+step
+    .goto Wetlands,56.4,40.5
+    .target Rethiel the Greenwarden
+    >>Talk to |cRXP_FRIENDLY_Rethiel the Greenwarden|r
+    .turnin 95646 >> Turn in Horrors in the Highland
+step
+    .goto Wetlands,49.7,18.3
+    .target Motley Garmason
+    >>Talk to |cRXP_FRIENDLY_Motley Garmason|r
+    .turnin 378 >> Turn in The Fury Runs Deep
 step
 	.goto Wetlands,38.81,52.39
     .target Prospector Whelgar
@@ -536,20 +544,11 @@ step
 	.turnin 95810 >> Turn in Lost Relic Carry
     .accept 98824 >> Accept Prehistoric Prism
 step
+    #label StartGnomer
     .goto Wetlands,11.8,58.6
     .target Caitlin Grassman
     >>Talk to |cRXP_FRIENDLY_Caitlin Grassman|r
     .turnin 95809 >> Turn in Heartwoven
-step
-    .goto Wetlands,49.7,18.3
-    .target Motley Garmason
-    >>Talk to |cRXP_FRIENDLY_Motley Garmason|r
-    .turnin 378 >> Turn in The Fury Runs Deep
-step
-    .goto Wetlands,56.4,40.5
-    .target Rethiel the Greenwarden
-    >>Talk to |cRXP_FRIENDLY_Rethiel the Greenwarden|r
-    .turnin 95646 >> Turn in Horrors in the Highland
 ]])
 
 
@@ -564,6 +563,12 @@ RXPGuides.RegisterGuide([[
 #next 34-35 Duskwood/STV
 #defaultfor Dwarf/Gnome
 
+
+step
+    .goto Wetlands,9.49,59.69
+    >>Talk to |cRXP_FRIENDLY_Shellei|r
+    .fly Ironfroge >> Fly to Ironforge
+    .target Shellei Brondir
 step
     #completewith StartGnomer
     .goto Dun Morogh,24.2,39.1,0
@@ -592,11 +597,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Explorer Magellas|r
     .turnin 98824 >> Turn in Prehistoric Prism
     .target High Explorer Magellas
-step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Firebrew|r
-    .goto Ironforge,18.10,51.60
-    .home >> Set your Hearthstone to Ironforge
-    .target Innkeeper Firebrew
 step
     #completewith next
     .goto Dun Morogh,53.5,34.9
@@ -660,7 +660,7 @@ step
     .goto 1415,43.40,53.41
     >>Kill |cRXP_ENEMY_Troggs|r and |cRXP_ENEMY_Gnomes|r. Loot them for a |T133215:0|t[|cRXP_LOOT_White Punch Card|r]
     .collect 9279,1 
-    >>|cRXP_WARN_This quest is completed while OUTSIDE of the dungeon|r
+    >>|cRXP_WARN_This quest is completed while OUTSIDE of the dungeon|r 
 step
     .goto 1415,43.364,52.892,-1
     .goto 1415,43.411,52.898,-1
@@ -752,6 +752,8 @@ step
     .zoneskip Dun Morogh
     .zoneskip Ironforge
 step
+    +Check the auction house for silver bars, need a moss agate and one bar for this quest and 5 more for another later
+step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkmaster Overspark|r, |cRXP_FRIENDLY_High Tinker Mekkatorque|r, |cRXP_FRIENDLY_Master Mechanic Castpipe|r and |cRXP_FRIENDLY_Klockmort Spannerspan|r
     .turnin 2922,1 >> Turn in Save Techbot's Brain!
     .goto Ironforge,69.540,50.325
@@ -841,6 +843,15 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shoni the Shilent|r
     .turnin 2928 >> Turn in Gyrodrillmatic Excavationators
     .target Shoni the Shilent
+step
+    #completewith next
+    .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
+step
+    #label Eye
+    .goto 1453,50.35,45.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archbishop Benedictus|r
+    .turnin 293 >> Turn in Cleansing the Eye
+    .target Archbishop Benedictus
 step
     .goto Stormwind City,31.35,62.90
     >>Talk to |cRXP_FRIENDLY_Shylamiir|r
@@ -1790,7 +1801,7 @@ step
     >>Talk to |cRXP_FRIENDLY_Image of Archmage Modera|r
     .turnin 92457 >> Turn in Starving Arcane
     .turnin 92458 >> Turn in Heart of Disruption
-    .accept 92432 >> Accept Friend of the Kirin Tor
+    .accept 92459 >> Accept Friend of the Kirin Tor
 step
     #completewith next
     >> Go around front and enter Dalaran
@@ -1804,7 +1815,8 @@ step
     .goto 1416,14.19,60.14
     .target Archmage Celindra
     >>Talk to |cRXP_FRIENDLY_Archmage Celindra|r
-    .turnin 92432 >> Turn in Friend of the Kirin Tor
+    .turnin 92459 >> Turn in Friend of the Kirin Tor
+    >> probably a good followup here couldn't check on beta
 step
     >>Inside the keep
     .goto Hillsbrad Foothills,48.14,59.11

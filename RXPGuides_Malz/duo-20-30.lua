@@ -1543,7 +1543,7 @@ step
     >>Talk to |cRXP_FRIENDLY_Rethiel the Greenwarden|r
     .turnin 275 >> Turn in Blisters on The Land
     .accept 95646 >> Accept Horrors in the Highland
-    .isOnQuest 275
+    .accept 98283 >> Accept Carnage
 step
     .goto Wetlands,44.2,25.8
     >>Kill slimes around the crypt
@@ -2760,6 +2760,7 @@ step
     .subzone 2797,2 >> Make your way to the BFD Instance Portal. Zone in
 step
     #completewith Kelris
+    >>Likely won't be enough for everyone
     >>Kill |cRXP_ENEMY_Nagas|r and |cRXP_ENEMY_Satyrs|r. Loot them for their |cRXP_LOOT_Corrupted Brain Stems|r
     .complete 1275,1 
     .isOnQuest 1275
@@ -2777,6 +2778,7 @@ step
     #requires manuscript
     #completewith Kelris
     >>Kill all of the |cRXP_ENEMY_Twilight's Hammer|r. Loot them for their |cRXP_LOOT_Twilight Pendants|r
+    >>Likely won't be enough for everyone
     .complete 1199,1 
 step
     #requires manuscript
@@ -2807,6 +2809,7 @@ step
 step
     .goto 1439,38.325,43.039
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gershala Nightwhisper|r
+    .isQuestComplete 1275
     .turnin 1275 >> Turn in Researching the Corruption
     .target Gershala Nightwhisper
 step
@@ -2819,6 +2822,7 @@ step
     .zone Darnassus >> Take the purple portal into Darnassus
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Argent Guard Manados|r up stairs
+    .isQuestComplete 1199
     .turnin 1199 >> Turn in Twilight Falls
     .goto Darnassus,55.239,23.996
     .target Argent Guard Manados
@@ -2827,6 +2831,10 @@ step
     .turnin 1200 >> Turn in Blackfathom Villainy
     .goto Darnassus,56.167,24.395 
     .target Dawnwatcher Selgorm
+step
+    #completewith next
+    .abandon 1199 >> Abandon Twilight Falls
+    .abandon 1275 >> Abandon Researching the Corruption
 step
     #label darnassus
     .goto Darnassus,61.777,39.180
@@ -2893,8 +2901,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 20-30
 --#groupid RXP-SRGCE-A1
-#name 29-30 Wetlands
-#next 30-31 Stockades
+#name 29-31 Wetlands
+#next 31-32 Stockades
 #defaultfor Dwarf/Gnome
 
 
@@ -3061,6 +3069,7 @@ step
     .turnin 98221 >> Accept From the Ashes
     .target Captain Stoutfist
     .accept 465 >> Accept Nek'rosh's Gambit
+    .accept 98230 >> Accept This Land Was Their Land
 step
     #requires Mead
     .goto Wetlands,10.89,59.66
@@ -3173,6 +3182,41 @@ step
     .complete 474,1 
     .mob Chieftain Nek'rosh
 step
+    .goto Wetlands,49.6,42.0
+    .target Howin Kindfeather
+    >>Talk to |cRXP_FRIENDLY_Howin Kindfeather|r
+    .turnin 98230 >> Turn in This Land Was Their Land
+    .accept 98245 >> Accept Razormaw Needling
+    .accept 98246 >> Accept Trying Times
+step
+    #completewith next
+    >> Start looking for a group for the elite dwarves, the more the merrier, can add the other elite quests if 5
+step
+    #sticky
+    #label razormaw
+    .goto Wetlands,70.2,31.8
+    >> Kill the |cRXP_ENEMY_Razormaw Raptors|r and loot their |cRXP_LOOT_Eggs|r nearby
+    .complete 98245,1
+    .complete 98246,1
+step
+    >> Loot a Malignant Rotclaw and use it to summon Carnage
+    .complete 98283,1
+step
+    #requires razormaw
+    .goto Wetlands,56.4,40.5
+    .target Rethiel the Greenwarden
+    >>Talk to |cRXP_FRIENDLY_Rethiel the Greenwarden|r
+    .turnin 98283 >> Turn in Carnage
+step
+    #requires razormaw
+    .goto Wetlands,49.6,42.0
+    .target Howin Kindfeather
+    >>Talk to |cRXP_FRIENDLY_Howin Kindfeather|r
+    .turnin 98245 >> Turn in Razormaw Needling
+    .turnin 98246 >> Turn in Trying Times
+    .accept 98230 >> Turn in This Land Was Their Land
+step
+    >> now is group elite time for real, only the necessary quests are routed here but all of them are good to do
     #completewith next
     .goto Wetlands,49.9,18.3
     .target Longbraid the Grim

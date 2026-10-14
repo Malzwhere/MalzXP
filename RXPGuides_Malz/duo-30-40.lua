@@ -10,7 +10,7 @@ RXPGuides.RegisterGuide([[
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
 #name 31-32 Stockades
-#next 32-33 Excavation Site
+#next 32-33 Gnomer
 #defaultfor Dwarf/Gnome
 
 
@@ -497,70 +497,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 30-40
 --#groupid RXP-SRGCE-A1
-#name 32-33 Excavation Site
-#next 33-34 Gnomeregan
-#defaultfor Dwarf/Gnome
-
-
-step
-    .goto Wetlands,10.6,60.5
-    >>Talk to |cRXP_FRIENDLY_Glorin Steelbrow|r
-    .turnin 292 >> Turn in The Eye of Paleth
-    .target Glorin Steelbrow
-    .accept 293 >> Accept Cleansing the Eye
-step
-    .goto Wetlands,54.25,47.99,50,0
-    .goto Wetlands,52.82,66.10,25,0
-    .goto Wetlands,48.02,56.52,10
-    >>Enter the Excavation Site
-step
-    .complete 95646,1 -- Horrors in the Highland
-    .turnin 95772 >> Turn in Songblade Search
-    .accept 95795 >> Accept Fallen in the Fen
-    .turnin 95647 >> Turn in Lost in the Thicket Things
-    .accept 95809 >> Accept Heartwoven
-    .accept 95810 >> Accept Lost Relic Carry
-    .use 270865
-step
-    #completewith StartGnomer
-    .goto Dun Morogh,24.2,39.1,0
-    +Start Looking for a Gnomeregan group
-    .subzoneskip 133
-    .subzoneskip 721,2
-step
-    .goto Wetlands,56.4,40.5
-    .target Rethiel the Greenwarden
-    >>Talk to |cRXP_FRIENDLY_Rethiel the Greenwarden|r
-    .turnin 95646 >> Turn in Horrors in the Highland
-step
-    .goto Wetlands,49.7,18.3
-    .target Motley Garmason
-    >>Talk to |cRXP_FRIENDLY_Motley Garmason|r
-    .turnin 378 >> Turn in The Fury Runs Deep
-step
-	.goto Wetlands,38.81,52.39
-    .target Prospector Whelgar
-    >>Talk to |cRXP_FRIENDLY_Prospector Whelgar|r
-	.turnin 95810 >> Turn in Lost Relic Carry
-    .accept 98824 >> Accept Prehistoric Prism
-step
-    #label StartGnomer
-    .goto Wetlands,11.8,58.6
-    .target Caitlin Grassman
-    >>Talk to |cRXP_FRIENDLY_Caitlin Grassman|r
-    .turnin 95809 >> Turn in Heartwoven
-]])
-
-
-RXPGuides.RegisterGuide([[
-#forever
-#version 1
-<< Alliance
-#group MalzXP Forever Duo Guide
-#subgroup Duo 30-40
---#groupid RXP-SRGCE-A1
-#name 33-34 Gnomeregan
-#next 34-35 Duskwood/STV
+#name 32-33 Gnomeregan
+#next 33-34 Excavation Site
 #defaultfor Dwarf/Gnome
 
 
@@ -592,11 +530,6 @@ step
     .target High Tinker Mekkatorque
     .target Master Mechanic Castpipe
     .target Klockmort Spannerspan
-step
-    .goto Ironforge,69.930,18.548
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Explorer Magellas|r
-    .turnin 98824 >> Turn in Prehistoric Prism
-    .target High Explorer Magellas
 step
     #completewith next
     .goto Dun Morogh,53.5,34.9
@@ -754,9 +687,12 @@ step
 step
     +Check the auction house for silver bars, need a moss agate and one bar for this quest and 5 more for another later
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkmaster Overspark|r, |cRXP_FRIENDLY_High Tinker Mekkatorque|r, |cRXP_FRIENDLY_Master Mechanic Castpipe|r and |cRXP_FRIENDLY_Klockmort Spannerspan|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkmaster Overspark|r
     .turnin 2922,1 >> Turn in Save Techbot's Brain!
     .goto Ironforge,69.540,50.325
+    .target Tinkmaster Overspark
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Tinker Mekkatorque|r, |cRXP_FRIENDLY_Master Mechanic Castpipe|r and |cRXP_FRIENDLY_Klockmort Spannerspan|r
     .turnin 2929,1 >> Turn in The Grand Betrayal
     .goto Ironforge,68.743,48.969
     .turnin 2930,1 >> Turn in Data Rescue
@@ -820,6 +756,76 @@ step
     >>|cRXP_FRIENDLY_Roetten Stonehammer|r |cRXP_WARN_patrols the Hall of Explorers|r
     .accept 1453 >> Accept Reclaimers' Business in Desolace
     .target Roetten Stonehammer
+step
+    .goto 1455/0,-1330.28,-4840.430
+    .zone Stormwind City >> Enter the Deeprun Tram. Take the tram to Stormwind
+]])
+
+
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+<< Alliance
+#group MalzXP Forever Duo Guide
+#subgroup Duo 30-40
+--#groupid RXP-SRGCE-A1
+#name 33-34 Excavation Site
+#next 34-35 Duskwood
+#defaultfor Dwarf/Gnome
+
+
+step
+    .goto Wetlands,10.6,60.5
+    >>Talk to |cRXP_FRIENDLY_Glorin Steelbrow|r
+    .turnin 292 >> Turn in The Eye of Paleth
+    .target Glorin Steelbrow
+    .accept 293 >> Accept Cleansing the Eye
+step
+    .goto Wetlands,54.25,47.99,50,0
+    .goto Wetlands,52.82,66.10,25,0
+    .goto Wetlands,48.02,56.52,10
+    >>Enter the Excavation Site
+step
+    .complete 95646,1 -- Horrors in the Highland
+    .turnin 95772 >> Turn in Songblade Search
+    .accept 95795 >> Accept Fallen in the Fen
+    .turnin 95647 >> Turn in Lost in the Thicket Things
+    .accept 95809 >> Accept Heartwoven
+    .accept 95810 >> Accept Lost Relic Carry
+    .use 270865
+step
+    #completewith StartGnomer
+    .goto Dun Morogh,24.2,39.1,0
+    +Start Looking for a Gnomeregan group
+    .subzoneskip 133
+    .subzoneskip 721,2
+step
+    .goto Wetlands,56.4,40.5
+    .target Rethiel the Greenwarden
+    >>Talk to |cRXP_FRIENDLY_Rethiel the Greenwarden|r
+    .turnin 95646 >> Turn in Horrors in the Highland
+step
+    .goto Wetlands,49.7,18.3
+    .target Motley Garmason
+    >>Talk to |cRXP_FRIENDLY_Motley Garmason|r
+    .turnin 378 >> Turn in The Fury Runs Deep
+step
+	.goto Wetlands,38.81,52.39
+    .target Prospector Whelgar
+    >>Talk to |cRXP_FRIENDLY_Prospector Whelgar|r
+	.turnin 95810 >> Turn in Lost Relic Carry
+    .accept 98824 >> Accept Prehistoric Prism
+step
+    #label StartGnomer
+    .goto Wetlands,11.8,58.6
+    .target Caitlin Grassman
+    >>Talk to |cRXP_FRIENDLY_Caitlin Grassman|r
+    .turnin 95809 >> Turn in Heartwoven
+step
+    .goto Ironforge,69.930,18.548
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Explorer Magellas|r
+    .turnin 98824 >> Turn in Prehistoric Prism
+    .target High Explorer Magellas
 step
     .goto 1455/0,-1330.28,-4840.430
     .zone Stormwind City >> Enter the Deeprun Tram. Take the tram to Stormwind

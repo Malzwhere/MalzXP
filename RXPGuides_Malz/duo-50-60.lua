@@ -203,7 +203,6 @@ step
 step
     >>Kill |cRXP_ENEMY_Celebras the Cursed|r then talk to |cRXP_FRIENDLY_Celebras the Redeemed|r
     .turnin 7044 >> Turn in Legends of Maraudon
-    .isQuestComplete 7044
     .mob Celebras the Cursed
     .target Celebras the Redeemed
 step
@@ -249,7 +248,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Willow|r
     .turnin 7028 >> Turn in Twisted Evils
     .target Willow
-    .isQuestComplete 7028
 step
     #softcore
     .line Desolace,50.48,86.66,50.39,86.61,50.18,87.01,49.89,87.11,48.95,87.04,48.73,87.11,48.25,87.14,47.82,87.34,47.01,86.96,45.68,86.22,45.16,86.32,44.74,86.12,44.40,85.69,44.11,85.25,43.77,84.93,43.59,84.93
@@ -263,7 +261,6 @@ step
     >>|cRXP_WARN_The |cRXP_FRIENDLY_Centaur Pariah|r patrols slightly around southern Desolace|r
     .turnin 7067 >> Turn in The Pariah's Instructions
     .target Centaur Pariah
-    .isQuestComplete 7067
 step
     .hs >> Hearth to Nijel's Point
 step
@@ -272,13 +269,11 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keeper Marandis|r
     .turnin 7065 >> Turn in Corruption of Earth and Seed
     .target Keeper Marandis
-    .isQuestComplete 7065
 step
     .goto Desolace,68.501,8.880
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Talendria|r
     .turnin 7041 >> Turn in Vyletongue Corruption
     .target Talendria
-    .isQuestComplete 7041
 step
     #softcore
     .goto Desolace,64.66,10.53
@@ -291,7 +286,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Willow|r
     .turnin 7028 >> Turn in Twisted Evils
     .target Willow
-    .isQuestComplete 7028
 step
     #hardcore
     .line Desolace,50.48,86.66,50.39,86.61,50.18,87.01,49.89,87.11,48.95,87.04,48.73,87.11,48.25,87.14,47.82,87.34,47.01,86.96,45.68,86.22,45.16,86.32,44.74,86.12,44.40,85.69,44.11,85.25,43.77,84.93,43.59,84.93
@@ -305,7 +299,6 @@ step
     >>|cRXP_WARN_The |cRXP_FRIENDLY_Centaur Pariah|r patrols slightly around southern Desolace|r
     .turnin 7067 >> Turn in The Pariah's Instructions
     .target Centaur Pariah
-    .isQuestComplete 7067
 ]])
 
 
@@ -317,7 +310,7 @@ RXPGuides.RegisterGuide([[
 #subgroup Duo 50-60
 --#groupid RXP-SRGCE-A1
 #name 52-52 Alcaz Island
-#next 52-54 Un'goro Crater
+#next 52-53 Un'goro Crater
 #defaultfor Dwarf/Gnome
 
 
@@ -336,8 +329,8 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 50-60
 --#groupid RXP-SRGCE-A1
-#name 52-54 Un'goro Crater
-#next 54-54 Sunken Temple
+#name 52-53 Un'goro Crater
+#next 53-54 Sunken Temple
 #defaultfor Dwarf/Gnome
 
 
@@ -347,14 +340,12 @@ step
     .turnin 2641 >> Turn in Sprinkle's Secret Ingredient
     .accept 2661 >> Accept Delivery for Marin
     .target Sprinkle
-    .isQuestComplete 2641
 step
     .goto Tanaris,50.887,26.963
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alchemist Pestlezugg|r
     .turnin 4493 >> Turn in March of the Silithid
     .accept 4496 >> Accept Bungle in the Jungle
     .target Alchemist Pestlezugg
-    .isQuestComplete 2641
 step
     .goto Tanaris,51.808,28.662
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marin Noggenfogger|r
@@ -368,7 +359,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marvon Rivetseeker|r
     .turnin 3444 >> Turn in The Stone Circle
     .target Marvon Rivetseeker
-    .isQuestComplete 3444
 step
     .goto Tanaris,51.006,29.345
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bera Stonehammer|r
@@ -542,7 +532,6 @@ step
     .turnin 4290 >> Turn in The Fare of Lar'korwi
     .accept 4291 >> Accept The Scent of Lar'korwi
     .target Torwa Pathfinder
-    .isQuestComplete 4290
 step
     .goto Un'Goro Crater,67.324,73.041,8,0
     .goto Un'Goro Crater,66.601,66.727,8,0
@@ -566,7 +555,6 @@ step
     .turnin 4291 >> Turn in The Scent of Lar'korwi
     .accept 4292 >> Accept The Bait for Lar'korwi
     .target Torwa Pathfinder
-    .isQuestComplete 4291
 step
     .use 11568 >> |cRXP_WARN_Open|r |T133635:0|t[Torwa's Pouch] |cRXP_WARN_for the|r |T133970:0|t[Preserved Threshadon Meat] |cRXP_WARN_and|r |T134743:0|t[Preserved Pheromone Mixture]
     .collect 11569,1,4292,1 
@@ -629,14 +617,11 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Torwa Pathfinder|r
     .turnin 4292 >> Turn in The Bait for Lar'korwi
     .target Torwa Pathfinder
-    .isQuestComplete 4289
 step
-    #label FinishBait
     .goto Un'Goro Crater,71.639,75.960
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Torwa Pathfinder|r
     .turnin 4289 >> Turn in The Apes of Un'Goro
     .accept 4301 >> Accept The Mighty U'cha
-    .isQuestComplete 4289
 step
     #completewith GlandWallSample
     >>Kill |cRXP_ENEMY_Diemetradons|r and |cRXP_ENEMY_Young Diemetradons|r. Loot them for their |cRXP_LOOT_Dinosaur Bones|r and |cRXP_LOOT_Webbed Diemetradon Scales|r
@@ -904,26 +889,31 @@ step
     .mob U'cha
     .isOnQuest 4301
 step
+    #optional
     .goto Un'Goro Crater,67.657,16.758
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_A-Me 01|r
+    >>Skip this quest if no mithril casing
     .accept 4244 >> Accept Chasing A-Me 01
     .turnin 4244 >> Turn in Chasing A-Me 01
     .accept 4245 >> Accept Chasing A-Me 01
     .itemcount 10561,1 
     .target A-Me 01
 step
+    #optional
     .isQuestTurnedIn 4244
     .goto Un'Goro Crater,67.657,16.758
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_A-Me 01|r
     .accept 4245 >> Accept Chasing A-Me 01
     .target A-Me 01
 step
+    #optional
     .isOnQuest 4245
     .goto Un'Goro Crater,46.378,13.444
     >>Escort |cRXP_FRIENDLY_A-Me 01|r to |cRXP_FRIENDLY_Karna Remtravel|r at Marshal's Refuge
     .complete 4245,1 
     .target A-Me 01
 step
+    #optional
     .isQuestComplete 4245
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karna Remtravel|r
     .turnin 4245 >>Turn in Chasing A-Me 01
@@ -949,7 +939,6 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Torwa Pathfinder|r
     .turnin 4301 >> Turn in The Mighty U'cha
     .target Torwa Pathfinder
-    .isQuestComplete 4301
 step
     #completewith BungleJungle
     .subzone 976 >> Run back to Gadgetzan in Tanaris
@@ -977,7 +966,7 @@ RXPGuides.RegisterGuide([[
 #group MalzXP Forever Duo Guide
 #subgroup Duo 50-60
 --#groupid RXP-SRGCE-A1
-#name 54-54 Sunken Temple
+#name 53-54 Sunken Temple
 #next 54-55 Felwood
 #defaultfor Dwarf/Gnome
 

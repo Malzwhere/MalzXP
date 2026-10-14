@@ -158,6 +158,21 @@ step
     .turnin 234 >> Turn in Coldridge Valley Mail Delivery
     .accept 182 >> Accept The Troll Cave
     .target Grelin Whitebeard
+step << Warlock
+    #completewith next
+    .goto 1426,28.696,83.148,0
+    .goto 1426,30.216,80.254,0
+    .goto 1426,28.696,83.148,40,0
+    .goto 1426,28.999,82.504,40,0
+    .goto 1426,29.298,81.579,15,0
+    .goto 1426,29.041,81.168,40,0
+    .goto 1426,30.055,82.385,40,0
+    .goto 1426,30.381,80.766,40,0
+    .goto 1426,30.216,80.254,40,0
+    >>Kill |cRXP_ENEMY_Frostmane Novices|r inside. Loot them for their |cRXP_LOOT_Feather Charms|r
+    >>This is a pathing change so make sure to mention it on the way
+    .complete 1599,1 --Collect Feather Charm (x3)
+    .mob Frostmane Novice
 step
     #loop
     .goto 1426,26.382,78.409,45,0
@@ -199,6 +214,7 @@ step
 step << Warlock
     .goto Dun Morogh,28.650,66.145
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alamar Grimm|r upstairs
+    .turnin -1599 >> Turn in Beginnings
     .turnin 3115 >> Turn in Tainted Memorandum
     .train 172 >>Train |T136118:0|t[Corruption]
     .target Alamar Grimm
@@ -292,6 +308,7 @@ step << Warlock
     >>Kill |cRXP_ENEMY_Frostmane Novices|r inside. Loot them for their |cRXP_LOOT_Feather Charms|r
     .complete 1599,1 --Collect Feather Charm (x3)
     .mob Frostmane Novice
+    .isOnQuest 1599
 step << Shaman
     #completewith Stolen
     >>Kill |cRXP_ENEMY_Frostmane Troll Whelps|r. Loot them for their |cRXP_LOOT_Iceclaw Bear Pendants|r
@@ -447,7 +464,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Belm|r inside
     .home >> Set your Hearthstone to Kharanos
     .target Innkeeper Belm
-step << Rogue
+step << Rogue/Warlock
     .goto 1426,47.2,52.6
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thamner Pol|r inside
     .train 3273 >> Train |T135966:0|t[First Aid]
@@ -503,7 +520,7 @@ step
     .mob Large Crag Boar
     .mob Crag Boar
 step
-    >> Go left around the mountain not through Kharanos, will fix arrow with this vod
+    >> Go left around the mountain not through Kharanos
     .goto 1426,44.084,57.031
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mountaineer Gretchen|r
     .turnin 98322 >> Turn in Secure the Mountain
@@ -1581,7 +1598,7 @@ step
     #optional
     #completewith next
     .subzone 87 >> Travel to Goldshire
-step << Rogue
+step << Rogue/Warlock
     #completewith next
     .goto 1429,44.8,63.2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sam Sarsaparilla|r
@@ -1602,7 +1619,7 @@ step << Rogue
     .target Keryn Sylvius
     .goto Elwynn Forest,43.872,65.937
     .accept 2205 >> Accept Seek out SI:7
-step << Rogue
+step << Rogue/Warlock
     .goto 1429,43.4,65.6
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Michelle Belle|r
     .turnin 97919 >> Turn in Camping 101: First Aid

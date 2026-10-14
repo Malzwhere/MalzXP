@@ -1697,6 +1697,12 @@ step
 step
     +Do ZF get big xp and loot
 step
+    .turnin -3042 >> Turn in Troll Temper
+    .turnin 2865 >> Turn in Scarab Shells
+    .turnin 2768 >> Turn in Divino-matic Rod
+    .turnin 2770 >> Turn in Gahz'rilla
+    .turnin 2846 >> Turn in Tiara of the Deep
+step
     .goto Un'Goro Crater,63.02,68.60
     >>Click on the |cRXP_PICK_Wrecked Raft|r
     .accept 3844 >> Accept It's a Secret to Everybody

@@ -100,12 +100,6 @@ step << Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arthur the Faithful|r
     .trainer >> Train your class spells
     .target Arthur the Faithful
-step << !NightElf
-    .goto 1453/0,600.22,-8426.93
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Furen Longbeard|r
-    .turnin 1338 >> Turn in Stormpike's Order
-    .target Furen Longbeard
-    .isOnQuest 1338
 step << Rogue
     #completewith next
     .goto 1453/0,374.11,-8762.88,20,0
@@ -1695,9 +1689,8 @@ step << Paladin
 step
     .goto 1455/0,-1115.43,-4598.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gerrig Bonegrip|r
-    .turnin 968 >> Turn in The Powers Below
+    .turnin -968 >> Turn in The Powers Below
     .target Gerrig Bonegrip
-    .isOnQuest 968
 step << Warlock
     .goto 1455/0,-1117.60,-4615.14,15,0
     .goto 1455/0,-1111.62,-4599.09
@@ -1760,7 +1753,7 @@ step
     .goto Stormwind City,52.8,86.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Collin Mauren|r
     .turnin 1075 >> Turn in A Scroll from Mauren
-    .accept 1078 >> Accept Retrieval for Mauren
+    -- .accept 1078 >> Accept Retrieval for Mauren
     .target Collin Mauren
     .isOnQuest 1075
 step << Warlock
@@ -2907,6 +2900,13 @@ RXPGuides.RegisterGuide([[
 
 
 step
+    .goto 1453,51.6,69.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warden Thelwater|r
+    .accept 387 >> Accept Quell The Uprising
+    .turnin 389 >> Turn in Bazil Thredd
+    .accept 391 >> Accept The Stockade Riots
+    .target Warden Thelwater
+step
     #completewith next
     .goto 1453,53,51,20 >> Travel to the Stormwind Cathedral
 step
@@ -3116,72 +3116,6 @@ step
     .turnin 286 >> Turn in Return the Statuette
     .target Karl Boran
 step
-    >>Click the |cRXP_PICK_Waterlogged Chest|r
-    .goto Wetlands,12.10,64.19
-    .turnin 321 >>Turn in Lightforge Iron
-    .accept 324 >>Accept The Lost Ingots
-    .isQuestTurnedIn 270
-step
-    >> Loot Nord'el the wreckage
-    .complete 98208,1
-step
-    .goto Wetlands,12.6,65.2,60,0
-    .goto Wetlands,10.2,71.0,60,0
-    .goto Wetlands,7.2,72.6,60,0
-    .goto Wetlands,12.6,65.2
-    >>Kill |cRXP_ENEMY_Bluegill Raiders|r. Loot them for |cRXP_LOOT_Ingots|r
-    .complete 324,1 
-    .mob Bluegill Raider
-    .isQuestTurnedIn 270
-step
-    .goto Wetlands,10.89,59.66
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_First Mate Fitzsimmons|r
-    .turnin 289 >> Turn in The Cursed Crew
-    .accept 290 >> Accept Lifting the Curse
-    .target First Mate Fitzsimmons
-step
-    .goto Wetlands,10.58,60.59
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Glorin Steelbrow|r
-    .turnin 324 >>Turn in The Lost Ingots
-    .accept 322 >>Accept Blessed Arm
-    .target Glorin Steelbrow
-step
-    .goto Wetlands,8,55.8
-    .target Sylessa Duskwhisper
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sylessa Duskwhisper|r
-    .turnin 98208 >> Turn in Bloom of the Heavens
-step
-    #label Halyndor
-    .goto Wetlands,15.984,23.111,25,0
-    .goto Wetlands,15.44,23.60
-    >>Run up the mast of the ship
-    >>Kill |cRXP_ENEMY_Captain Halyndor|r. Loot him for the |cRXP_LOOT_Strongbox Key|r
-    .complete 290,1 
-    .mob Captain Halyndor
-step
-    .goto Wetlands,14.292,23.609,15,0
-    .goto Wetlands,14.381,24.047
-    >>Enter through the large hole on the side of the ship
-    >>Click |cRXP_PICK_Intrepid's Locked Strongbox|r on the ground
-    .turnin 290 >>Turn in Lifting the Curse
-    .accept 292 >>Accept The Eye of Paleth
-step
-    #label Gambit
-    .goto Wetlands,47.45,47.01
-    >>Click the |cRXP_PICK_Dragonmaw Catapult|r
-    .turnin 465 >>Turn in Nek'rosh's Gambit
-    .accept 474 >>Accept Defeat Nek'rosh
-step
-    .goto Wetlands,53.2,56.0,40,0
-    .goto Wetlands,53.2,56.0,0
-    >>Kill |cRXP_ENEMY_Chieftain Nek'rosh|r. Loot him for his |cRXP_LOOT_Head|r
-    >>|cRXP_WARN_You can split pull Nek'Rosh from the mobs around him by using|r |T136186:0|t[Rain of Fire] << Warlock
-    >>|cRXP_ENEMY_Chieftain Nek'rosh|r |cRXP_WARN_is snareable|r
-    >>|cRXP_ENEMY_Chieftain Nek'rosh|r |cRXP_WARN_can be|r |T136183:0|t[Feared] << Warlock
-    >>|cRXP_ENEMY_Chieftain Nek'rosh|r |cRXP_WARN_is immune to Fire damage|r << Mage/Warlock/Shaman
-    .complete 474,1 
-    .mob Chieftain Nek'rosh
-step
     .goto Wetlands,49.6,42.0
     .target Howin Kindfeather
     >>Talk to |cRXP_FRIENDLY_Howin Kindfeather|r
@@ -3214,9 +3148,9 @@ step
     >>Talk to |cRXP_FRIENDLY_Howin Kindfeather|r
     .turnin 98245 >> Turn in Razormaw Needling
     .turnin 98246 >> Turn in Trying Times
-    .accept 98230 >> Turn in This Land Was Their Land
+    .accept 98291 >> Accept Death to the Dragonmaw
 step
-    >> now is group elite time for real, only the necessary quests are routed here but all of them are good to do
+    >> now is group elite time for real, only the necessary quests are routed here but all of them are good to do, save turnins for after excavation site
     #completewith next
     .goto Wetlands,49.9,18.3
     .target Longbraid the Grim
@@ -3231,6 +3165,10 @@ step
     >>Talk to |cRXP_FRIENDLY_Motley Garmason|r
     .accept 303 >> Accept The Dark Iron War
 step
+    #sticky
+    #completewith endWetlands
+    +Find a group to The Stockades
+step
     .goto Wetlands,47.3,16.6
 	>> Kill Dark Iron dwarves in the area
     .complete 303,1 --Kill Dark Iron Dwarf (x10)
@@ -3244,71 +3182,6 @@ step
     .turnin 303 >> Turn in The Dark Iron War
     .accept 378 >> Accept The Fury Runs Deep
 step
-    .goto Wetlands,51.2,8.0
-	>> Go downstairs and click on the dwarf corpse. Ignore all the mobs.
-    .turnin 631 >> Turn in The Thandol Span
-    .accept 632 >> Accept The Thandol Span
-step
-    .goto Wetlands,49.9,18.3
-    >> Run back outside and turn in the quest
-    >>Talk to |cRXP_FRIENDLY_Rhag Garmason|r
-    .turnin 632 >> Turn in The Thandol Span
-    .target Rhag Garmason
-    .accept 633 >> Accept The Thandol Span
-step
-    .goto Arathi Highlands,43.3,92.6
-    .target Foggy MacKreel
-    >>Talk to |cRXP_FRIENDLY_Foggy MacKreel|r
-    .accept 647 >> Accept MacKreel's Moonshine
-    >>You can still get this quest if you don't have any kind of speed increase or slow fall
-    .link https://www.twitch.tv/videos/646111384 >>Click here for reference
-    >> Alternatively just swiftness pot
-step
-    .goto Arathi Highlands,44.3,93.0
-	>>Jump down and loot the letter from the corpse underwater
-    .accept 637 >> Accept Sully Balloo's Letter
-	.use 4433 >>Jump down and loot the letter from the corpse underwater
-step
-    #completewith next
-    .goto Arathi Highlands,52.5,90.4,30 >> Swim east toward the ramp here
-step
-    .goto Arathi Highlands,48.7,87.9
-    .complete 633,1 --Collect Cache of Explosives Destroyed (x1)
-step
-    #sticky
-    #completewith endWetlands
-    +Find a group to The Stockades
-step
-    .goto Wetlands,49.9,18.3
-    >>Talk to |cRXP_FRIENDLY_Rhag Garmason|r
-    .turnin 633 >> Turn in The Thandol Span
-    .target Rhag Garmason
-step
-    .goto Wetlands,49.7,18.3
-    .target Rhag Garmason
-    >>Talk to |cRXP_FRIENDLY_Rhag Garmason|r
-    .accept 634 >> Accept Plea to the Alliance
-step
-    >>Travel to Refuge Pointe
-    >>Talk to |cRXP_FRIENDLY_Nials|r
-    .turnin 634 >>Turn in Plea To The Alliance
-    .goto Arathi Highlands,45.83,47.56
-    .target Captain Nials
-step
-    .goto Arathi Highlands,45.76,46.09
-    >>Talk to |cRXP_FRIENDLY_Cedrik|r
-    .fp Refuge Pointe >> Get the Refuge Pointe flight path
-    .fly Southshore >> Fly to Southshore
-    .target Cedrik Prose
-step
-    .isOnQuest 647
-    >>Run to Southshore and go downstairs in the inn. Turn in before the timer is up. Watch out for the courier on the road.
-	.unitscan Forsaken Bodyguard
-    .goto Hillsbrad Foothills,52.2,58.6
-    .target Brewmeister Bilger
-    >>Talk to |cRXP_FRIENDLY_Brewmeister Bilger|r
-    .turnin 647 >> Turn in MacKreel's Moonshine
-step
     .hs >> Hearth to Ironforge
 step
     .goto 1455,18.564,51.558
@@ -3320,26 +3193,6 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Barim Jurgenstaad|r
     .target +Barim Jurgenstaad
     .collect 17030,5
-step
-    .goto Ironforge,63.50,67.30
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sara Balloo|r
-    .turnin 637 >> Turn in Sully Balloo's Letter
-    .timer 17,Sully Balloo's Letter RP
-    .accept 683 >> Accept Sara Balloo's Plea
-    .target Sara Balloo
-step
-    .goto Ironforge,39.09,56.19
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_King Magni Bronzebeard|r
-    .turnin 683 >> Turn in Sara Balloo's Plea
-    .accept 686 >> Accept A King's Tribute
-    .target King Magni Bronzebeard
-step
-    #label endWetlands
-    .goto Ironforge,39.03,88.05
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grand Mason Marblesten|r
-    .turnin 686 >> Turn in A King's Tribute
-    .accept 689 >> Accept A King's Tribute
-    .target Grand Mason Marblesten
 step << Warlock
     .goto 1455/0,-1117.60,-4615.14,15,0
     .goto 1455/0,-1111.62,-4599.09

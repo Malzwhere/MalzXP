@@ -2150,9 +2150,8 @@ step << Shaman
 step << Shaman
     .goto 1455/0,-1115.43,-4598.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gerrig Bonegrip|r
-    .turnin 968 >> Turn in The Powers Below
+    .turnin -968 >> Turn in The Powers Below
     .target Gerrig Bonegrip
-    .isOnQuest 968
 step << Shaman
     .goto 1455,47.334,13.566
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eldun Stormbreaker|r
